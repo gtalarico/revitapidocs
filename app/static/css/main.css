@@ -1,0 +1,64 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/*CLEAR OUT OF NAV BAR*/
+/*body { padding-top: 70px; }*/
+
+.alert {
+  position: absolute;
+  top: 75px;
+  /*bottom: 20px;*/
+  left: 50px;
+  right: 50px;
+}
+
+/*added to center panels*/
+.center {
+      margin:0px; 
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.navbar {
+  margin-bottom: 100px;
+
+
+/*}
+a {
+  color: #288A8C;
+  text-decoration: none;
+}
+
+body {
+  background-color: #FAFAFA;}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus 
+{
+  color: #ffffff;
+  background-color: #27798F;
+}
+
+.navbar-default {
+  background-color: #515151;
+  border-color: #4A4A4A;
+}
+.navbar-default .navbar-brand {
+  color: #E7E7E7;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-default .navbar-text {
+  color: #FFFFFF;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+}*/

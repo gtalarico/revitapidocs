@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container pull-left">
+    <!-- <div class="container">-->
+    <div class="row">
+
+        <div class="col-md-2">
+            <div class="panel">
+                <!-- <div class="panel-body"> -->
+
+                    <ul class="nav nav-pills nav-stacked">
+
+                      <li role="navigation" class="active">
+                        <a href="#home" role="tab" data-toggle="pill">Home</a></li>
+
+                      <li role="navigation">
+                        <a href="#reports" role="tab" data-toggle="pill">Reports</a></li>
+
+                      <li role="navigation">
+                        <a href="#data" role="tab" data-toggle="pill">Data</a></li>
+                    </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Tab1</div>
+                <div class="panel-body">
+                    <div class="panel"><div class="panel-heading">Table1</div></div>
+                </div>
+                <!-- <canvas id="myChart" width="400" height="400">s</canvas></div> -->
+                <div class="panel-footer">Panel footer</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="tab-content">
+
+              <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Home</div>
+                        <div class="panel-body">Hello World</div>
+                    </div>
+             </div>
+              <div role="tabpanel" class="tab-pane fade in" id="reports">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Reports</div>
+                        <div class="panel-body">Test Reports</div>
+                    </div>
+             </div>
+              <div role="tabpanel" class="tab-pane fade in" id="data">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Data</div>
+                        <div class="panel-body">Data Sample</div>
+                    </div>
+             </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

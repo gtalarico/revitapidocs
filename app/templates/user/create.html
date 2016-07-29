@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 center">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Create Account</div>
+
+                <div class="panel-body">
+
+                    <form action="" method="post" name="login" class="form-horizontal">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <label for="firstname" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div> -->
+                                {{ form.firstname(class='form-control',id='firstname',placeholder='First Name') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div> -->
+                                {{ form.lastname(class='form-control',id='lastname',placeholder='Last Name') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div> -->
+                                {{ form.email(class='form-control',id='email',placeholder='Email', type='email') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group"  style="margin-top: -5px;">
+                            <div class="col-sm-offset-2 col-sm-9">
+                                {% for error in form.email.errors %}
+                                <small><p class="text-danger">{{ error }}</p></small>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                                {{ form.password(type="password", class="form-control", id="password", placeholder="Password") }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary">Create Account</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="panel-footer"><a href="/login">Login</a></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</form>
+{% endblock %}
