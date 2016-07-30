@@ -4,12 +4,10 @@
 
     <div class="contents">
             <div id="menu">
-                {% include "namespaces.html" %}
+                {% include '%s' % namespace_year %}
             </div>
             <div id="main">
-                {% if content_path %}
-                    {% include '%s' % content_path %}
-                {% endif %}
+                {% include '%s' % content %}
             </div>
     </div>
 

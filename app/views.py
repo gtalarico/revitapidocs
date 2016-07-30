@@ -17,25 +17,30 @@ def index():
     return render_template('index.html', title=title)
 
 
-@app.route('/<int:year>')
+@app.route('/<int:year>/')
 def api(year):
-    flash(year)
     title = 'Revit API ' + str(year)
-    return render_template('base.html', title=title, active=str(year))
-    # return render_template('whatsnew.html', title=title)
+    namespace_year = 'ns_{year}.html'.format(year=year)
+    content = 'new_{year}.html'.format(year=year)
+
+    return render_template('api.html', title=title, active=str(year),
+                           namespace_year=namespace_year,
+                           content=content)
 
 
-# @app.route('/2015/')
-# @app.route('/2015/html/<path:path>')
-# def api_2015(path):
-#     # return render_template('docs/2015/{path}'.format(path=path))
-#     content_path = 'docs/2015/{}'.format(path)
-#     return render_template('base.html', content_path=content_path)
+@app.route('/<int:year>/<path:path>')
+def api_2015(year, path):
+    title = 'Revit API ' + str(year)
+    html_path = '{year}/{path}'.format(year=year, path=path)
+    namespace_year = 'ns_{year}.html'.format(year=year)
+
+    return render_template('api.html', title=title, active=str(year),
+                           namespace_year=namespace_year,
+                           content=html_path, active_url=path)
 
 
 # Need to search and replace to it's served by guinicorn
-# @app.route('/2015/<path:path>')
-# def static_proxy(path):
-  # send_static_file will guess the correct MIME type
-  # return app.send_static_file('path)
-  # return send_static_file(path)
+@app.route('/<path:folder>/<path:path>')
+def static_proxy(folder, path):
+  import os
+  return app.send_static_file(os.path.join(folder,path))

@@ -17,10 +17,10 @@
 
 /*added to center panels*/
 .center {
-      margin:0px;
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+  margin:0px;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar {
@@ -65,27 +65,46 @@
 
 body {
   /*font-size:8px;*/
-  font-family: Roboto;
-  color: #666
+  /*font-family: Roboto;*/
+  /*color: #666*/
 }
 #contents{
-    overflow:scroll;
+    overflow: scroll;
+    margin-bottom: 40px;
+    /*display: inline;*/
+    /*position: relative;*/
 }
-
+div {
+    /*border:2px solid black !important;*/
+}
 #menu {
-    background-color: #FFF;
-    width: 300px;
-    float:left;
+    width: 400px;
+    position:absolute;
+    height: 100%;
+    left:0px;
     padding-left: 40px;
+    background-color: #FFF;
+    float:left;
+    /*display:inline;*/
+    /*padding-right: 20px;*/
 
 }
 
 #main{
-    width: 75%;
-    float: right;
+    overflow: scroll;
+    position: absolute;
+    left: 400px;
+    width:500px;
+    /*float: right;*/
 }
 
-li {
+#search{
+    position: absolute;
+    right: 0px;
+    top:0px;
+}
+
+ul.CollapsibleList li {
 padding-bottom:2px;
 cursor:pointer;
 }
@@ -100,17 +119,17 @@ li.open{
 }
 
 ul.CollapsibleList {
-opacity: 0;
+    opacity: 0;
 }
 span.loading {
 
 }
 
 
-ul {
+ul.CollapsibleList {
 list-style-type: circle;
 list-style-position: inside;
-font-size:10px;
+font-size:11px;
 padding-left:0px;
 }
 
@@ -118,8 +137,11 @@ ul.CollapsibleList > li{
     font-weight: bold;
 }
 
-ul > ul {
+ul.CollapsibleList  ul {
     padding-left:20px;
+    display: none;
+}
+ul.CollapsibleList > ul > ul {
     display: none;
 }
 

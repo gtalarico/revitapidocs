@@ -6,14 +6,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{title}}</title>
+        <title>{{ title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/main.css") }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/whastnew.css") }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/custom.css") }}" />
 
        {# <script src="../static/scripts/CollapsibleLists.js"></script>#}
 
@@ -54,8 +53,11 @@
         {% endwith %}
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-        <script src="../static/js/bootstrap.js"></script>
-        <script src="../static/js/main.js"></script>
+        <script src="{{ url_for('static', filename="js/bootstrap.js") }}"></script>
+        <script src="{{ url_for('static', filename="js/main.js") }}"></script>
+
+
+
 
     </body>
 </html>

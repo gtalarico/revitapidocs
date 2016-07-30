@@ -121,7 +121,7 @@ MSHelp\:link
  *             CONTENT PRESENTATION STYLES
  ***********************************************************/
 
-body
+/*body
 {
 	background:	#FFFFFF;
 	color: #000000;
@@ -134,7 +134,7 @@ body
 	margin-left:	0;
 	margin-right:	0;
 	width:	100%;
-}
+}*/
 
 dl
 {
@@ -157,21 +157,21 @@ dd {
 	margin-left:	0;
 }
 
-ul
+/*ul
 {
 	margin-top: 1em;
 	margin-bottom: 1em;
-}
+}*/
 
 ol {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
-li {
+/*li {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
-}
+}*/
 
 ul.nobullet
 {
@@ -183,7 +183,7 @@ p {
 	margin-bottom: 5;
 }
 
-a:link {
+/*a:link {
 	color:	#0000FF;
 }
 
@@ -193,7 +193,7 @@ a:visited {
 
 a:hover {
 	color: #DD7C3B;
-}
+}*/
 
 div#header a, div#mainSectionMHS a {
     text-decoration: underline;
