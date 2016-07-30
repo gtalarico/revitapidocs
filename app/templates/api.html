@@ -13,20 +13,8 @@
         <span class="loading">Loading...</span>
         {% include '%s' % namespace_year %}
 
-        <div id="search">
-            <script>
-              (function() {
-                var cx = '014747897160299638528:hw5evfcyxcs';
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-              })();
-            </script>
-            <gcse:search></gcse:search>
-        </div>
+        {% include 'google_search.html' %}
+
 
     </div>
     <div id="main">
