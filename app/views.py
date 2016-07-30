@@ -36,7 +36,7 @@ def api_2015(year, path):
 
     return render_template('api.html', title=title, active=str(year),
                            namespace_year=namespace_year,
-                           content=html_path, active_url=path)
+                           content=html_path, active_ul=path)
 
 
 # Need to search and replace to it's served by guinicorn

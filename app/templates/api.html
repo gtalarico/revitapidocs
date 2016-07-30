@@ -2,13 +2,37 @@
 
 {% block content %}
 
-    <div class="contents">
-            <div id="menu">
-                {% include '%s' % namespace_year %}
-            </div>
-            <div id="main">
-                {% include '%s' % content %}
-            </div>
+    <div id="sidebar">
+        {% include '%s' % namespace_year %}
     </div>
+    <div id="main">
+        {% include '%s' % content %}
+    </div>
+    {# <div id="column-right">#}
+        {# Comments#}
+    {# </div>#}
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+$( document ).ready(function() {
+    var active_ul = "{{active_ul}}";
+    var active_ul_tag = $('a[href$="{{active_ul}}"]');
+
+    active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
+        console.log(this)
+        $(this).css('font-weight','bold');
+        $(this).show();
+        $(this).children('li').removeClass("closed");
+        $(this).children('li').addClass("open");
+        $(this).children('li').addClass("active");
+
+        $(this).siblings('ul').show(); // Hides sister ULs
+        $(this).siblings('ul').css('font-weight','normal'); // Hides sister ULs
+    })
+});
+</script>
 
 {% endblock %}

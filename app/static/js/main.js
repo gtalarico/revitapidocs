@@ -2,26 +2,20 @@ $(".alert").delay(2500).fadeOut(500, function() {
     $(this).alert('close');
 });
 
-// $('li').click(function() {
-//         // $(this).parent().find('ul').toggle();
-//         // $(this).children().find('ul').toggle();
-//
-//         console.log($(this).find('ul'));
-//     });
 
 $('ul.CollapsibleList li').on('click', function () {
-    $(this).siblings('ul').toggle();
-    $(this).toggleClass("open closed");
-    console.log('clicked');
+    $(this).siblings('ul').toggle(); // Hides sister ULs
+    $(this).toggleClass("open closed"); // Togles class of li
 });
 
 
 $( document ).ready(function() {
-    $('ul.CollapsibleList li').addClass('closed');
-    $('ul.CollapsibleList').animate({opacity: 1},1000);
-    $('span.loading').animate({opacity: 0},250);
+    $('ul.CollapsibleList li').addClass('closed'); // Adds closed to all
+    // $('ul.CollapsibleList ul:not(:has(> ul))').children('li').addClass('open'); // Adds closed to all
 
-    $('ul.CollapsibleList > ul').toggle();
-    $('ul.CollapsibleList > ul').toggleClass("open closed");
-    // $('li:not(:has(ul))').addClass('closed');
+    $('span.loading').animate({opacity: 0},250);
+    $('span.loading').remove();
+
+    $('ul.CollapsibleList').animate({opacity: 1},1000);
+
 });

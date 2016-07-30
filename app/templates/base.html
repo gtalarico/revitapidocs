@@ -8,8 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ title }}</title>
         <meta name="description" content="">
+        <link rel="shortcut icon" href="{% static 'favicon.ico'%}">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        {# <link rel="apple-touch-icon" href="apple-touch-icon.png">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/main.css") }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/whastnew.css") }}" />
@@ -23,17 +24,21 @@
         <![endif]-->
 
         <!-- MENU-->
-        {% include "nav.html" ignore missing with context %}
+        <div id="wrapper">
 
-        <!-- MENU-->
+            {% include "nav.html" ignore missing with context %}
 
-        {% block content %}
+            <!-- MENU-->
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            <div class"push"></div>
+            </div>
 
-        {% endblock %}
-
-        <div id="footer">
-            <p class="small">Powered By Flask  |  Sweet Bootstrap Theme by
-            <a href="https://bootswatch.com/flatly/">Bootswatch</a>  |  Gui Talarico</p>
+            <div id="myfooter">
+                <p class="small">Powered By Flask|Sweet Bootstrap Theme by
+                <a href="https://bootswatch.com/flatly/">Bootswatch</a>| Gui Talarico</p>
+            </div>
         </div>
 
 
@@ -55,7 +60,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
         <script src="{{ url_for('static', filename="js/bootstrap.js") }}"></script>
         <script src="{{ url_for('static', filename="js/main.js") }}"></script>
-
+        {% block script %}
+        {% endblock %}
 
 
 
