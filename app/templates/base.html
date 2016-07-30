@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ title }}</title>
         <meta name="description" content="">
-        <link rel="shortcut icon" href="{% static 'favicon.ico'%}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename="favicon.ico") }}">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         {# <link rel="apple-touch-icon" href="apple-touch-icon.png">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}" />
@@ -36,8 +36,13 @@
             </div>
 
             <div id="myfooter">
-                <p class="small">Powered By Flask|Sweet Bootstrap Theme by
-                <a href="https://bootswatch.com/flatly/">Bootswatch</a>| Gui Talarico</p>
+                <p>
+                Powered By <a href="http://pythong.org">Python</a> +
+                <a hreg="http://flask.pocoo.org/">Flask</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                Bootstrap Theme by <a href="https://bootswatch.com/flatly/">Bootswatch</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                Compiled and Styled by <a href="http://gtalarico.com">Gui Talarico</p>
             </div>
         </div>
 
