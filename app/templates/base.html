@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ title }}</title>
+        <title>{% block title %}{{ title }}{% endblock %}</title>
         <meta name="description" content="">
         <link rel="shortcut icon" href="{{ url_for('static', filename="favicon.ico") }}">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
