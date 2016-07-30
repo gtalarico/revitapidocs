@@ -1,10 +1,9 @@
 Tasks:
 
-☐ Keep menu open
-☐ Google Search
-☐ clean up scripts on content
-☐ Search + replace static links on content
-☐ Resolve CSS Conflicts
+☐ Parse 2016
 
-☐ Parse 2016 + 2017
-☐ Resolve Javascript conflicts (Currently too broad)
+☐ Add Commenting System
+☐ Verify Google Search
+☐ clean up scripts on content
+☐ Improve CSS on CHM material
+✔ Keep menu open @done(2016-07-30 19:52)

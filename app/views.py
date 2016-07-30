@@ -1,6 +1,9 @@
-from app import app
-from flask import render_template, flash, redirect, url_for, session, request, g
+import os
 import sys
+
+from app import app
+from flask import render_template, flash, redirect, url_for, session, request
+from flask import abort
 
 
 @app.before_request
@@ -13,7 +16,7 @@ def before_request():
 @app.route('/index', methods=['GET'])
 def index():
     title = 'Revit API Docs'
-    flash('Loaded')
+    # flash('Loaded')
     return render_template('index.html', title=title)
 
 
@@ -34,13 +37,28 @@ def api_2015(year, path):
     html_path = '{year}/{path}'.format(year=year, path=path)
     namespace_year = 'ns_{year}.html'.format(year=year)
 
+    active_ul = path  # xxx.html - Used to identify active menu tree
+
     return render_template('api.html', title=title, active=str(year),
                            namespace_year=namespace_year,
-                           content=html_path, active_ul=path)
+                           content=html_path, active_ul=active_ul)
 
 
 # Need to search and replace to it's served by guinicorn
+# Some icons not being served.
 @app.route('/<path:folder>/<path:path>')
 def static_proxy(folder, path):
-  import os
-  return app.send_static_file(os.path.join(folder,path))
+    try:
+        return app.send_static_file(os.path.join(folder, path))
+    except:
+        abort(404)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    errormsg = e
+    return render_template('error.html', errormsg=errormsg), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    errormsg = e
+    return render_template('error.html', errormsg=errormsg), 500

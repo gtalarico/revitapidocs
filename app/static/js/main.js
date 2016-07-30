@@ -13,8 +13,8 @@ $( document ).ready(function() {
     $('ul.CollapsibleList li').addClass('closed'); // Adds closed to all
     // $('ul.CollapsibleList ul:not(:has(> ul))').children('li').addClass('open'); // Adds closed to all
 
-    $('span.loading').animate({opacity: 0},250);
-    $('span.loading').remove();
+    $('#menu-loading').animate({opacity: 0},250);
+    $('#menu-loading').remove();
 
     $('ul.CollapsibleList').animate({opacity: 1},1000);
 

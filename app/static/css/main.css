@@ -7,6 +7,19 @@
 /*CLEAR OUT OF NAV BAR*/
 /*body { padding-top: 70px; }*/
 
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:300);
+
+div.code pre {
+    /*Added important to font-family on Bootstrap to override .chm body+heading*/
+    font-family: 'Roboto Mono' !important;
+}
+
+td pre {
+    border:0px;
+    background-color: inherit;
+}
+
+
 .alert {
   position: absolute;
   top: 75px;
@@ -48,6 +61,7 @@ a:link, a:visited {
 }
 
 .navbar-brand {
+    font-weight: 100;
     /*font-size: 14px;*/
 }
 
@@ -86,12 +100,12 @@ html, body {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
     top: 60px;
     width: 380px;
     position: absolute;
     left: 0;
-    bottom: 40px;
+    /*bottom: 40px;*/
 
 }
 #main {
@@ -114,14 +128,20 @@ html, body {
 }
 
 #myfooter p {
+    font-size: 70%;
     text-align: center;
     color: #999;
 }
 
 #search{
-    position: absolute;
-    right: 0px;
-    top:0px;
+    display:inline-block;
+    /*width: 360px;*/
+    /*height: 40px*/
+    width:99%;
+    /*position: relative;;*/
+    /*bottom:0px;*/
+    /*right: 0px;*/
+    /*top:0px;*/
 }
 
 ul.CollapsibleList li {
@@ -145,10 +165,6 @@ li.open a{
 ul.CollapsibleList {
     opacity: 0;
 }
-span.loading {
-
-}
-
 
 ul.CollapsibleList {
 list-style-type: circle;
