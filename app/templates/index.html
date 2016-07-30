@@ -5,4 +5,40 @@
 <a href="2016">2016</a>
 <a href="2017">2017</a>
 
+<div style="display:block">
+
+    <div id='cse-search-form' style='width: 300px;'>Loading</div>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'en', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('014747897160299638528:hw5evfcyxcs', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('https://www.google.com/cse?cx=014747897160299638528:hw5evfcyxcs');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+    <style type='text/css'>
+      input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+        border-color: #D9D9D9;
+        height:30px;
+      }
+      input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+        border-color: #FFFFFF;
+        background-color: #2C3E50;
+        background-image: none;
+        filter: none;
+        height:30px;
+
+      }
+    </style>
+</div>
+
 {% endblock %}
