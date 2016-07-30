@@ -2,10 +2,24 @@ $(".alert").delay(2500).fadeOut(500, function() {
     $(this).alert('close');
 });
 
-// activate popover
-$("[data-toggle=popover]").popover();
+// $('li').click(function() {
+//         // $(this).parent().find('ul').toggle();
+//         // $(this).children().find('ul').toggle();
+//
+//         console.log($(this).find('ul'));
+//     });
 
-$('#myTabs a[href="#profile"]').tab('show') // Select tab by name
-$('#myTabs a:first').tab('show') // Select first tab
-$('#myTabs a:last').tab('show') // Select last tab
-$('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('li').on('click', function () {
+    $(this).siblings('ul').toggle();
+    $(this).toggleClass("open closed");
+    console.log('clicked');
+});
+
+
+$( document ).ready(function() {
+    $('li').addClass('closed');
+    // $('ul.CollapsibleList > li').addClass('closed');
+    $('ul.CollapsibleList').animate({opacity: 1},1000);
+    $('span.loading').animate({opacity: 0},250);
+    // $('li:not(:has(ul))').addClass('closed');
+});

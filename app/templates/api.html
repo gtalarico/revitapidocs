@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="contents">
+            <div id="menu">
+                {% include "namespaces.html" %}
+            </div>
+            <div id="main">
+                {% if content_path %}
+                    {% include '%s' % content_path %}
+                {% endif %}
+            </div>
+    </div>
+
+{% endblock %}
