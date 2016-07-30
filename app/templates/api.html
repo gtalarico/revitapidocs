@@ -10,7 +10,9 @@
          What's New
         </a></p>
 
-        <span class="loading">Loading...</span>
+        <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
+        &nbsp;Loading</span>
+
         {% include '%s' % namespace_year %}
 
         {% include 'google_search.html' %}
