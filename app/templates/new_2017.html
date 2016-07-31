@@ -1,8 +1,14 @@
+<p><a href="http://help.autodesk.com/view/RVT/2017/ENU/?guid=GUID-F0A122E0-E556-4D0D-9D0F-7E72A9315A42">2015 Revit API Developers Guide</a></p>
+
+<p>Content below was copied from the <a href="http://thebuildingcoder.typepad.com/blog/2016/04/whats-new-in-the-revit-2017-api.html">
+    Building Coder Blog</a> for your convenience</p>
+    <hr>
+
 <p>For more detailed information, please refer to the complete API documentation and samples collection in the SDK and the
 online <a href="http://help.autodesk.com/view/RVT/2017/ENU/?guid=GUID-F0A122E0-E556-4D0D-9D0F-7E72A9315A42">Revit API Developers Guide</a> provided
 as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 Help</a>.</p>
 
-<h3><a name="1"></a>Major Revit API Changes and Renovations</h3>
+<h4><a name="1"></a>Major Revit API Changes and Renovations</h4>
 
 <ul>
 <li><a href="#2">API changes</a>
@@ -185,20 +191,20 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <p><center></p>
 
 <div style="border-style:solid; border-width:2px 0px 2px 0px">
-<a name="2"></a><h3 style="font-weight: bold">API Changes</h3>
+<a name="2"></a><h4 style="font-weight: bold">API Changes</h4>
 </div>
 
 <p></center></p>
 
-<h3><a name="2.1"></a>.NET 4.6</h3>
+<h4><a name="2.1"></a>.NET 4.6</h4>
 
 <p>All Revit API binaries are now built targeting .NET 4.5.2. However, Revit uses the runtime from .NET 4.6. At a minimum, add-ins will need to be set to target .NET 4.5.2, but .NET 4.6 will also work.</p>
 
-<h3><a name="2.2"></a>Visual C++ Redistributable for Visual Studio 2015</h3>
+<h4><a name="2.2"></a>Visual C++ Redistributable for Visual Studio 2015</h4>
 
 <p>Revit is now built with and installs runtime libraries from the Visual C++ Redistributable for Visual Studio 2015. Specifically, version 14.0.23026.0, which corresponds to vanilla Visual Studio 2015. Third party applications which include native components may want to upgrade to the same VC runtime as there is no guarantee that Revit will install any other runtime on client machines.</p>
 
-<h3><a name="2.3"></a>Automatic transaction mode obsolete</h3>
+<h4><a name="2.3"></a>Automatic transaction mode obsolete</h4>
 
 <p>The transaction mode:</p>
 
@@ -208,7 +214,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>is now obsolete and this capability will be removed in a future release. The Manual transaction mode should be used for command callbacks that make changes to the Revit model (using the Transaction APIs to start, commit and manage the needed transactions). The ReadOnly transaction mode can be used for commands that do not require making any changes to the Revit model.</p>
 
-<h3><a name="2.4"></a>Code signing of Revit Addins</h3>
+<h4><a name="2.4"></a>Code signing of Revit Addins</h4>
 
 <p>To improve the security of Revit and its addins, and help users to clearly understand the origin of 3rd party code running within the context of Revit to avoid malicious tampering, a new code signing mechanism has been introduced. All API developers should:</p>
 
@@ -229,7 +235,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>Please refer to https://msdn.microsoft.com/library/ms537361(v=vs.85).aspx for detailed introduction about the code signing from Microsoft.</p>
 
-<h3><a name="2.5"></a>Background processes can load DB applications</h3>
+<h4><a name="2.5"></a>Background processes can load DB applications</h4>
 
 <p>Revit uses background processes called RevitWorker to perform certain calculations and operations out-of-process. While the situations in which these RevitWorkers are used is currently limited, the RevitWorker process is capable of loading a DB application add-in (&lt;AddIn Type="DBApplication"&gt;) and events set in that add-in may be triggered by activities in the RevitWorker.</p>
 
@@ -243,7 +249,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>indicates whether or not a RevitWorker process will load this add-in. The default is false.</p>
 
-<h3><a name="2.6"></a>Application API changes</h3>
+<h4><a name="2.6"></a>Application API changes</h4>
 
 <p>The default constructor for</p>
 
@@ -261,7 +267,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>One location where a full Application is not available is in the callbacks to IExternalApplication (OnStartup() and OnShutdown()). ControlledApplication is supplied instead. This is because Revit is not ready to perform operations with Documents while in this initialization state. If you need to start working with Documents immediately after Revit completes startup, you can subscribe to the ApplicationInitialized event.</p>
 
-<h3><a name="2.7"></a>Family API changes</h3>
+<h4><a name="2.7"></a>Family API changes</h4>
 
 <p>The following member has been deprecated and replaced:</p>
 
@@ -278,9 +284,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>Revit now transforms the input position into the SpatialElementFromToCalculationPoints objects's coordinate space before calculating the distance. Previously, the input position was used unchanged, which could lead to Revit incorrectly claiming the point was out of bounds.</p>
 
-<h3><a name="2.8"></a>View API changes</h3>
+<h4><a name="2.8"></a>View API changes</h4>
 
-<h4><a name="2.8.1"></a>Category visibility API</h4>
+<h5><a name="2.8.1"></a>Category visibility API</h5>
 
 <p>The following members related to category visibility in a view have been deprecated and replaced or added:</p>
 
@@ -291,11 +297,11 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>N/A &rarr; View.CanCategoryBeHidden(ElementId categoryId)</li>
 </ul>
 
-<h3><a name="2.9"></a>Text API changes</h3>
+<h4><a name="2.9"></a>Text API changes</h4>
 
 <p>Revit text handling has been reworked, addressing long-standing issues and introducing new editing capabilities. Most of the existing API for text access has been maintained, but a few changes have been made.</p>
 
-<h4><a name="2.9.1"></a>Text related to CustomExporter contexts</h4>
+<h5><a name="2.9.1"></a>Text related to CustomExporter contexts</h5>
 
 <ul>
 <li><strong>Deprecated member &rarr; New or replacement member</strong></li>
@@ -306,7 +312,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>Note that the class FormattedTextRun has been marked obsolete. It is replaced by the new class FormattedText.</p>
 
-<h3><a name="2.10"></a>Event API changes</h3>
+<h4><a name="2.10"></a>Event API changes</h4>
 
 <p>The following member has been deprecated and replaced:</p>
 
@@ -315,7 +321,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>DocumentPrintingEventArgs.Settings &rarr; DocumentPrintingEventArgs.GetSettings()</li>
 </ul>
 
-<h3><a name="2.11"></a>Alignment API changes</h3>
+<h4><a name="2.11"></a>Alignment API changes</h4>
 
 <p>The method:</p>
 
@@ -325,9 +331,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>will now throw exceptions with more informative messages, such as "The two references are not geometrically aligned so the Alignment cannot be created."</p>
 
-<h3><a name="2.12"></a>Geometry API changes</h3>
+<h4><a name="2.12"></a>Geometry API changes</h4>
 
-<h4><a name="2.12.1"></a>NurbSpline creation changes</h4>
+<h5><a name="2.12.1"></a>NurbSpline creation changes</h5>
 
 <p>The methods used to create a NurbSpline curve have been replaced. In the replacement methods, the newly created curve may be returned as a NURBSpline or a simpler curve such as line or arc. This is consistent with Revit expectations that the simplest possible representation of curve should be used in Revit elements.</p>
 
@@ -340,7 +346,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>NurbSpline.Create(IList&lt;XYZ&gt; controlPoints, IList&lt;double&gt; weights) &rarr; NurbSpline.CreateCurve(IList&lt;XYZ&gt; controlPoints, IList&lt;double&gt; weights)</li>
 </ul>
 
-<h4><a name="2.12.2"></a>TessellatedShapeBuilder changes</h4>
+<h5><a name="2.12.2"></a>TessellatedShapeBuilder changes</h5>
 
 <p>The method Build() has changed from the prior release as follows:</p>
 
@@ -363,9 +369,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>TessellatedShapeBuilder.GraphicsStyleId</li>
 </ul>
 
-<h3><a name="2.13"></a>Structure API changes</h3>
+<h4><a name="2.13"></a>Structure API changes</h4>
 
-<h4><a name="2.13.1"></a>FoundationWall API</h4>
+<h5><a name="2.13.1"></a>FoundationWall API</h5>
 
 <p>The following members have been deprecated and replaced:</p>
 
@@ -376,7 +382,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>WallFoundation.SetFoundationType() &rarr; WallFoundation.ChangeTypeId()</li>
 </ul>
 
-<h4><a name="2.13.2"></a>Rebar API changes</h4>
+<h5><a name="2.13.2"></a>Rebar API changes</h5>
 
 <p>The following method has been deprecated and replaced:</p>
 
@@ -394,7 +400,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>Rebar.GetCenterlineCurves(bool adjustForSelfIntersection, bool suppressHooks, bool suppressBendRadius) &rarr; Rebar.GetCenterlineCurves(bool adjustForSelfIntersection, bool suppressHooks, bool suppressBendRadius, MultiplanarOption multiplanarOption, int barPositionIndex) Rebar.GetCenterlineCurves(bool adjustForSelfIntersection, bool suppressHooks, bool suppressBendRadius, MultiplanarOption multiplanarOption)</li>
 </ul>
 
-<h4><a name="2.13.3"></a>FabricSheet API changes</h4>
+<h5><a name="2.13.3"></a>FabricSheet API changes</h5>
 
 <p>The following property has been deprecated and replaced:</p>
 
@@ -403,7 +409,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricSheet.BentFabricWiresOrientation &rarr; FabricSheet.BentFabricStraightWiresLocation</li>
 </ul>
 
-<h4><a name="2.13.4"></a>FabricSheet.PlaceInHost behavioural change</h4>
+<h5><a name="2.13.4"></a>FabricSheet.PlaceInHost behavioural change</h5>
 
 <p>The behaviour of the method:</p>
 
@@ -413,7 +419,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>has been updated. It now properly supports move of the FabricSheet to a different structure with a modified transformation.</p>
 
-<h4><a name="2.13.5"></a>LoadCase API changes</h4>
+<h5><a name="2.13.5"></a>LoadCase API changes</h5>
 
 <p>The following types and members have been deprecated and replaced/added:</p>
 
@@ -425,9 +431,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>LoadCase.NatureCategory &rarr; LoadCase.SubcategoryId</li>
 </ul>
 
-<h3><a name="2.14"></a>MEP API changes</h3>
+<h4><a name="2.14"></a>MEP API changes</h4>
 
-<h4><a name="2.14.1"></a>Duct API</h4>
+<h5><a name="2.14.1"></a>Duct API</h5>
 
 <p>The following duct creation methods have been deprecated and replaced by new methods. Many of the new methods offer additional parameters supporting the assignment of duct system type and reference level:</p>
 
@@ -439,7 +445,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>DuctFittingAndAccessoryConnectorData.Coordination &rarr; DuctFittingAndAccessoryConnectorData.GetCoordination()</li>
 </ul>
 
-<h4><a name="2.14.2"></a>Pipe API</h4>
+<h5><a name="2.14.2"></a>Pipe API</h5>
 
 <p>The following members have been deprecated and replaced:</p>
 
@@ -458,7 +464,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>PipeScheduleType.GetPipeScheduleId(Document, String) &ndash; Returns an existing pipe schedule type with the given name.</li>
 </ul>
 
-<h4><a name="2.14.3"></a>MEP System API</h4>
+<h5><a name="2.14.3"></a>MEP System API</h5>
 
 <p>The following properties have been deprecated and replaced by methods:</p>
 
@@ -481,7 +487,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>These values have been exposed via built-in parameters in the past. They are still supported. For example, PipingSystem.get_ParameterValue(BuiltInParameter.RBS_PIPE_FLOW_PARAM) will get the correct flow value synchronously, assuming no callback is detected. The caveat is that, due to the internal support of asynchronous calculation, these parameters no longer support dynamic model update.</p>
 
-<h3><a name="2.15"></a>EnergyDataSettings API changes</h3>
+<h4><a name="2.15"></a>EnergyDataSettings API changes</h4>
 
 <p>The following members have been deprecated and replaced:</p>
 
@@ -491,11 +497,11 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>EnergyDataSettings.MassZoneDividePerimeter &rarr; EnergyDataSettings.DividePerimeter</li>
 </ul>
 
-<h3><a name="2.16"></a>Rendering API changes</h3>
+<h4><a name="2.16"></a>Rendering API changes</h4>
 
 <p>The rendering API has undergone major changes with the switch from NVIDIA mental ray to RapidRT. Several functions and enum values have been removed, as their corresponding functionality no longer exists.</p>
 
-<h4><a name="2.16.1"></a>Removed functions</h4>
+<h5><a name="2.16.1"></a>Removed functions</h5>
 
 <ul>
 <li>RenderingQuality.Low</li>
@@ -505,13 +511,13 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>IExportContext.OnDaylightPortal</li>
 </ul>
 
-<h4><a name="2.16.2"></a>New enum value</h4>
+<h5><a name="2.16.2"></a>New enum value</h5>
 
 <ul>
 <li>BackgroundStyle.Transparent</li>
 </ul>
 
-<h4><a name="2.16.3"></a>RenderQualitySettings changes</h4>
+<h5><a name="2.16.3"></a>RenderQualitySettings changes</h5>
 
 <p>RenderingQualitySettings has been completely overhauled. All of the properties and functions have been removed and new functions have been added to be compatible with the RapidRT interface.</p>
 
@@ -527,7 +533,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>RenderingQualitySettings.RenderTime</li>
 </ul>
 
-<h3><a name="2.17"></a>Plane API changes</h3>
+<h4><a name="2.17"></a>Plane API changes</h4>
 
 <p>The constructors and methods used to construct a Plane have been obsoleted and replaced, for consistency with the other exposed subclasses of Surface.</p>
 
@@ -549,7 +555,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>creates a Plane object passing through three points supplied as arguments.</p>
 
-<h3><a name="2.18"></a>DirectShape API changes</h3>
+<h4><a name="2.18"></a>DirectShape API changes</h4>
 
 <p>Functions that treat application id and application data id as mandatory GUIDs are being phased out.</p>
 
@@ -565,9 +571,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>DirectShape.IsValidCategoryId() has been reimplemented. The new version lists categories approved for use with DirectShape. The old version listed all top-level built-in model categories.</p>
 
-<h3><a name="2.19"></a>Point Cloud API changes</h3>
+<h4><a name="2.19"></a>Point Cloud API changes</h4>
 
-<h4><a name="2.19.1"></a>PointCloudOverrides API</h4>
+<h5><a name="2.19.1"></a>PointCloudOverrides API</h5>
 
 <p>PointCloudOverrides now supports overrides for point cloud regions. Several functions related to point cloud overrides have been deprecated and replaced:</p>
 
@@ -588,9 +594,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>PointCloudOverrides.SetPointCloudRegionOverrideSettings(ElementId, PointCloudOverrideSettings, String regionTag, Document)</li>
 </ul>
 
-<h3><a name="2.20"></a>Schedule API changes</h3>
+<h4><a name="2.20"></a>Schedule API changes</h4>
 
-<h4><a name="2.20.1"></a>ScheduleField</h4>
+<h5><a name="2.20.1"></a>ScheduleField</h5>
 
 <p>The following member has been deprecated and replaced:</p>
 
@@ -615,17 +621,17 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>indicates whether the field can display minimum and maximum values.</p>
 
-<h3><a name="2.21"></a>UI API change</h3>
+<h4><a name="2.21"></a>UI API change</h4>
 
-<h4><a name="2.21.1"></a>Rectangle class</h4>
+<h5><a name="2.21.1"></a>Rectangle class</h5>
 
 <p>The Rectangle class has been moved from the namespace Autodesk.Revit.UI to the namespace Autodesk.Revit.DB, and is now found in RevitAPI.dll.</p>
 
-<h3><a name="2.22"></a>Obsolete API removal</h3>
+<h4><a name="2.22"></a>Obsolete API removal</h4>
 
 <p>The following API members and classes which had previously been marked Obsolete have been removed in this release. Consult the API documentation from prior releases for information on the replacements to use:</p>
 
-<h4><a name="2.22.1"></a>Methods</h4>
+<h5><a name="2.22.1"></a>Methods</h5>
 
 <ul>
 <li>Autodesk.Revit.Creation.Application.NewPoint(XYZ)</li>
@@ -660,7 +666,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>Autodesk.Revit.DB.Structure.ReinforcementSettings.DocumentContainsNoRebar()</li>
 </ul>
 
-<h4><a name="2.22.2"></a>Properties</h4>
+<h5><a name="2.22.2"></a>Properties</h5>
 
 <ul>
 <li>Autodesk.Revit.ApplicationServices.Application.IsQuiescent</li>
@@ -717,7 +723,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>Autodesk.Revit.DB.Structure.BoundaryConditions.AssociatedLoad</li>
 </ul>
 
-<h4><a name="2.22.3"></a>Enumerated types</h4>
+<h5><a name="2.22.3"></a>Enumerated types</h5>
 
 <ul>
 <li>Autodesk.Revit.DB.SlabFoundationType</li>
@@ -728,14 +734,14 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <p><center></p>
 
 <div style="border-style:solid; border-width:2px 0px 2px 0px">
-<a name="3"></a><h3 style="font-weight: bold">API Additions</h3>
+<a name="3"></a><h4 style="font-weight: bold">API Additions</h4>
 </div>
 
 <p></center></p>
 
-<h3><a name="3.1"></a>Application API additions</h3>
+<h4><a name="3.1"></a>Application API additions</h4>
 
-<h4><a name="3.1.1"></a>Document creation</h4>
+<h5><a name="3.1.1"></a>Document creation</h5>
 
 <p>The new method:</p>
 
@@ -745,9 +751,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>creates a new imperial or metric project document without a specified template.</p>
 
-<h3><a name="3.2"></a>Family API additions</h3>
+<h4><a name="3.2"></a>Family API additions</h4>
 
-<h4><a name="3.2.1"></a>New PromptForFamilyInstancePlacement() options</h4>
+<h5><a name="3.2.1"></a>New PromptForFamilyInstancePlacement() options</h5>
 
 <p>The new options:</p>
 
@@ -758,7 +764,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>allow more programmatic control over the options available to govern the placement of a given family. The FaceBasedPlacementType option exposes the available options for placement of a face-based family, while the SketchGalleryOptions offer control over the types of sketched curves which can be used for a curve-based family.</p>
 
-<h4><a name="3.2.2"></a>Family and FamilyInstance members</h4>
+<h5><a name="3.2.2"></a>Family and FamilyInstance members</h5>
 
 <p>The new property:</p>
 
@@ -785,9 +791,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>provide access to the ability to split a curve-driven family instance (such as beam, column, or brace).</p>
 
-<h3><a name="3.3"></a>View API additions</h3>
+<h4><a name="3.3"></a>View API additions</h4>
 
-<h4><a name="3.3.1"></a>TemporaryViewModes</h4>
+<h5><a name="3.3.1"></a>TemporaryViewModes</h5>
 
 <p>The new class:</p>
 
@@ -817,7 +823,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>TemporaryViewModes.WorskaringDisplay &ndash; The current state of the WorksharingDisplay mode in the associated view.</li>
 </ul>
 
-<h4><a name="3.3.2"></a>Convert dependent view to independent</h4>
+<h5><a name="3.3.2"></a>Convert dependent view to independent</h5>
 
 <p>The new function:</p>
 
@@ -827,7 +833,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>converts a dependent view to be independent.</p>
 
-<h4><a name="3.3.3"></a>Plan view underlay</h4>
+<h5><a name="3.3.3"></a>Plan view underlay</h5>
 
 <p>The new methods:</p>
 
@@ -842,7 +848,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>provide access to the underlay levels and settings for plan views.</p>
 
-<h4><a name="3.3.4"></a>Assembly views creation</h4>
+<h5><a name="3.3.4"></a>Assembly views creation</h5>
 
 <p>The creation of assembly views and schedules has been improved to allow the creation of an assembly view or schedule with template information. The new overloads for methods:</p>
 
@@ -861,7 +867,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>isAssigned &ndash; if true, the template passed in viewTemplateId will be assigned to the view; if false, the template information is only applied to the view.</li>
 </ul>
 
-<h4><a name="3.3.5"></a>Depth Cueing</h4>
+<h5><a name="3.3.5"></a>Depth Cueing</h5>
 
 <p>The new class:</p>
 
@@ -890,11 +896,11 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>allow the user to get and set the depth cueing settings for the view.</p>
 
-<h3><a name="3.4"></a>Text API additions</h3>
+<h4><a name="3.4"></a>Text API additions</h4>
 
 <p>Revit text handling has been reworked, addressing long-standing issues and introducing new editing capabilities.</p>
 
-<h4><a name="3.4.1"></a>Text range</h4>
+<h5><a name="3.4.1"></a>Text range</h5>
 
 <p>The new class:</p>
 
@@ -904,7 +910,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>identifies a range of text in a FormattedText via its start index, end index and/or length.</p>
 
-<h4><a name="3.4.2"></a>Formatted text</h4>
+<h5><a name="3.4.2"></a>Formatted text</h5>
 
 <p>The new methods:</p>
 
@@ -959,7 +965,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>returns a TextRange identifying the first occurrence of the given string within the text, from a given index.</p>
 
-<h4><a name="3.4.3"></a>TextElement additions</h4>
+<h5><a name="3.4.3"></a>TextElement additions</h5>
 
 <p>The text element now has size restrictions. The new functions:</p>
 
@@ -970,7 +976,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>return the minimum and maximum permitted width for an existing, or newly created, TextElement.</p>
 
-<h4><a name="3.4.4"></a>Text editor options</h4>
+<h5><a name="3.4.4"></a>Text editor options</h5>
 
 <p>The new class:</p>
 
@@ -980,9 +986,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>provides access to settings that control Revit's Text Editor appearance and functionality.</p>
 
-<h3><a name="3.5"></a>Geometry API additions</h3>
+<h4><a name="3.5"></a>Geometry API additions</h4>
 
-<h4><a name="3.5.1"></a>ShapeImporter class</h4>
+<h5><a name="3.5.1"></a>ShapeImporter class</h5>
 
 <p>The new utility class:</p>
 
@@ -992,7 +998,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>supports conversion of geometry stored in external formats (such as SAT and Rhino) into a collection of Revit geometry objects. Use ShapeImporter.Convert() to generate the geometry objects (and where possible, corresponding materials and graphics styles in the associated document).</p>
 
-<h4><a name="3.5.2"></a>Builder for 3D boundary representations</h4>
+<h5><a name="3.5.2"></a>Builder for 3D boundary representations</h5>
 
 <p>The new builder class:</p>
 
@@ -1007,7 +1013,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>DirectShape.AppendShape(ShapeBuilder)</li>
 </ul>
 
-<h4><a name="3.5.3"></a>New Surface subclasses</h4>
+<h5><a name="3.5.3"></a>New Surface subclasses</h5>
 
 <p>Several new subclasses of Surface have been introduced:</p>
 
@@ -1021,7 +1027,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>These subclasses expose creation methods and read-only properties suitable for use in constructing import geometry.</p>
 
-<h4><a name="3.5.4"></a>Frame</h4>
+<h5><a name="3.5.4"></a>Frame</h5>
 
 <p>New method added</p>
 
@@ -1029,7 +1035,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>CanDefineRevitGeometry() &ndash; Tests whether the supplied Frame object may be used to define a Revit curve or surface. In order to satisfy the requirements the Frame must be orthonormal and its origin is expected to lie within the Revit design limits.</li>
 </ul>
 
-<h4><a name="3.5.5"></a>XYZ</h4>
+<h5><a name="3.5.5"></a>XYZ</h5>
 
 <p>New method added</p>
 
@@ -1037,7 +1043,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>IsWithinLengthLimits() &ndash; Validates that the input point is within Revit design limits.</li>
 </ul>
 
-<h4><a name="3.5.6"></a>Fixed Reference Sweeps</h4>
+<h5><a name="3.5.6"></a>Fixed Reference Sweeps</h5>
 
 <p>The new static method:</p>
 
@@ -1051,9 +1057,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>As with other GeometryCreationUtilities methods, there is a second version of CreateFixedReferenceSweptGeometry that takes a SolidOptions input, allowing the user to assign a material or graphics style to the solid.</p>
 
-<h3><a name="3.6"></a>Parameter API additions</h3>
+<h4><a name="3.6"></a>Parameter API additions</h4>
 
-<h4><a name="3.6.1"></a>Global Parameters</h4>
+<h5><a name="3.6.1"></a>Global Parameters</h5>
 
 <p>Global Parameters support controlling geometry constraints through special parameters defined in a project document. Global Parameters can be used for both labeling and reporting to/from dimensions, as well as setting values of instance parameters.</p>
 
@@ -1135,7 +1141,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>GetAssociatedGlobalParameter() &ndash; Returns a global parameter, if any, currently associated with a parameter.</li>
 </ul>
 
-<h4><a name="3.6.2"></a>InternalDefinition.Id</h4>
+<h5><a name="3.6.2"></a>InternalDefinition.Id</h5>
 
 <p>The new property:</p>
 
@@ -1145,7 +1151,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>returns the id for the associated parameter. This is the id of the associated ParameterElement if the parameter is not built-in.</p>
 
-<h4><a name="3.6.3"></a>Multiline Text parameter support</h4>
+<h5><a name="3.6.3"></a>Multiline Text parameter support</h5>
 
 <p>The new enumerated value:</p>
 
@@ -1155,9 +1161,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>was added for creation and use of multi-line text parameters.</p>
 
-<h3><a name="3.7"></a>CurveElement API additions</h3>
+<h4><a name="3.7"></a>CurveElement API additions</h4>
 
-<h4><a name="3.7.1"></a>End joins and tangent constraints APIs</h4>
+<h5><a name="3.7.1"></a>End joins and tangent constraints APIs</h5>
 
 <p>CurveElements now support options to read elements that are joined to this element at the given end point, and to apply and lock tangent constraints.</p>
 
@@ -1182,7 +1188,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>support access and modification to tangent constraints on the given curve element.</p>
 
-<h3><a name="3.8"></a>Railing API additions</h3>
+<h4><a name="3.8"></a>Railing API additions</h4>
 
 <p>Several new methods have been added to BaseRailing:</p>
 
@@ -1192,9 +1198,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>BaseRailing.RailingCanBeHostedByElement() &ndash; Checks whether the specified element can be used as a host for the railing.</li>
 </ul>
 
-<h3><a name="3.9"></a>Schedule API additions</h3>
+<h4><a name="3.9"></a>Schedule API additions</h4>
 
-<h4><a name="3.9.1"></a>Combined Parameters</h4>
+<h5><a name="3.9.1"></a>Combined Parameters</h5>
 
 <p>Several methods and properties have been added to support combined parameters in schedules:</p>
 
@@ -1216,9 +1222,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>indicates a combined parameter field.</p>
 
-<h3><a name="3.10"></a>Tag API additions</h3>
+<h4><a name="3.10"></a>Tag API additions</h4>
 
-<h4><a name="3.10.1"></a>SpatialElementTag API</h4>
+<h5><a name="3.10.1"></a>SpatialElementTag API</h5>
 
 <p>SpatialElementTag is a base element for Autodesk.Revit.DB.Architecture.RoomTag, Autodesk.Revit.DB.AreaTag and Autodesk.Revit.DB.Mechanical.SpaceTag.</p>
 
@@ -1233,7 +1239,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>SpatialElementTag.TagOrientation &ndash; The orientation of the tag.</li>
 </ul>
 
-<h4><a name="3.10.2"></a>RoomTag API</h4>
+<h5><a name="3.10.2"></a>RoomTag API</h5>
 
 <p>The following new properties have been added to RoomTag:</p>
 
@@ -1243,9 +1249,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>RoomTag.TaggedRoomId &ndash; The LinkElementId of the tagged room. This property works for both rooms in the main model and rooms in linked models.</li>
 </ul>
 
-<h3><a name="3.11"></a>UI API additions</h3>
+<h4><a name="3.11"></a>UI API additions</h4>
 
-<h4><a name="3.11.1"></a>ColorSelectionDialog</h4>
+<h5><a name="3.11.1"></a>ColorSelectionDialog</h5>
 
 <p>The new class:</p>
 
@@ -1261,7 +1267,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>returns a status indicating if a colour was selected and the dialog confirmed, or if the user canceled the selection.</p>
 
-<h4><a name="3.11.2"></a>FileOpenDialog and FileSaveDialog</h4>
+<h5><a name="3.11.2"></a>FileOpenDialog and FileSaveDialog</h5>
 
 <p>The new classes:</p>
 
@@ -1288,7 +1294,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>returns a status indicating if a file was selected and the dialog confirmed, or if the user canceled the selection.</p>
 
-<h4><a name="3.11.3"></a>TaskDialog API additions</h4>
+<h5><a name="3.11.3"></a>TaskDialog API additions</h5>
 
 <p>The new members:</p>
 
@@ -1299,7 +1305,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>provide access to an extra checkbox shown the user in the TaskDialog. If it is set, a checkbox with the text will be shown in the task dialog. The caller can get the user setting for the checkbox by checking the return value of the WasExtraCheckBoxChecked() method</p>
 
-<h4><a name="3.11.4"></a>Support for journal data in overridden commands</h4>
+<h5><a name="3.11.4"></a>Support for journal data in overridden commands</h5>
 
 <p>The new members:</p>
 
@@ -1311,7 +1317,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>support the ability for the add-in to store journal data associated to an overridden command, similar to the capability offered for External Commands.</p>
 
-<h4><a name="3.11.5"></a>Dockable Pane API additions</h4>
+<h5><a name="3.11.5"></a>Dockable Pane API additions</h5>
 
 <p>The new members:</p>
 
@@ -1321,9 +1327,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>support the ability for the add-in to control the whether or not any Dockable Panes they register should be visible by default or not. Default is to true.</p>
 
-<h3><a name="3.12"></a>Structure API additions</h3>
+<h4><a name="3.12"></a>Structure API additions</h4>
 
-<h4><a name="3.12.1"></a>FabricSheet</h4>
+<h5><a name="3.12.1"></a>FabricSheet</h5>
 
 <p>The new property:</p>
 
@@ -1349,7 +1355,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>sets the length of the bent fabric sheet segment (like A, B, C, D etc.)</p>
 
-<h4><a name="3.12.2"></a>Quantitative FabricSheet layout</h4>
+<h5><a name="3.12.2"></a>Quantitative FabricSheet layout</h5>
 
 <p>The new enum value:</p>
 
@@ -1384,7 +1390,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricWireItem.WireType</li>
 </ul>
 
-<h4><a name="3.12.3"></a>LoadCase API additions</h4>
+<h5><a name="3.12.3"></a>LoadCase API additions</h5>
 
 <p>The property:</p>
 
@@ -1402,7 +1408,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>allows users to check if the proposed number is unique.</p>
 
-<h4><a name="3.12.4"></a>RebarContainer</h4>
+<h5><a name="3.12.4"></a>RebarContainer</h5>
 
 <p>The new members:</p>
 
@@ -1421,7 +1427,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>identifies if Items should be presented in schedules and tags as separate subelements.</p>
 
-<h4><a name="3.12.5"></a>Structural Connection API additions</h4>
+<h5><a name="3.12.5"></a>Structural Connection API additions</h5>
 
 <p>Structural Connection API</p>
 
@@ -1472,7 +1478,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>StructuralConnectionSettings.IncludeWarningControls &ndash; If set to true, a yellow triangle will be displayed with StructuralConnectionElements which have associated warnings.</li>
 </ul>
 
-<h4><a name="3.12.6"></a>Rebar Couplers</h4>
+<h5><a name="3.12.6"></a>Rebar Couplers</h5>
 
 <p>The new class:</p>
 
@@ -1535,7 +1541,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>RebarReinforcementData.GetEnd() &ndash; The end of the rebar to which a coupler is attached.</li>
 </ul>
 
-<h4><a name="3.12.7"></a>Rebar end treatments</h4>
+<h5><a name="3.12.7"></a>Rebar end treatments</h5>
 
 <p>The new class:</p>
 
@@ -1592,7 +1598,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>RebarContainerItem.RebarShapeId</li>
 </ul>
 
-<h4><a name="3.12.8"></a>Other Structure API additions</h4>
+<h5><a name="3.12.8"></a>Other Structure API additions</h5>
 
 <p>New properties have been added to ReinforcementSettings:</p>
 
@@ -1616,9 +1622,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>returns the ParameterValue at the given bar index inside a rebar set.</p>
 
-<h3><a name="3.13"></a>Fabrication API additions</h3>
+<h4><a name="3.13"></a>Fabrication API additions</h4>
 
-<h4><a name="3.13.1"></a>FabricationPart &ndash; product list support</h4>
+<h5><a name="3.13.1"></a>FabricationPart &ndash; product list support</h5>
 
 <p>To specify a size, some FabricationPart elements, such as purchased duct and pipe fittings, have a Product Entry field in the Properties palette. In the API these FabricationPart elements are identified as having a "product list". The product list entries represent a catalog of available sizes for the selected part.</p>
 
@@ -1632,7 +1638,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricationPart.IsProductListEntryCompatibleSize() &ndash; Checks to see if this part can be changed to the specified product list entry without altering any connected dimensions.</li>
 </ul>
 
-<h4><a name="3.13.2"></a>Design to fabrication conversion</h4>
+<h5><a name="3.13.2"></a>Design to fabrication conversion</h5>
 
 <p>The new class:</p>
 
@@ -1648,7 +1654,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>to carry out the conversion, and use the available accessor methods to get the elements created during the conversion, and the elements which failed to convert for various reasons.</p>
 
-<h4><a name="3.13.3"></a>FabricationPart &ndash; Stretch and fit</h4>
+<h5><a name="3.13.3"></a>FabricationPart &ndash; Stretch and fit</h5>
 
 <p>The new method:</p>
 
@@ -1663,7 +1669,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricationPartRouteEnd.CreateFromCenterline()</li>
 </ul>
 
-<h4><a name="3.13.4"></a>Support for fabrication configuration profiles</h4>
+<h5><a name="3.13.4"></a>Support for fabrication configuration profiles</h5>
 
 <p>The new method:</p>
 
@@ -1682,7 +1688,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>return the profile associated with the loaded configuration or all configurations, respectively.</p>
 
-<h4><a name="3.13.5"></a>Support for accessing fabrication configuration data abbreviations added</h4>
+<h5><a name="3.13.5"></a>Support for accessing fabrication configuration data abbreviations added</h5>
 
 <p>The new methods:</p>
 
@@ -1692,7 +1698,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricationConfiguration.GetInsulationSpecificationAbbreviation()</li>
 </ul>
 
-<h4><a name="3.13.6"></a>MEP Fabrication API</h4>
+<h5><a name="3.13.6"></a>MEP Fabrication API</h5>
 
 <p>The following new members and properties have been added to the MEP fabrication and FabricationPart capabilities:</p>
 
@@ -1763,7 +1769,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>FabricationRodInfo.SetBearerExtension() &ndash; Sets the bearer extension.</li>
 </ul>
 
-<h3><a name="3.14"></a>Electrical API additions</h3>
+<h4><a name="3.14"></a>Electrical API additions</h4>
 
 <p>The new method:</p>
 
@@ -1789,7 +1795,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>provides read and write access to method Revit will use to calculate the apparent circuit load.</p>
 
-<h4><a name="3.14.1"></a>Cable Tray API</h4>
+<h5><a name="3.14.1"></a>Cable Tray API</h5>
 
 <p>The new class:</p>
 
@@ -1834,7 +1840,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>allows iterating over the CableTraySizes.</p>
 
-<h4><a name="3.14.2"></a>Conduit API</h4>
+<h5><a name="3.14.2"></a>Conduit API</h5>
 
 <p>The new class:</p>
 
@@ -1901,21 +1907,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>ConduitSizeSettings.CreateConduitStandardTypeFromExistingStandardType() &ndash; Creates one conduit standard type with the given name and assigns the conduit sizes from the existing standard type.</li>
 </ul>
 
-<h3><a name="3.15"></a>Other MEP API additions</h3>
+<h4><a name="3.15"></a>Other MEP API additions</h4>
 
-<h4><a name="3.15.1"></a>DuctSettings Class</h4>
-
-<p>New properties:</p>
-
-<ul>
-<li>FlatOnTop &ndash; Gets/Sets the abbreviation of the Flat On Top (FOT) string</li>
-<li>FlatOnBottom &ndash; Gets/Sets the abbreviation of the Flat On Bottom (FOB) string</li>
-<li>SetUp &ndash; Gets/Sets the abbreviation of the Set Up (SP) string</li>
-<li>SetDown &ndash; Gets/Sets the abbreviation of the Set Down (SD) string</li>
-<li>Centerline &ndash; Gets/Sets the abbreviation of the Centerline (=) string</li>
-</ul>
-
-<h4><a name="3.15.2"></a>PipeSettings Class</h4>
+<h5><a name="3.15.1"></a>DuctSettings Class</h5>
 
 <p>New properties:</p>
 
@@ -1927,7 +1921,19 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>Centerline &ndash; Gets/Sets the abbreviation of the Centerline (=) string</li>
 </ul>
 
-<h4><a name="3.15.3"></a>MechanicalUtils</h4>
+<h5><a name="3.15.2"></a>PipeSettings Class</h5>
+
+<p>New properties:</p>
+
+<ul>
+<li>FlatOnTop &ndash; Gets/Sets the abbreviation of the Flat On Top (FOT) string</li>
+<li>FlatOnBottom &ndash; Gets/Sets the abbreviation of the Flat On Bottom (FOB) string</li>
+<li>SetUp &ndash; Gets/Sets the abbreviation of the Set Up (SP) string</li>
+<li>SetDown &ndash; Gets/Sets the abbreviation of the Set Down (SD) string</li>
+<li>Centerline &ndash; Gets/Sets the abbreviation of the Centerline (=) string</li>
+</ul>
+
+<h5><a name="3.15.3"></a>MechanicalUtils</h5>
 
 <p>The new method:</p>
 
@@ -1937,7 +1943,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>breaks the duct or duct placeholder into two parts at the given position.</p>
 
-<h4><a name="3.15.4"></a>PlumbingUtils</h4>
+<h5><a name="3.15.4"></a>PlumbingUtils</h5>
 
 <p>The new method:</p>
 
@@ -1947,7 +1953,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>breaks the pipe or pipe placeholder into two parts at the given position.</p>
 
-<h4><a name="3.15.5"></a>Validation for fitting and accessory pressure drop calculations</h4>
+<h5><a name="3.15.5"></a>Validation for fitting and accessory pressure drop calculations</h5>
 
 <p>The new calculation type:</p>
 
@@ -1966,7 +1972,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>If the setting validation returns false, Revit will replace the setting with the default one, and update the fitting pressure drop accordingly.</p>
 
-<h4><a name="3.15.6"></a>Family Connector Info</h4>
+<h5><a name="3.15.6"></a>Family Connector Info</h5>
 
 <p>The new class:</p>
 
@@ -1981,9 +1987,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 <li>MEPFamilyConnectorInfo.GetConnectorParameterValue() &ndash; Gets the parameter value of the specified connector parameter id.</li>
 </ul>
 
-<h3><a name="3.16"></a>Revit Link API additions</h3>
+<h4><a name="3.16"></a>Revit Link API additions</h4>
 
-<h4><a name="3.16.1"></a>Link instance locations</h4>
+<h5><a name="3.16.1"></a>Link instance locations</h5>
 
 <p>The new method:</p>
 
@@ -2003,7 +2009,7 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>Both methods cause a one-time movement and do not set up any shared coordinates relationship.</p>
 
-<h4><a name="3.16.2"></a>Local unload of Revit Links</h4>
+<h5><a name="3.16.2"></a>Local unload of Revit Links</h5>
 
 <p>The new method:</p>
 
@@ -2027,9 +2033,9 @@ as part of the <a href="http://help.autodesk.com/view/RVT/2017/ENU">Revit 2017 H
 
 <p>turns off a user's local link override. If the link is loaded for other users, this function will reload the link. If the link is unloaded for other users, then the link will remain unloaded, but the local unload override will be cleared.</p>
 
-<h3><a name="3.17"></a>Category API additions</h3>
+<h4><a name="3.17"></a>Category API additions</h4>
 
-<h4><a name="3.17.1"></a>Line Patterns</h4>
+<h5><a name="3.17.1"></a>Line Patterns</h5>
 
 <p>The new functions:</p>
 
