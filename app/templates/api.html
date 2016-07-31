@@ -13,8 +13,10 @@
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
         &nbsp;Loading</span>
 
+        {# Add menu for the correct year #}
         {% include '%s' % namespace_year %}
 
+        {# Add Google Search Box #}
         {% include 'google_search.html' %}
 
     </div>
@@ -28,30 +30,25 @@
 {% endblock %}
 
 {% block script %}
+    {# This script is added here because it usus the active_ul variable#}
+    <script>
+    $( document ).ready(function() {
+        var active_ul = "{{active_ul}}";
+        var active_ul_tag = $('a[href$="{{active_ul}}"]');
 
-<script>
-$( document ).ready(function() {
-    var active_ul = "{{active_ul}}";
-    var active_ul_tag = $('a[href$="{{active_ul}}"]');
+        active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
+            // console.log(this)
+            $(this).show();
+            $(this).children('li').toggleClass("open closed");
+            // $(this).children('li').css('font-weight','bold');
+            $(this).parents('li').toggleClass("active");
+            // $(this).css('font-weight','bold');
+            $(this).siblings('ul').show(); // Revel Syster  ULs
+        });
 
-    // active_ul_tag.children('li').toggleClass("open closed");
-    // active_ul_tag.children('li').removeClass("open");
-    // active_ul_tag.children('li').addClass("closed");
-    // active_ul_tag.addClass("closed");
-
-    active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
-        // console.log(this)
-        $(this).show();
-        $(this).children('li').toggleClass("open closed");
-        // $(this).children('li').css('font-weight','bold');
-        $(this).parents('li').toggleClass("active");
-        // $(this).css('font-weight','bold');
-        $(this).siblings('ul').show(); // Revel Syster  ULs
+        active_ul_tag.parents('li').toggleClass("open closed");
+        active_ul_tag.parents('li').toggleClass("active");
     });
-
-    active_ul_tag.parents('li').toggleClass("open closed");
-    active_ul_tag.parents('li').toggleClass("active");
-});
-</script>
+    </script>
 
 {% endblock %}
