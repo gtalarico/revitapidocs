@@ -2,7 +2,8 @@
 
 {% block content %}
 
-    <div id="sidebar">
+    <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
+    {# <div id="sidebar">#}
 
         <h5>Revit API {{active}}</h5>
 
@@ -20,12 +21,11 @@
         {% include 'google_search.html' %}
 
     </div>
-    <div id="main">
+    <div class="col-sm-12 col-md-8 col-lg-9" id="main">
+    {# <div id="main">#}
         {% include '%s' % content %}
+        {% include 'disqus.html' %}
     </div>
-    {# <div id="column-right">#}
-        {# Comments#}
-    {# </div>#}
 
 {% endblock %}
 

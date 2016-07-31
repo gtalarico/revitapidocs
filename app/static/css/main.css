@@ -96,25 +96,26 @@ html, body {
 
 #sidebar {
     overflow: auto;
-    /*border: 1px solid skyblue;*/
-    padding-top: 20px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 12px;
+    min-width: 300px;
+    padding-top: 20px;
     padding-bottom: 40px;
-    top: 60px;
-    width: 380px;
-    position: absolute;
-    left: 0;
-    /*bottom: 40px;*/
-
+    min-height:100%;
+    /*top: 60px;*/
+    /*width: 380px;*/
+    /*position: absolute;*/
+    /*left: 0;*/
 }
 #main {
-    margin-left: 400px !important;
-    padding-top: 20px;
-    padding-right: 200px;
-    /*border: 1px solid orange;*/
-    /*padding-left: :40px;*/
-    /*height: 100%;*/
+    /*padding-top: 20px;*/
+    /*margin-bottom: 40px;*/
+    /*margin-left: 400px !important;*/
+    /*padding-right: 200px;*/
+}
+#comment-bar{
+    margin-top: 50px;
+    /*font-size:10px;*/
 }
 
 #myfooter {
@@ -136,13 +137,7 @@ html, body {
 
 #search{
     display:inline-block;
-    /*width: 360px;*/
-    /*height: 40px*/
-    width:99%;
-    /*position: relative;;*/
-    /*bottom:0px;*/
-    /*right: 0px;*/
-    /*top:0px;*/
+    max-width: 300px;
 }
 
 ul.CollapsibleList li {
@@ -179,7 +174,7 @@ ul.CollapsibleList {
 ul.CollapsibleList {
 list-style-type: circle;
 list-style-position: inside;
-font-size:11px;
+font-size:10px;
 padding-left:0px;
 }
 
@@ -189,7 +184,7 @@ ul.CollapsibleList > li{
 
 
 ul.CollapsibleList  ul {
-    padding-left:20px;
+    padding-left:12px;
     display: none;
 }
 ul.CollapsibleList > ul > ul {
