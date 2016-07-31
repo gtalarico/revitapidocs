@@ -2,36 +2,41 @@
 {% block content %}
 
 
-<div id="sidebar">
-</div>
+{# <div class=".hidden-sm col-md-2 col-lg-2">#}
 
-<div id="main">
+{# </div>#}
+
+<div class="col-sm-12 col-md-8 col-lg-6" id="main">
+    <br/>
     <h4>Revit API Docs</h4>
     <hr />
-    <p>This website was created to facilitate access to the Revit SDK Api documentation by providing a web-based,
-        searchable copy of the official documentation.</p>
-        <p>
+    <small>This website was created to facilitate access to the
+        Revit API documentation by providing a web-based,
+        searchable copy of the last few realeases.</small>
+        <br />
+        <small>
         For more information about the official documentation visit
         <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=2484975">
-        Autodesk Developer Network</a></p>
+        Autodesk Developer Network</a></small>
     <br />
+    <br />
+    <h5>Available APIs:</h5>
     <a class="btn btn-default" href="/2015">2015</a>
     <a class="btn btn-default" href="/2016">2016</a>
     <a class="btn btn-default" href="/2017">2017</a>
     <br />
-    <br />
-    <br />
-
-    <h4>About the Project</h4>
     <hr />
+    <h4>About the Project</h4>
 
-    <p>This website was inspired but the seemingly abandonded <a href="http://revitapisearch.com">
-        revitapisearch.com</a><p>
-    <p>The website was created by extracting the help content from the SDK .chm filter
-        and creating a light weight flask server to serve them.
-
-        Please report issues or contribute to this project on the <a href="https://github.com/gtalarico/revitapidocs">
-            Github repo</a>.
+    <small>This website was inspired but the seemingly abandonded <a href="http://revitapisearch.com">
+        revitapisearch.com</a></small>
+    <small>It was created by extracting and processing content from the .chm file provided in the SDK
+        and using a flask server to serve a stylized version of the files.</small>
+    <small>Please report issues or contribute to this project on the <a href="https://github.com/gtalarico/revitapidocs">
+        Github repo.</a></small>
+    <br />
+    <br />
+    <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </div>
 

@@ -4,22 +4,6 @@
    Author's custom styles
    ========================================================================== */
 
-/*CLEAR OUT OF NAV BAR*/
-/*body { padding-top: 70px; }*/
-
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:300);
-
-div.code pre {
-    /*Added important to font-family on Bootstrap to override .chm body+heading*/
-    font-family: 'Roboto Mono' !important;
-}
-
-td pre {
-    border:0px;
-    background-color: inherit;
-}
-
-
 .alert {
   position: absolute;
   top: 75px;
@@ -108,10 +92,10 @@ html, body {
     /*left: 0;*/
 }
 #main {
-    /*padding-top: 20px;*/
+    padding-top: 20px;
+    padding-right: 40px;
     /*margin-bottom: 40px;*/
     /*margin-left: 400px !important;*/
-    /*padding-right: 200px;*/
 }
 #comment-bar{
     margin-top: 50px;
@@ -136,8 +120,8 @@ html, body {
 }
 
 #search{
-    display:inline-block;
-    max-width: 300px;
+    /*display:inline-block;*/
+    max-width: 400px;
 }
 
 ul.CollapsibleList li {

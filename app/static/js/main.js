@@ -16,6 +16,6 @@ $( document ).ready(function() {
     $('#menu-loading').animate({opacity: 0},250);
     $('#menu-loading').remove();
 
-    $('ul.CollapsibleList').animate({opacity: 1},1000);
+    $('ul.CollapsibleList').animate({opacity: 1},500);
 
 });
