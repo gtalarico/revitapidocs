@@ -1,15 +1,19 @@
 Core Tasks:
-☐ Parse 2016
 ☐ Fix Google Search
+✔ Parse 2015 @done
+✔ Parse 2016 @done
+✔ Parse 2017 @done
 
 Minor Tasks:
-☐ Clean up scripts on content
+☐ Pull Data(title, etc) from html content so it gets added to page for better indexing
+☐ Clean up code on content to improve performance and remove junk.
 ☐ Improve CSS on CHM material
 ✔ Keep menu open @done(2016-07-30 19:52)
 
-Bugs:
-☐ Make it Mobile responsive
-☐ Remove + from UL item wiht children
-
 Features:
 ☐ Add Commenting System
+☐ A
+
+Bugs:
+☐ Make it Mobile responsive
+✔ Remove + from UL item wiht children @done(2016-07-31 16:09)
