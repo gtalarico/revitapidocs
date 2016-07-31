@@ -150,16 +150,25 @@ cursor:pointer;
 }
 
 li.closed{
-  list-style-image:url('../img/exp.gif');
+  list-style-image:url('../img/closed.gif');
   cursor:pointer;
 }
 li.open{
-  list-style-image:url('../img/collapse.gif');
+  list-style-image:url('../img/open.gif');
   cursor:pointer;
 }
 
+li.childless{
+    list-style-image:url('../img/childless.gif');
+  /*cursor:pointer;*/
+}
+
 li.open a{
-  color: #18bc9c;
+  font-weight: bold;
+}
+
+li.active a{
+    color: #18bc9c;
 }
 
 ul.CollapsibleList {

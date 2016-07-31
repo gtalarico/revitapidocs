@@ -10,8 +10,8 @@ $('ul.CollapsibleList li').on('click', function () {
 
 
 $( document ).ready(function() {
-    $('ul.CollapsibleList li').addClass('closed'); // Adds closed to all
-    // $('ul.CollapsibleList ul:not(:has(> ul))').children('li').addClass('open'); // Adds closed to all
+    // $('ul.CollapsibleList li').addClass('closed'); // Adds closed to all
+    $('ul.CollapsibleList ul:not(:has(> ul))').children('li').addClass('childless'); // Adds closed to all
 
     $('#menu-loading').animate({opacity: 0},250);
     $('#menu-loading').remove();

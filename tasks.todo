@@ -1,9 +1,15 @@
-Tasks:
-
+Core Tasks:
 ☐ Parse 2016
+☐ Fix Google Search
 
-☐ Add Commenting System
-☐ Verify Google Search
-☐ clean up scripts on content
+Minor Tasks:
+☐ Clean up scripts on content
 ☐ Improve CSS on CHM material
 ✔ Keep menu open @done(2016-07-30 19:52)
+
+Bugs:
+☐ Make it Mobile responsive
+☐ Remove + from UL item wiht children
+
+Features:
+☐ Add Commenting System
