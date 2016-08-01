@@ -22,7 +22,7 @@ def index():
 
 @app.route('/<int:year>/')
 def api(year):
-    title = 'Revit API Docs:' + str(year)
+    title = 'Revit API Docs: ' + str(year)
     namespace_year = 'ns_{year}.html'.format(year=year)
     content = 'new_{year}.html'.format(year=year)
 
