@@ -3,7 +3,7 @@ import sys
 
 from app import app
 from flask import render_template, flash, redirect, url_for, session, request, make_response
-from flask import Flask, abort
+from flask import abort
 
 
 @app.before_request
@@ -58,56 +58,3 @@ def static_proxy(folder, path):
         return app.send_static_file(os.path.join(folder, path))
     except:
         abort(404)
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    errormsg = e
-    return render_template('error.html', errormsg=errormsg), 404
-
-
-@app.errorhandler(500)
-def server_error(e):
-    errormsg = e
-    return render_template('error.html', errormsg=errormsg), 500
-
-
-# @app.route('/sitemap.xml')
-@app.route('/robots.txt', methods=["GET"])
-def static_from_root():
-    path = os.path.join('static', request.path[1:])
-    return redirect(path, code=302)
-    # return app.send_static_file(os.path.join('static', request.path[1:]))
-
-@app.route("/<int:year>/sitemap.xml", methods=["GET"])
-def year_sitemap(year):
-    """Generate sitemap.xml """
-    pages = ['http://www.revitapidocs.com/',
-             'http://www.revitapidocs.com/2015/',
-             'http://www.revitapidocs.com/2016/',
-             'http://www.revitapidocs.com/2017']
-    templates = os.path.join('app','templates',str(year))
-    for filename in os.listdir(templates):
-        url = 'http://www.revitapidocs.com/2015/{}'.format(filename)
-        print(filename)
-        pages.append(url)
-
-    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
-    response = make_response(sitemap_xml)
-    response.headers["Content-Type"] = "application/xml"
-
-    return response
-
-@app.route("/sitemap.xml", methods=["GET"])
-def sitemap():
-    """Generate sitemap.xml """
-    pages = ['http://www.revitapidocs.com/',
-             'http://www.revitapidocs.com/2015/',
-             'http://www.revitapidocs.com/2016/',
-             'http://www.revitapidocs.com/2017']
-
-    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
-    response = make_response(sitemap_xml)
-    response.headers["Content-Type"] = "application/xml"
-
-    return response
