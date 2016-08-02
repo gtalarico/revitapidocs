@@ -16,10 +16,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
 
         <link rel="shortcut icon" href="{{ url_for('static', filename="favicon.png") }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/main.css") }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/overrides.css") }}" />
-        {# <link rel="apple-touch-icon" href="apple-touch-icon.png">#}
+        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}" /> -->
+        {% assets "css_assets" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+        {% endassets %}
+
 
     </head>
     <body>
@@ -68,11 +70,12 @@
         {% endwith %}
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-        <script src="{{ url_for('static', filename="js/bootstrap.js") }}"></script>
-        <script src="{{ url_for('static', filename="js/main.js") }}"></script>
+        {% assets "js_assets" %}
+        <script src="{{ ASSET_URL }}"></script>
+        {% endassets %}
 
         {% block script %}
-            {# End of page script for child template: ie menue script#}
+            {# End of page script for child template: ie: menu script requiest context #}
         {% endblock %}
 
         <script>

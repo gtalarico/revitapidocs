@@ -1,3 +1,6 @@
 .git
 *.pyc
 *__pycache__*
+app/static/.webassets-cache/
+app/static/packed/
+
