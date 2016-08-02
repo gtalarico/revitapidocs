@@ -1,16 +1,15 @@
 import os
 
+
 class Config(object):
     DEBUG = False
     TESTING = False
     # DATABASE_URI = 'sqlite://:memory:'
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    print('BASEDIR:', BASEDIR)
 
 class ProductionConfig(Config):
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    if SECRET_KEY is None:
-        raise ValueError('SECRET_KEY not set.')
-
+    SECRET_KEY = os.getenv('SECRET_KEY', None)
     # DATABASE_URI = 'mysql://user@localhost/foo'
 
 class DevelopmentConfig(Config):
@@ -18,13 +17,13 @@ class DevelopmentConfig(Config):
     SECRET_KEY = '*)(EFUELKH!@#(&!_@&UQPasdasdj!(@&$_EFSDPFJSLK!@!@#1231)))'
 
 
-production = int(os.getenv('PRODUCTION'))
+production = int(os.getenv('PRODUCTION', 0))
+print('PRODUCTION={}'.format(production))
 
 if not production:
-    print('Development Config')
-    print('PRODUCTION={}'.format(production))
+    print('DEVELOPMENT CONFIG')
     config = DevelopmentConfig
 
 else:
-    print('Running on Heroku')
+    print('PRODUCTION CONFIG - HEROKU')
     config = ProductionConfig

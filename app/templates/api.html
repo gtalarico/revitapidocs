@@ -38,15 +38,11 @@
         var active_ul_tag = $('a[href$="{{active_ul}}"]');
 
         active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
-            // console.log(this)
+            $(this).parents('li').toggleClass("active");
+            $(this).siblings('ul').show(); // Revel Syster  ULs
             $(this).show();
             $(this).children('li').toggleClass("open closed");
-            // $(this).children('li').css('font-weight','bold');
-            $(this).parents('li').toggleClass("active");
-            // $(this).css('font-weight','bold');
-            $(this).siblings('ul').show(); // Revel Syster  ULs
         });
-
         active_ul_tag.parents('li').toggleClass("open closed");
         active_ul_tag.parents('li').toggleClass("active");
     });

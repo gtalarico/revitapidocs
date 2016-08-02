@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="../styles/Presentation.css"/>
+<link rel="stylesheet" type="text/css"href="ms-help://Hx/HxRuntime/HxLink.css" />
+<script type="text/javascript" src="../scripts/EventUtilities.js"> </script>
+<script type="text/javascript" src="../scripts/SplitScreen.js"></script>
+<script type="text/javascript" src="../scripts/Dropdown.js"> </script>
+<script type="text/javascript" src="../scripts/script_manifold.js"></script>
+<script type="text/javascript" src="../scripts/script_feedBack.js">
+<script type="text/javascript" src="../scripts/CheckboxMenu.js"></script>
+<script type="text/javascript" src="../scripts/CommonUtilities.js"> </script>
+
+#ORIGINAL
+<link rel="stylesheet" type="text/css" href="../styles/Presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript" src="../scripts/EventUtilities.js"> </script><script type="text/javascript" src="../scripts/SplitScreen.js"> </script><script type="text/javascript" src="../scripts/Dropdown.js"> </script><script type="text/javascript" src="../scripts/script_manifold.js"> </script><script type="text/javascript" src="../scripts/script_feedBack.js"> </script><script type="text/javascript" src="../scripts/CheckboxMenu.js"> </script><script type="text/javascript" src="../scripts/CommonUtilities.js"> </script>
+
+#REPLACE
+{% assets "css_chm" %}<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />{% endassets %}{% assets "js_chm" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
+
+
+
+#IDEA: Add {% block header to .hml % so it get's passed to api.hml parent %}

@@ -1,10 +1,12 @@
 import os
 import sys
 
-from app import app
-from flask import render_template, flash, redirect, url_for, session, request, make_response
+from flask import render_template, flash, redirect, url_for, make_response
+from flask import session, request
 from flask import Flask, abort
 
+from app import app
+# from app import cache
 
 @app.before_request
 def before_request():
@@ -21,7 +23,7 @@ def index():
 
 
 @app.route('/<int:year>/', methods=["GET"])
-def api(year):
+def api_home(year):
     title = 'Revit API Docs: ' + str(year)
     namespace_year = 'ns_{year}.html'.format(year=year)
     content = 'new_{year}.html'.format(year=year)
@@ -38,7 +40,7 @@ def new(year):
 
 # API Pages: /2015/123sda-asds-asd.htmll
 @app.route('/<int:year>/<path:path>', methods=["GET"])
-def api_2015(year, path):
+def api_year(year, path):
     title = 'Revit API ' + str(year)
     html_path = '{year}/{path}'.format(year=year, path=path)
     namespace_year = 'ns_{year}.html'.format(year=year)
@@ -54,6 +56,8 @@ def api_2015(year, path):
 # Some icons not being served.
 @app.route('/<path:folder>/<path:path>', methods=["GET"])
 def static_proxy(folder, path):
+    print('Static Proxy Called')
+    print(os.path.join(folder, path))
     try:
         return app.send_static_file(os.path.join(folder, path))
     except:
