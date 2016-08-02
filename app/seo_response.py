@@ -6,8 +6,14 @@ from flask import render_template, make_response, redirect, request
 
 @app.route('/robots.txt', methods=["GET"])
 def static_from_root():
-    path = os.path.join('static', request.path[1:])
-    return redirect(path, code=302)
+    is_staging = 'STAGING' in os.environ
+    print('STAGING:', is_staging)
+    if is_staging:
+        path = os.path.join('static', 'block_robots.txt')
+        return redirect(path, code=302)
+    else:
+        path = os.path.join('static', 'robots.txt')
+        return redirect(path, code=302)
     # return app.send_static_file(os.path.join('static', request.path[1:]))
 
 
