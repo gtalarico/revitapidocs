@@ -10,9 +10,10 @@ app = Flask(__name__)
 Compress(app)
 
 assets = Environment(app)
-assets.debug = True
+assets.debug = bool(os.environ.get('ASSETS_DEBUG', False))
 assets.register('css_assets', css_assets)
 assets.register('js_assets', js_assets)
+print('ASSETS DEBUG: {}'.format(assets.debug))
 
 from app import views, seo_response, errors
 from app.config import config
