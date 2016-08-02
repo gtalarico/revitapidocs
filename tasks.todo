@@ -1,19 +1,21 @@
 Core Tasks:
 ☐ Fix Google Search
+☐ Improve Namespace menu (long html)
+☐ Solution for Chm static
 ✔ Parse 2015 @done
 ✔ Parse 2016 @done
 ✔ Parse 2017 @done
 
 Minor Tasks:
-☐ Pull Data(title, etc) from html content so it gets added to page for better indexing
+☐ Add block {%header%} to chm  content to add header tags for indexing
 ☐ Clean up code on content to improve performance and remove junk.
-☐ Improve CSS on CHM material
+✔ Improve CSS on CHM material @done(2016-08-02 01:27)
 ✔ Keep menu open @done(2016-07-30 19:52)
 
 Features:
-☐ Add Commenting System
-☐ A
+☐ Roll Panes separately
+✔ Add Commenting System @done(2016-08-02 01:27)
 
 Bugs:
-☐ Make it Mobile responsive
+✔ Make it Mobile responsive @done(2016-08-02 01:27)
 ✔ Remove + from UL item wiht children @done(2016-07-31 16:09)

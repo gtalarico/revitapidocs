@@ -7,9 +7,11 @@ class Config(object):
     # DATABASE_URI = 'sqlite://:memory:'
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
+
 class ProductionConfig(Config):
     SECRET_KEY = os.getenv('SECRET_KEY', None)
     # DATABASE_URI = 'mysql://user@localhost/foo'
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
