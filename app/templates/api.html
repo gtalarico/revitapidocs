@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% from '%s' % content import header with context %}
+{% block header %}
+   {{ header() }}
+{% endblock %}
+
 {% block content %}
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
@@ -15,7 +20,7 @@
         &nbsp;Loading</span>
 
         {# Add menu for the correct year #}
-        {% include '%s' % ns_template %}
+        {% include '%s' % ns_template with context %}
 
         {# Add Google Search Box #}
         {% include 'google_search.html' %}
@@ -53,3 +58,5 @@
     </script>
 
 {% endblock %}
+
+{}
