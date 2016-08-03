@@ -4,15 +4,15 @@
 
 {% block content %}
 
-<div id="sidebar">
-</div>
+<div class="col-sm-12 col-md-8 col-lg-6" id="main">
+    <br/>
+    <h4>Something went wrong</h4>
+    <hr />
 
-<div id="main">
-    <h3>Something went wrong.</h3>
+    <h5>{{ error.code }}: {{ error.name }}</h5>
+    <p><small>{{ error.description }}</small></p>
+    <br />
     <p><a href="{{ url_for('index') }}">Go home</a>
-    <br />
-    <br />
-    <span class="small text-muted">Message:{{errormsg}}</span>
 </div>
 
 {% endblock %}

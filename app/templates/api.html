@@ -7,7 +7,7 @@
 
         <h5>Revit API {{active}}</h5>
 
-        <p class="small"><a class="api-link" href="{{ url_for('api_new', year=active )}}">
+        <p class="small"><a class="api-link" href="{{ url_for('api_year', year=active )}}">
          What's New
         </a></p>
 
@@ -15,7 +15,7 @@
         &nbsp;Loading</span>
 
         {# Add menu for the correct year #}
-        {% include '%s' % namespace_year %}
+        {% include '%s' % ns_template %}
 
         {# Add Google Search Box #}
         {% include 'google_search.html' %}
