@@ -21,6 +21,7 @@ replacements = (
                 (r'<table id="topTa.*?</table>', ''),
                 (r'<div id="devl.*?</div>', ''),
                 (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
+                # '<input type="hidden" id="userDataC'CopyHover image" />
                 )
 
 for f in sorted(os.listdir(DIR))[-1:]:
