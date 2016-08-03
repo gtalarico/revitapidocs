@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
+{# # REPLACE WITH BLOCK#}
 {% from '%s' % content import header with context %}
 {% block header %}
-   {{ header() }}
+   {% if header %}
+    {{ header() }}
+   {% endif %}
 {% endblock %}
 
 {% block content %}

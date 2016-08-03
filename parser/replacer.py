@@ -7,21 +7,25 @@ TEST = '../app/templates/2015/z.htm'
 # TEST = 'text.htm'
 # DIR = '../app/templates/2015'
 
-# CSS_MACRO = r"{% assets "css_chm" %}<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />{% endassets %}"
-# JS_MACRO
-# ASSETS_MACRO = CSS_MACRO + JS_MACRO
+CSS_MACRO = "{% assets \"css_chm\" %}<link rel=\"stylesheet\" type=\"text/css\" href=\"{{ ASSET_URL }}\" />{% endassets %}"
+JS_MACRO = "{% assets \"js_assets\" %}<script src=\"{{ ASSET_URL }}\"></script>{% endassets %}"
+ASSETS_MACRO = CSS_MACRO + JS_MACRO
 
 replacements = (
-                (r'<html.+\<head>', r'{% block header %}'),
+                ADD BLOCK INSTEAD OF MACRO
+                (r'<html.+\<head>', r'{% macro header() %}'),
+                (r'<META HTTP-EQUIV.+?history" />', ''),
+                (r'<meta name="Lan.+?erence" />', ''),
                 (r'<xml>.+?</xml>', ''),
-                (r'</head>.*?<body>', r'{% endblock %}'),
+                (r'</head>.*?<body>', r'{% endmacro %}'),
+                (r'<input type="hidden" id="userDataCache.*over image" />', ''),
                 (r'<table id="gradi.+?</table>', ''),
-                (r'<div id="footer.*script>.*?</div>', ''),
                 (r'</body.+?html>', ''),
                 (r'<table id="topTa.*?</table>', ''),
                 (r'<div id="devl.*?</div>', ''),
+                (r'<div id="allHistory.*?DarkGray"></span>', ''),
+                (r'<div id="footer.*script>.*?</div>', ''),
                 (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
-                # '<input type="hidden" id="userDataC'CopyHover image" />
                 )
 
 for f in sorted(os.listdir(DIR))[-1:]:
@@ -44,7 +48,7 @@ for f in sorted(os.listdir(DIR))[-1:]:
 print('success')
 # print(text)
 # print('-'*50)
-# print(new_text)
+print(new_text)
 # for filename in os.listdir(DIR)[0:3]:
 
 
