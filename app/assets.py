@@ -16,8 +16,8 @@ js_assets = Bundle(join('js', 'bootstrap.js'),
                    )
 
 
-css_chm = Bundle(join('styles', 'presentation.css'),
-                 output=join('packed_chm', 'packed.css')
+css_chm = Bundle(join('styles', 'Presentation.css'),
+                 output=join('packed/chm_packed.css')
                  )
 
 js_chm = Bundle(join('scripts', 'EventUtilities.js'),
@@ -28,5 +28,5 @@ js_chm = Bundle(join('scripts', 'EventUtilities.js'),
                 join('scripts', 'CheckboxMenu.js'),
                 join('scripts', 'CommonUtilities.js'),
                 filters='rjsmin',
-                output=join('packed_chm','packed.js')
+                output=join('packed/chm_packed.jss')
                 )

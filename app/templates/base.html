@@ -7,7 +7,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+        <!-- CHILD HEADER -->
+        {% block header %}
         <title>{% block title %}{{ title }}{% endblock %}</title>
+        {% endblock %}
+        <!-- CHILD HEADER -->
+
 
         <meta name="description" content="Online Reference for Autodesk's Revit API: 2015, 2016, 2017">
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
@@ -21,11 +26,7 @@
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
         {% endassets %}
 
-        <!-- CHILD HEADER -->
-        {% block header %}
-        Here
-        {% endblock %}
-        <!-- CHILD HEADER -->
+
     </head>
     <body>
         <!--[if lt IE 8]>
