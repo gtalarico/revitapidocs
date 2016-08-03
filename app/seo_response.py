@@ -1,13 +1,15 @@
 import os
 
-from app import app
 from flask import render_template, make_response, redirect, request
+
+from app import app
+from app.logger import logger
 
 
 @app.route('/robots.txt', methods=["GET"])
 def static_from_root():
     is_staging = 'STAGING' in os.environ
-    print('STAGING:', is_staging)
+    logger.info('STAGING:', is_staging)
     if is_staging:
         path = os.path.join('static', 'block_robots.txt')
         return redirect(path, code=302)
@@ -27,7 +29,7 @@ def year_sitemap(year):
     templates = os.path.join('app', 'templates', str(year))
     for filename in os.listdir(templates):
         url = 'http://www.revitapidocs.com/2015/{}'.format(filename)
-        print(filename)
+        logger.info(filename)
         pages.append(url)
 
     sitemap_xml = render_template('sitemap_template.xml', pages=pages)

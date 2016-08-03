@@ -5,6 +5,7 @@ from flask_compress import Compress
 from flask_assets import Bundle, Environment
 
 from app.assets import css_assets, js_assets
+from app.logger import logger
 
 app = Flask(__name__)
 Compress(app)
@@ -14,7 +15,7 @@ assets = Environment(app)
 assets.debug = bool(int(os.environ.get('ASSETS_DEBUG', False)))
 assets.register('css_assets', css_assets)
 assets.register('js_assets', js_assets)
-print('ASSETS DEBUG: {}'.format(assets.debug))
+logger.info('ASSETS DEBUG: {}'.format(assets.debug))
 
 
 from app import views, seo_response, errors

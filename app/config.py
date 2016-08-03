@@ -1,5 +1,5 @@
 import os
-
+from app.logger import logger
 
 class Config(object):
     DEBUG = False
@@ -19,12 +19,12 @@ class DevelopmentConfig(Config):
 
 
 production = bool(int(os.getenv('PRODUCTION', 0)))
-print('PRODUCTION={}'.format(production))
+logger.info('PRODUCTION={}'.format(production))
 
 if not production:
-    print('DEVELOPMENT CONFIG')
+    logger.info('DEVELOPMENT CONFIG')
     config = DevelopmentConfig
 
 else:
-    print('PRODUCTION CONFIG - HEROKU')
+    logger.info('PRODUCTION CONFIG - HEROKU')
     config = ProductionConfig

@@ -9,12 +9,6 @@ from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
 
-@app.before_request
-def before_request():
-    pass
-    # g.user = current_user
-
-
 @app.route('/')
 @app.route('/index.html', methods=['GET'])
 def index():
@@ -55,21 +49,3 @@ def api_year(year, html_path=None):
 def chm_static_redirect(filename):
     path = '/static' + request.path
     return redirect(path, 301)
-
-
-# Need to search and replace to it's served by guinicorn
-# Some icons not being served.
-# @app.route('/<path:folder>/<path:filename>', methods=["GET"])
-# def static_proxy(folder, filename):
-#     if folder in ['scripts', 'styles', 'icons']:
-#         try:
-#             return app.send_static_file(filename)
-#             # On windows this method fails on the safe_join
-#             # return app.send_static_file(os.path.join(folder, path))
-#         except NotFound:
-#             try:
-#                 '''On Windows, this is required'''
-#                 folder = os.path.join('static', folder)
-#                 return send_from_directory(folder, filename)
-#             except NotFound:
-#                 abort(404)
