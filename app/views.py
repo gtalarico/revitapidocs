@@ -47,6 +47,7 @@ def api_year(year, html_path=None):
 
 
 # This handles the static files form the .CHM content
+@app.route('/favicon.ico', methods=["GET"])
 @app.route('/icons/<string:filename>', methods=["GET"])
 @app.route('/scripts/<string:filename>', methods=["GET"])
 @app.route('/styles/<string:filename>', methods=["GET"])

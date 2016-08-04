@@ -12,7 +12,7 @@ JS_MACRO = "{% assets \"js_assets\" %}<script src=\"{{ ASSET_URL }}\"></script>{
 ASSETS_MACRO = CSS_MACRO + JS_MACRO
 
 replacements = (
-                ADD BLOCK INSTEAD OF MACRO
+                # ADD BLOCK INSTEAD OF MACRO
                 (r'<html.+\<head>', r'{% macro header() %}'),
                 (r'<META HTTP-EQUIV.+?history" />', ''),
                 (r'<meta name="Lan.+?erence" />', ''),
@@ -48,7 +48,11 @@ for f in sorted(os.listdir(DIR))[-1:]:
 print('success')
 # print(text)
 # print('-'*50)
+<<<<<<< HEAD
 print(new_text)
+=======
+# print(new_text)
+>>>>>>> master
 # for filename in os.listdir(DIR)[0:3]:
 
 
