@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+
+{% block header %}
+<title>Revit API Docs</title>
+{% endblock %}
+
 {% block content %}
-
-
 <div class="col-sm-12 col-md-8 col-lg-6" id="main">
     <br/>
     <h4>Revit API Docs</h4>
@@ -23,10 +26,12 @@
     <a class="btn btn-default" href="/2017/">2017</a>
     <br />
     <hr />
-    <h4>About</h4>
+    {# <h4>About</h4>#}
 
-    <small>This website was created with content extracted from the official Revit SDK.</small>
-    <small>Hit me up on Twitter if you run into any issues.</a></small><br />
+    {# <small>Hit me up on Twitter if you run into any issues.</a></small><br />#}
+    <small class="text-muted">This website was created with content extracted from the official Revit SDK.</small>
+    <small class="text-muted">Please don't sue me.</small>
+    <br />
     <br />
     <a href="https://twitter.com/intent/tweet?screen_name=gtalarico" class="twitter-mention-button" data-show-count="false">Tweet to @gtalarico</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <br />

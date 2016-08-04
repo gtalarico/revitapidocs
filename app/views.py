@@ -9,13 +9,18 @@ from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
 
+AVAILABLE_APIS = [2015, 2016, 2017]
+
 def check_available_years(filename):
-    available_in_years = []
-    for year in [2015, 2016, 2017]:
-        if os.path.exists('{}/{}/{}'.format(app.template_folder, year,
-                                            filename)):
-            available_in_years.append(year)
-    return available_in_years
+    available_in = []
+    for year in AVAILABLE_APIS:
+        cwd = app.config['BASEDIR']
+        fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
+                                        year, filename)
+        # import ipdb; ipdb.set_trace()
+        if os.path.exists(fullpath):
+            available_in.append(year)
+    return available_in
 
 
 @app.route('/')
@@ -28,23 +33,24 @@ def index():
 
 # API: /2015/
 # API Pages: /2015/123sda-asds-asd.htmll
-@app.route('/<int:year>/', methods=["GET"])
-@app.route('/<int:year>/<path:html_path>', methods=["GET"])
+@app.route('/<string:year>/', methods=["GET"])
+@app.route('/<string:year>/<path:html_path>', methods=["GET"])
 def api_year(year, html_path=None):
     """Add Docs"""
-    title = 'Revit API ' + str(year)
     ns_template = 'ns_{year}.html'.format(year=year)
-
+    active_ul = None
+    
     if html_path:
         content_path = '{year}/{html}'.format(year=year, html=html_path)
-        available_in_years = check_available_years(html_path)
-        flash(available_in_years)
+        available_in = check_available_years(html_path)
+        active_ul = html_path
     else:
         content_path = 'new_{year}.html'.format(year=year)
+        available_in = AVAILABLE_APIS
     try:
-        return render_template('api.html', title=title, active=str(year),
+        return render_template('api.html', year=year, active_ul=active_ul,
                                ns_template=ns_template, content=content_path,
-                               active_ul=html_path)
+                               available_in=available_in)
     except TemplateNotFound as error:
         """Must handle it since { include } inside template is generated
         dynamically by request path"""

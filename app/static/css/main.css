@@ -85,7 +85,7 @@ html, body {
     min-width: 300px;
     padding-top: 20px;
     padding-bottom: 40px;
-    min-height:100%;
+    min-height:100vh;
     /*top: 60px;*/
     /*width: 380px;*/
     /*position: absolute;*/
@@ -173,4 +173,14 @@ ul.CollapsibleList  ul {
 }
 ul.CollapsibleList > ul > ul {
     /*display: none;*/
+}
+
+#alsofor {
+    /*float: right;*/
+    position: absolute;
+    /*right:0px;*/
+    top:10px;
+    color:#aaa;
+    /*right:40px;*/
+
 }
