@@ -2,7 +2,7 @@ import os
 import re
 
 print(os.getcwd())
-DIR = '../app/templates/2015/'
+DIR = '../app/templates/2017/'
 # TEST = '../app/templates/2015/z.htm'
 
 CSS_MACRO = "{% assets \"css_chm\" %}<link rel=\"stylesheet\" type=\"text/css\" href=\"{{ ASSET_URL }}\" />{% endassets %}"
@@ -30,7 +30,7 @@ for f in sorted(os.listdir(DIR))[:]:
     with open(DIR+f, 'r') as fp:
     # with open(TEST, 'r') as fp:
         new_text = fp.read()
-    print('FILE:', fp)
+    print('FILE:', f)
     results = []
     for pat, replacement in replacements:
         new_text, subs = re.subn(pat, replacement, new_text, flags=re.DOTALL)
@@ -41,8 +41,9 @@ for f in sorted(os.listdir(DIR))[:]:
     if not all(all_ones):
         raise Exception('Not all ones')
     # print(new_text)
-    # with open('../app/templates/2015/z2.htm', 'w') as fp:
+    # with open(DIR+f, 'w') as fp:
         # fp.write(new_text)
+
 print('success')
 # print(text)
 # print('-'*50)
