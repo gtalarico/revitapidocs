@@ -38,6 +38,7 @@ def api_year(year, html_path=None):
     if html_path:
         content_path = '{year}/{html}'.format(year=year, html=html_path)
         available_in_years = check_available_years(html_path)
+        flash(available_in_years)
     else:
         content_path = 'new_{year}.html'.format(year=year)
     try:

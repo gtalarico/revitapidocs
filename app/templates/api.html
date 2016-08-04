@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
-{# {% set active_html=content}#}
-
-{# Rendered tempaltes must include header() macro#}
+<!-- Rendered tempaltes must include header() macro#} -->
 {% from '%s' % content import header %}
 {% block header %}
     {{ header() }}
@@ -11,10 +9,8 @@
 {% block content %}
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
-    {# <div id="sidebar">#}
 
         <h5>Revit API {{active}}</h5>
-
         <p class="small"><a class="api-link" href="{{ url_for('api_year', year=active )}}">
          What's New
         </a></p>
@@ -31,7 +27,6 @@
     </div>
 
     <div class="col-sm-12 col-md-8 col-lg-9" id="main">
-    {# <div id="main">#}
         {% include '%s' % content %}
         {% include 'disqus.html' %}
     </div>

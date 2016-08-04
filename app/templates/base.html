@@ -8,16 +8,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
         <!-- CHILD HEADER -->
+        <!-- ADDED HEDE SO CSS IS OVERRIDEN -->
         {% block header %}
         {% endblock %}
         <!-- CHILD HEADER -->
 
-
-        <meta name="description" content="Online Reference for Autodesk's Revit API: 2015, 2016, 2017">
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-        <meta name="ROBOTS" content="INDEX, FOLLOW">
         <meta name="google-site-verification" content="Dn1KWTK6Dm3XMYL1XHu2FUNgz4YH8bUA0YGoFkoWpi0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
+
+        <meta name="description" content="Online Documentation for Autodesk's Revit API: 2015, 2016, 2017">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
+        <meta name="ROBOTS" content="INDEX, FOLLOW">
 
         <link rel="shortcut icon" href="{{ url_for('static', filename="favicon.png") }}">
         <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
@@ -25,23 +26,24 @@
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
         {% endassets %}
 
-
     </head>
+
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- MENU-->
         <div id="wrapper">
-
+            <!-- NAV MENU -->
             {% include "nav.html" ignore missing with context %}
+            <!-- NAV MENU -->
 
-            <!-- MENU-->
+            <!-- MAIN BODY -->
             <div id="content">
                 {% block content %}
                 {% endblock %}
             </div>
+            <!-- MAIN BODY -->
             <div class"push"></div>
 
             <div id="myfooter">
@@ -56,20 +58,7 @@
         </div>
 
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'message' %}
-            <div class = "alert alert-info" role="alert">
-            {% else %}
-            <div class = "alert alert-{{category}}" role="alert">
-            {% endif %}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                {{message}}
-                </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
+        {% include 'messages.html' %}
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         {% assets "js_assets" %}
@@ -80,17 +69,7 @@
             {# End of page script for child template: ie: menu script requiest context #}
         {% endblock %}
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-3836052-8', 'auto');
-          ga('send', 'pageview');
-        </script>
-
-
-
+        {# Google Analytics Script#}
+        {% include 'analytics.html' %}
     </body>
 </html>

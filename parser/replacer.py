@@ -2,13 +2,15 @@ import os
 import re
 
 print(os.getcwd())
-DIR = '../app/templates/2017/'
-TEST = '../app/templates/2015/z.htm'
+DIR = '../app/templates/2015/'
+# TEST = '../app/templates/2015/z.htm'
 
 CSS_MACRO = "{% assets \"css_chm\" %}<link rel=\"stylesheet\" type=\"text/css\" href=\"{{ ASSET_URL }}\" />{% endassets %}"
 JS_MACRO = "{% assets \"js_assets\" %}<script src=\"{{ ASSET_URL }}\"></script>{% endassets %}"
 ASSETS_MACRO = CSS_MACRO + JS_MACRO
 
+''' This script makes the replacements below, and ensures all patterns are
+substituted, no more, no less than 1 time, otherwise raises exception'''
 replacements = (
                (r'<html.+\<head>', r"{% macro header() %}"),
                (r'<META HTTP-EQUIV.+?history" />', ''),
@@ -24,11 +26,11 @@ replacements = (
                (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
                (r'</body.+?html>', ''), )
 
-for f in sorted(os.listdir(DIR))[-1:]:
-    # with open(DIR+f, 'r') as fp:
-    with open(TEST, 'r') as fp:
+for f in sorted(os.listdir(DIR))[:]:
+    with open(DIR+f, 'r') as fp:
+    # with open(TEST, 'r') as fp:
         new_text = fp.read()
-    # print('FILE:' , f)
+    print('FILE:', fp)
     results = []
     for pat, replacement in replacements:
         new_text, subs = re.subn(pat, replacement, new_text, flags=re.DOTALL)
@@ -39,12 +41,12 @@ for f in sorted(os.listdir(DIR))[-1:]:
     if not all(all_ones):
         raise Exception('Not all ones')
     # print(new_text)
-    with open('../app/templates/2015/z2.htm', 'w') as fp:
-        fp.write(new_text)
+    # with open('../app/templates/2015/z2.htm', 'w') as fp:
+        # fp.write(new_text)
 print('success')
 # print(text)
 # print('-'*50)
-print(new_text)
+# print(new_text)
 # for filename in os.listdir(DIR)[0:3]:
 
 
