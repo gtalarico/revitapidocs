@@ -9,6 +9,15 @@ from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
 
+def check_available_years(filename):
+    available_in_years = []
+    for year in [2015, 2016, 2017]:
+        if os.path.exists('{}/{}/{}'.format(app.template_folder, year,
+                                            filename)):
+            available_in_years.append(year)
+    return available_in_years
+
+
 @app.route('/')
 @app.route('/index.html', methods=['GET'])
 def index():
@@ -28,10 +37,7 @@ def api_year(year, html_path=None):
 
     if html_path:
         content_path = '{year}/{html}'.format(year=year, html=html_path)
-        available_in_years = []
-        for year in [2015, 2016, 2017]:
-            if os.path.exists('{}/{}'.format(app.template_folder, year)):
-                available_in_years.append(year)
+        available_in_years = check_available_years(filename)
 
     else:
         content_path = 'new_{year}.html'.format(year=year)
