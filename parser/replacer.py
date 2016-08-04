@@ -4,55 +4,47 @@ import re
 print(os.getcwd())
 DIR = '../app/templates/2017/'
 TEST = '../app/templates/2015/z.htm'
-# TEST = 'text.htm'
-# DIR = '../app/templates/2015'
 
 CSS_MACRO = "{% assets \"css_chm\" %}<link rel=\"stylesheet\" type=\"text/css\" href=\"{{ ASSET_URL }}\" />{% endassets %}"
 JS_MACRO = "{% assets \"js_assets\" %}<script src=\"{{ ASSET_URL }}\"></script>{% endassets %}"
 ASSETS_MACRO = CSS_MACRO + JS_MACRO
 
 replacements = (
-                # ADD BLOCK INSTEAD OF MACRO
-                (r'<html.+\<head>', r'{% macro header() %}'),
-                (r'<META HTTP-EQUIV.+?history" />', ''),
-                (r'<meta name="Lan.+?erence" />', ''),
-                (r'<xml>.+?</xml>', ''),
-                (r'</head>.*?<body>', r'{% endmacro %}'),
-                (r'<input type="hidden" id="userDataCache.*over image" />', ''),
-                (r'<table id="gradi.+?</table>', ''),
-                (r'</body.+?html>', ''),
-                (r'<table id="topTa.*?</table>', ''),
-                (r'<div id="devl.*?</div>', ''),
-                (r'<div id="allHistory.*?DarkGray"></span>', ''),
-                (r'<div id="footer.*script>.*?</div>', ''),
-                (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
-                )
+               (r'<html.+\<head>', r'{% block header %}'),
+               (r'<META HTTP-EQUIV.+?history" />', ''),
+               (r'<meta name="Lan.+?erence" />', ''),
+               (r'<xml>.+?</xml>', ''),
+               (r'</head>.*?<body>', r'{% endblock %}{% block content %}'),
+               (r'<input type="hidden" id="userDataCache.*over image" />', ''),
+               (r'<table id="gradi.+?</table>', ''),
+               (r'<table id="topTa.*?</table>', ''),
+               (r'<div id="devl.*?</div>', ''),
+               (r'<div id="allHistory.*?DarkGray"></span>', ''),
+               (r'<div id="footer.*script>.*?</div>', ''),
+               (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
+               (r'</body.+?html>', '{% endblock %}'), )
 
 for f in sorted(os.listdir(DIR))[-1:]:
     # with open(DIR+f, 'r') as fp:
     with open(TEST, 'r') as fp:
         new_text = fp.read()
-    print('FILE:' , f)
+    # print('FILE:' , f)
     results = []
     for pat, replacement in replacements:
         new_text, subs = re.subn(pat, replacement, new_text, flags=re.DOTALL)
         results.append(subs)
 
     # print('RESULTS:', results)
-    all_ones = [r==1 for r in results]
+    all_ones = [r == 1 for r in results]
     if not all(all_ones):
         raise Exception('Not all ones')
     # print(new_text)
-    with open('../app/templates/2015/z2.htm','w') as fp:
+    with open('../app/templates/2015/z2.htm', 'w') as fp:
         fp.write(new_text)
 print('success')
 # print(text)
 # print('-'*50)
-<<<<<<< HEAD
 print(new_text)
-=======
-# print(new_text)
->>>>>>> master
 # for filename in os.listdir(DIR)[0:3]:
 
 
