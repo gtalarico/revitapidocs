@@ -10,11 +10,11 @@ JS_MACRO = "{% assets \"js_assets\" %}<script src=\"{{ ASSET_URL }}\"></script>{
 ASSETS_MACRO = CSS_MACRO + JS_MACRO
 
 replacements = (
-               (r'<html.+\<head>', r'{% block header %}'),
+               (r'<html.+\<head>', r"{% macro header() %}"),
                (r'<META HTTP-EQUIV.+?history" />', ''),
                (r'<meta name="Lan.+?erence" />', ''),
                (r'<xml>.+?</xml>', ''),
-               (r'</head>.*?<body>', r'{% endblock %}{% block content %}'),
+               (r'</head>.*?<body>', r'{% endmacro %}'),
                (r'<input type="hidden" id="userDataCache.*over image" />', ''),
                (r'<table id="gradi.+?</table>', ''),
                (r'<table id="topTa.*?</table>', ''),
@@ -22,7 +22,7 @@ replacements = (
                (r'<div id="allHistory.*?DarkGray"></span>', ''),
                (r'<div id="footer.*script>.*?</div>', ''),
                (r'<link.*?CommonUtilities.*?</script>', ASSETS_MACRO),
-               (r'</body.+?html>', '{% endblock %}'), )
+               (r'</body.+?html>', ''), )
 
 for f in sorted(os.listdir(DIR))[-1:]:
     # with open(DIR+f, 'r') as fp:

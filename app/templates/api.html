@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{# # REPLACE WITH BLOCK#}
-{% from '%s' % content import header with context %}
+{# {% set active_html=content}#}
+
+{# Rendered tempaltes must include header() macro#}
+{% from '%s' % content import header %}
 {% block header %}
-   {% if header %}
     {{ header() }}
-   {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -61,5 +61,3 @@
     </script>
 
 {% endblock %}
-
-{}

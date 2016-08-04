@@ -37,14 +37,12 @@ def api_year(year, html_path=None):
 
     if html_path:
         content_path = '{year}/{html}'.format(year=year, html=html_path)
-        available_in_years = check_available_years(filename)
-
+        available_in_years = check_available_years(html_path)
     else:
         content_path = 'new_{year}.html'.format(year=year)
     try:
         return render_template('api.html', title=title, active=str(year),
-                               ns_template=ns_template,
-                               content=content_path,
+                               ns_template=ns_template, content=content_path,
                                active_ul=html_path)
     except TemplateNotFound as error:
         """Must handle it since { include } inside template is generated
