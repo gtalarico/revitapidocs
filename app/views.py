@@ -56,6 +56,6 @@ def api_year(year, html_path=None):
 @app.route('/icons/<string:filename>', methods=["GET"])
 @app.route('/scripts/<string:filename>', methods=["GET"])
 @app.route('/styles/<string:filename>', methods=["GET"])
-def chm_static_redirect(filename):
+def chm_static_redirect(filename=None):
     path = '/static' + request.path
     return redirect(path, 301)
