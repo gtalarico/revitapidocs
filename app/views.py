@@ -1,5 +1,6 @@
 import os
 import sys
+from bs4 import BeautifulSoup
 
 from app import app
 from flask import render_template, redirect, url_for, send_from_directory
@@ -23,6 +24,27 @@ def check_available_years(filename):
     return available_in
 
 
+def get_schema(filepath):
+    """This should be stored/cached in database"""
+    cwd = app.config['BASEDIR']
+    fullpath = '{}/{}/{}'.format(cwd, app.template_folder, filepath)
+    try:
+        with open(fullpath) as fp:
+            soup = BeautifulSoup(fp.read(), 'html.parser')
+    except IOError:
+        return
+    else:
+        try:
+            name = soup.title.string.strip()
+            description = soup.find(id='mainBody').find('div').text.strip()
+            namespace = soup.find(id='mainBody').find('a').text.strip()
+        except AttributeError:
+            return
+        return {'name': name,
+                'description': description,
+                'namespace': namespace}
+
+
 @app.route('/')
 @app.route('/index.html', methods=['GET'])
 def index():
@@ -39,18 +61,21 @@ def api_year(year, html_path=None):
     """Add Docs"""
     ns_template = 'ns_{year}.html'.format(year=year)
     active_ul = None
-    
+
     if html_path:
         content_path = '{year}/{html}'.format(year=year, html=html_path)
         available_in = check_available_years(html_path)
         active_ul = html_path
+        schema = get_schema(content_path)
     else:
         content_path = 'new_{year}.html'.format(year=year)
         available_in = AVAILABLE_APIS
+        schema = {'name': "What's New"}
     try:
         return render_template('api.html', year=year, active_ul=active_ul,
                                ns_template=ns_template, content=content_path,
-                               available_in=available_in)
+                               available_in=available_in, schema=schema)
+
     except TemplateNotFound as error:
         """Must handle it since { include } inside template is generated
         dynamically by request path"""

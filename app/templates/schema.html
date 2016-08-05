@@ -1,0 +1,67 @@
+
+        <script type="application/ld+json">
+        [
+            {
+              "@context" : "http://schema.org",
+              "@type" : "APIReference",
+              "name" : "Revit 2015 API",
+              "executableLibraryName" : "RevitAPI.dll",
+              "dateModified" : "2014-09-15",
+              "url" : "http://www.revitapidocs.com/2015/",
+              "version" : "2015",
+              "inLanguage" : "en",
+              "targetPlatform" : "Revit 2015",
+              "copyrightHolder" : "Autodesk Inc.",
+              "publisher" : {
+                "@type" : "Organization",
+                "name" : "Autodesk Inc." }
+            },
+            {
+              "@context" : "http://schema.org",
+              "@type" : "APIReference",
+              "name" : "Revit 2016 API",
+              "executableLibraryName" : "RevitAPI.dll",
+              "dateModified" : "2015-10-30",
+              "url" : "http://www.revitapidocs.com/2016/",
+              "version" : "2016",
+              "inLanguage" : "en",
+              "copyrightHolder" : "Autodesk Inc.",
+              "targetPlatform" : "Revit 2016",
+              "publisher" : {
+                "@type" : "Organization",
+                "name" : "Autodesk Inc." }
+            },
+            {
+              "@context" : "http://schema.org",
+              "@type" : "APIReference",
+              "name" : "Revit 2017 API",
+              "executableLibraryName" : "RevitAPI.dll",
+              "dateModified" : "2016-06-23",
+              "url" : "http://www.revitapidocs.com/2017/",
+              "version" : "2017",
+              "inLanguage" : "en",
+              "copyrightHolder" : "Autodesk Inc.",
+              "targetPlatform" : "Revit 2017",
+              "publisher" : {
+                "@type" : "Organization",
+                "name" : "Autodesk Inc." }
+            }
+            {% if schema %}
+                ,{
+                  "@context" : "http://schema.org",
+                  "@type" : "APIReference",
+                  "executableLibraryName" : "RevitAPI.dll",
+                  "name" : "{{schema.name}}",
+                  "isPartOf" : "{{schema.namespace}}",
+                  "description" : "{{schema.description}}",
+                  "url" : "http://www.revitapidocs.com/{{year}}/{{active_ul}}",
+                  "version" : "{{year}}",
+                  "inLanguage" : "en",
+                  "copyrightHolder" : "Autodesk Inc.",
+                  "publisher" : {
+                    "@type" : "Organization",
+                    "name" : "Autodesk Inc." }
+                }
+            {% endif %}
+        ]
+        </script>
