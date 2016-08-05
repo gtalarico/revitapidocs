@@ -9,9 +9,9 @@ css_assets = Bundle(join('css', 'bootstrap.css'),
                     output='packed/packed.css'
                     )
 
-js_assets = Bundle(join('js', 'jquery-3.1.0.min.js'),
-                   join('js', 'bootstrap.js'),
+js_assets = Bundle(join('js', 'bootstrap.js'),
                    join('js', 'main.js'),
+                #    join('js', 'jquery-3.1.0.min.js'),
                    filters='rjsmin',
                    output='packed/packed.js'
                    )
