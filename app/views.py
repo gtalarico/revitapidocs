@@ -3,6 +3,7 @@ import sys
 from bs4 import BeautifulSoup
 
 from app import app
+from app.logger import logger
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
 from flask import abort, flash
@@ -32,17 +33,19 @@ def get_schema(filepath):
         with open(fullpath) as fp:
             soup = BeautifulSoup(fp.read(), 'html.parser')
     except IOError:
-        return
+        pass
     else:
         try:
             name = soup.title.string.strip()
             description = soup.find(id='mainBody').find('div').text.strip()
             namespace = soup.find(id='mainBody').find('a').text.strip()
         except AttributeError:
-            return
+            pass
         return {'name': name,
                 'description': description,
                 'namespace': namespace}
+    logger.warning('Failed to get schema:: %s', filepath)
+    return
 
 
 @app.route('/')
@@ -72,6 +75,7 @@ def api_year(year, html_path=None):
         available_in = AVAILABLE_APIS
         schema = {'name': "What's New"}
     try:
+        logger.debug('Schema: %s', schema)
         return render_template('api.html', year=year, active_ul=active_ul,
                                ns_template=ns_template, content=content_path,
                                available_in=available_in, schema=schema)
@@ -79,6 +83,7 @@ def api_year(year, html_path=None):
     except TemplateNotFound as error:
         """Must handle it since { include } inside template is generated
         dynamically by request path"""
+        logger.error('Template not found. Path: %s', request.path)
         abort(404)
 
 
