@@ -1,3 +1,4 @@
+beautifulsoup4==4.5.1
 click==6.6
 cssmin==0.2.0
 decorator==4.0.10
