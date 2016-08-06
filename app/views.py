@@ -35,9 +35,10 @@ def api_year(year, filename=None):
         active_ul = filename
         schema = get_schema(year, filename)
     else:
-        content_path = 'new_{year}.html'.format(year=year)
+        content_path = 'home.html'
+        # content_path = 'new_{year}.html'.format(year=year)
         available_in = AVAILABLE_APIS
-        schema = {'name': "What's New"}
+        schema = {'name': "Revit API {} Index".format(year)}
     try:
         logger.debug('Schema: %s', schema)
         return render_template('api.html', year=year, active_ul=active_ul,

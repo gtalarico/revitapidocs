@@ -2,7 +2,7 @@ import os
 from flask_assets import Bundle
 
 join = os.path.join
-css_assets = Bundle(join('css', 'bootstrap.css'),
+css_assets = Bundle(join('css', 'yeti.css'),
                     join('css', 'main.css'),
                     join('css', 'overrides.css'),
                     filters='cssmin',
