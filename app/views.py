@@ -1,9 +1,10 @@
 import os
 import sys
-
+import json
+import re
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
-from flask import abort, flash
+from flask import abort, flash, jsonify
 from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
@@ -50,6 +51,35 @@ def api_year(year, filename=None):
         dynamically by request path"""
         logger.error('Template not found. Path: %s', request.path)
         abort(404)
+
+
+@app.route('/tree', methods=['GET'])
+def tree():
+    with open('app/templates/treeview/OUT.json') as fp:
+        j = json.load(fp)
+    return render_template('treeview/menu.html', json=j)
+
+
+@app.route('/2015/tree.json', methods=['GET'])
+def treejson():
+    with open('app/templates/treeview/OUT.json') as fp:
+        j = json.load(fp)
+    return jsonify(j)
+
+
+@app.route('/<string:year>/search', methods=['GET'])
+def search_tree(year):
+    with open('app/templates/treeview/index_members_2015.json') as fp:
+        members = json.load(fp)
+    results = []
+    query = request.args.get('query')
+    if not query:
+        return jsonify([{'noresult': ''}])
+    for name, href in members.items():
+        match = re.match(query.lower(), name.lower())
+        if match:
+            results.append({'name':name, 'link':href})
+    return jsonify(results)
 
 
 # This handles the static files form the .CHM content

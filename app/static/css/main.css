@@ -54,25 +54,7 @@ div {
 html, body {
     margin: 0px;
     overflow: hidden;
-    /*overflow-y: auto;*/
-    /*padding: 0px;*/
-    /*min-height: 100%;*/
-    /*height: 100%;*/
 }
-/*#wrapper {
-    margin: 0px;
-    overflow: hidden;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -40px; the bottom margin is the negative value of the footer's heigh
-    position: relative;
-}*/
-
-/*.push {
-    height: 40px;
-    clear: both;
-}*/
 
 #content {
     height: 100vh;
@@ -89,12 +71,11 @@ html, body {
         margin-bottom: 40px;
         min-width: 275px;
 
-        padding-left: 20px;
-        padding-top: 20px;
-        padding-right: 12px;
-        padding-bottom: 20px;
-        /*overflow: auto;*/
-        /*min-height:100vh;*/
+        padding:0px;
+        /*padding-left: 20px;*/
+        /*padding-top: 20px;*/
+        /*padding-right: 12px;*/
+        /*padding-bottom: 20px;*/
     }
     #main {
         position: absolute;
@@ -107,6 +88,20 @@ html, body {
         /*padding-top: 20px;*/
         /*padding-right: 40px;*/
     }
+    #sidebarsearch {
+        padding:12px;
+        margin-bottom:0px;
+    }
+    span.indent{
+    margin-left: 4px;
+    margin-right: 4px;
+    }
+    li.list-group-item{
+    padding-top:6px;
+    padding-bottom:6px;
+
+    }
+}
 }
 @media (max-width: 900px){
     #content {
@@ -212,7 +207,7 @@ ul.CollapsibleList > li{
 
 
 ul.CollapsibleList  ul {
-    padding-left:12px;
+    padding-left:6px;
     display: none;
 }
 ul.CollapsibleList > ul > ul {

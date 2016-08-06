@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from collections import OrderedDict
 import re
 
-FILE = 'app/templates/ns_2015.html'
+FILE = 'app/templates/members_2015.html'
 OUTFILE = 'OUT.json'
 with open(FILE, 'r') as fp:
     content = fp.read()

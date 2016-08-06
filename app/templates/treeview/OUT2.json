@@ -1,0 +1,39 @@
+[
+  {
+    "text": "Parent 1",
+    "nodes": [
+      {
+        "text": "Child 1",
+        "nodes": [
+          {
+            "text": "Grandchild 1"
+          },
+          {
+            "text": "Grandchild 2"
+          }
+        ]
+      },
+      {
+        "text": "Child 2"
+      }
+    ]
+  },
+  {
+    "text": "Parent 2"
+  },
+  {
+    "text": "Parent 3",
+    "icon": "glyphicon glyphicon-earphone",
+    "href": "#demo"
+  },
+  {
+    "text": "Parent 4",
+    "icon": "glyphicon glyphicon-cloud-download",
+    "href": "/demo.html"
+  },
+  {
+    "text": "Parent 5",
+    "icon": "glyphicon glyphicon-certificate",
+    "href": "http://www.tesco.com"
+  }
+]

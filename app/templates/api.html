@@ -10,11 +10,21 @@
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
+        {# Add menu for the correct year #}
+        {# {% include '%s' % ns_template with context %}#}
+        <div class="form-group" id="sidebarsearch">
+        {# <label class="control-label">Input addons</label>#}
+          <div class="input-group input-group-sm">
+            <input type="text" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+              </span>
+          </div>
+        </div>
+
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
         &nbsp;Loading</span>
-
-        {# Add menu for the correct year #}
-        {% include '%s' % ns_template with context %}
+        <div id="treeview"></div>
 
         {# Add Google Search Box #}
         {% include 'google_search.html' %}
@@ -45,23 +55,51 @@
 {% block script %}
     {# This script is added here because it usus the active_ul variable#}
     <script>
-    $( document ).ready(function() {
-        var active_ul = "{{active_ul}}";
-        var active_ul_tag = $('a[href$="{{active_ul}}"]');
+    // $( document ).ready(function() {
+    //     var active_ul = "{{active_ul}}";
+    //     var active_ul_tag = $('a[href$="{{active_ul}}"]');
+    //
+    //     active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
+    //         // console.log(this)
+    //         $(this).show();
+    //         $(this).children('li').toggleClass("open closed");
+    //         // $(this).children('li').css('font-weight','bold');
+    //         $(this).parents('li').toggleClass("active");
+    //         // $(this).css('font-weight','bold');
+    //         $(this).siblings('ul').show(); // Revel Syster  ULs
+    //     });
+    //
+    //     active_ul_tag.parents('li').toggleClass("open closed");
+    //     active_ul_tag.parents('li').toggleClass("active");
+    // });
 
-        active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
-            // console.log(this)
-            $(this).show();
-            $(this).children('li').toggleClass("open closed");
-            // $(this).children('li').css('font-weight','bold');
-            $(this).parents('li').toggleClass("active");
-            // $(this).css('font-weight','bold');
-            $(this).siblings('ul').show(); // Revel Syster  ULs
-        });
-
-        active_ul_tag.parents('li').toggleClass("open closed");
-        active_ul_tag.parents('li').toggleClass("active");
+    var string_json
+    $.getJSON("tree.json", function(json) {
+        string_json = JSON.stringify(json);
+        buildMenu()
     });
+
+    function buildMenu() {
+    var active_ul_tag = $('node-treeview > a[href$="{{active_ul}}"]');
+    active_ul_tag.parents('li')
+
+    $('#menu-loading').animate({opacity: 0},250);
+    // $('#menu-loading').remove();
+
+    var $searchableTree = $('#treeview').treeview({
+          expandIcon: "glyphicon glyphicon-stop",
+          collapseIcon: "glyphicon glyphicon-unchecked",
+          showBorder: false,
+          levels: 1,
+          enableLinks: true,
+          onhoverColor: '#eee',
+
+          data: string_json,
+
+
+        });
+    }
+
     </script>
 
 {% endblock %}
