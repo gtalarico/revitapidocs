@@ -16,7 +16,7 @@
         <div class="form-group" id="sidebarsearch">
         <label class="control-label">Quick Search</label>
           <div class="input-group input-group-sm">
-            <input type="text" class="form-control" id="input-search">
+            <input type="text" class="form-control" id="input-search" placeholder="ElementClass">
               <span class="input-group-btn">
                 <button class="btn btn-default" id="btn-search" type="button" data-toggle="modal" data-target="#myModal">Search</button>
               </span>
@@ -37,7 +37,7 @@
         {% if active_ul and available_in%}
             <div id='alsofor'>
                 <p class="small"><small>
-                    API VERSIONS |
+                    API VERSIONS :
                     {% for year in available_in %}
                     <a href="/{{year}}/{{active_ul}}"> {{year}} </a>
                     {% endfor %}
@@ -78,111 +78,89 @@
 {% block script %}
     <script>
 
+$(document).ready(function() {
     // LOAD MENU
     var string_json
-    $.getJSON("tree.json", function(json) {
+    var ajax = $.getJSON("namespace.json", function(json) {
         string_json = JSON.stringify(json);
         buildMenu()
     });
+    ajax.always(function() {
+        console.log('Ajax JSON namespace loaded.');
+        });
 
     // LOAD MENU CALL BACK
     function buildMenu() {
 
         var $searchableTree = $('#treeview').treeview({
               expandIcon: "glyphicon glyphicon-stop",
-            //   expandIcon: "glyphicon glyphicon-stop",
               collapseIcon: "glyphicon glyphicon-unchecked",
-            //   emptyIcon: "glyphicon",
+              emptyIcon: "glyphicon glyphicon-unchecked",
+            //   selectedIcon: 'glyphicon glyphicon-chevron-right',
+              selectedBackColor: "#333",
+              selectedColor: "#eee",
               showBorder: false,
               levels: 1,
               enableLinks: true,
-              onhoverColor: '#fff',
+              onhoverColor: '#e0e0e0',
               backColor: '#eee',
               data: string_json,
             });
 
-        // https://github.com/jonmiles/bootstrap-treeview
-        var activeNodeId = $.cookie("activeNodeId")
-        console.log(activeNodeId)
-        if (activeNodeId == undefined){
-            activeNodeId = 0;
-            console.log('activeNodeId Undefined')
-            }
-        else {
-            var activeNodeId = parseInt(activeNodeId)
-             };
-
-        $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
-        $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
-        // var active_ul_id = $('.node-treeview a[href$="{{active_ul}}"]').closest('li').data('nodeid')
-
-
-        // LISTEN TO CLICKS ON MENU
-        $('#treeview').on('click','a',function() {
-            var parentNodeId = $(this).parent('li').data('nodeid');
-            console.log(parentNodeId);
-            if(typeof parentNodeId !== "undefined") {
-            $.cookie("activeNodeId", parentNodeId);
-            };
-        });
-
-        // LISTEN TO CLICKS ON MAIN
-        $('#main').on('click','a',function() {
-            var url = $(this).attr('href')
-            var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
-            if(typeof parentNodeId !== "undefined") {
-                $.cookie("activeNodeId", parentNodeId);
-                }
-            else{
-                // ITERATES THROUGH NODE - this should be done only if not found in open menu items
-                console.log('Could not find id for content click. Iterating...')
-                var node, active_node, nodeId = 0;
+        if ("{{active_ul}}" == 'None'){
+            // console.log('active_ul not defined. Using 0')
+            activeNodeId = 0
+        } else {
+                var node, activeNodeId, nodeId = 0;
                 do {
                     node = $('#treeview').treeview("getNode", nodeId);
-                    if (node && node.href == $(this).attr('href')) {
-                        console.log(node)
-                        console.log('Found:')
-                        console.log(node.nodeId)
-                        $.cookie("activeNodeId", node.nodeId);
+                    if (node && node.href == "{{active_ul}}") {
+                        // console.log(node.nodeId)
+                        activeNodeId = node.nodeId
                     };
                     nodeId++;
                     } while (node.nodeId != undefined);
-                }
-        });
+                };
+        if (activeNodeId == undefined){
+        activeNodeId = 0
+        };
+
+        $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
+        $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
 
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').remove();
 
     };
 
-    $( document ).ready(function() {
 
-        function search(e){
-        var pattern = $('#input-search').val();
-        var string_json;
-            $.getJSON("/2015/search?query="+pattern, function(json) {
-                // results = json;
-                // results = JSON.parse(json);
-                results = JSON.stringify(json);
-                buildResults(results, pattern)
-            });
-        };
 
-        function buildResults(results, pattern){
-
-            // $.each(results, function (index, result) {
-            //   output += '<p>- ' + result.text + '</p>';
-            // });
-            $('.modal-body').append(results);
-            $('.modal-title').append(pattern);
-
-        };
-
-        $("#btn-search").click(function() {
-            search()
+    function search(e){
+    var pattern = $('#input-search').val();
+    var string_json;
+        $.getJSON("/2015/search?query="+pattern, function(json) {
+            // results = json;
+            // results = JSON.parse(json);
+            results = JSON.stringify(json);
+            buildResults(results, pattern)
         });
+    };
 
+    function buildResults(results, pattern){
+        $('.modal-title').append(pattern);
+
+        // $.each(results, function (index, result) {
+        //   output += '<p>- ' + result.text + '</p>';
+        // });
+        $('.modal-body').append(results);
+
+    };
+
+    $("#btn-search").click(function() {
+        search()
     });
+
+}); //END OF DOC READY
 
     </script>
 

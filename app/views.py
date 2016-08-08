@@ -53,23 +53,24 @@ def api_year(year, filename=None):
         abort(404)
 
 
-@app.route('/tree', methods=['GET'])
-def tree():
-    with open('app/templates/treeview/OUT.json') as fp:
-        j = json.load(fp)
-    return render_template('treeview/menu.html', json=j)
-
-
-@app.route('/2015/tree.json', methods=['GET'])
-def treejson():
-    with open('app/templates/treeview/ns_2015.json') as fp:
+@app.route('/<string:year>/namespace.json', methods=['GET'])
+def treejson(year):
+    cwd = app.config['BASEDIR']
+    filename = 'ns_{year}.json'.format(year=year)
+    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
+                                    'json', filename)
+    with open(fullpath) as fp:
         j = json.load(fp)
     return jsonify(j)
 
 
 @app.route('/<string:year>/search', methods=['GET'])
 def search_tree(year):
-    with open('app/templates/treeview/index_members_2015.json') as fp:
+    cwd = app.config['BASEDIR']
+    filename = 'members_{year}.json'.format(year=year)
+    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
+                                            'json', filename)
+    with open(fullpath) as fp:
         members = json.load(fp)
     results = []
     query = request.args.get('query')

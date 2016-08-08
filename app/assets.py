@@ -11,6 +11,7 @@ css_assets = Bundle(join('css', 'yeti.css'),
                     )
 
 js_assets = Bundle(
+                   join('js', 'jquery.min.js'),
                    join('js', 'jquery.cookie.js'),
                    join('js', 'bootstrap.js'),
                    join('js', 'main.js'),

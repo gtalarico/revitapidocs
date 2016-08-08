@@ -36,8 +36,9 @@ def get_schema(*path):
             namespace = soup.find(id='mainBody').find('a').text.strip()
         except AttributeError as errmsg:
             logger.error(errmsg)
-        return {'name': name,
-                'description': description,
-                'namespace': namespace}
+        else:
+            return {'name': name,
+            'description': description,
+            'namespace': namespace}
     logger.error('Failed to get schema:: %s', fullpath)
     return

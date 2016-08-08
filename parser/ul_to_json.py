@@ -5,7 +5,7 @@ import re
 # AUTO CREATE INDEX FILE
 
 FILE = 'app/templates/ns_2015.html'
-OUTFILE = 'app/templates/ns_2015.json'
+OUTFILE = 'app/templates/json/ns_2015.json'
 with open(FILE, 'r') as fp:
     content = fp.read()
 
@@ -17,7 +17,7 @@ def dictify(ul):
     # print(ul)
     a = li.find('a')
     try:
-        result['text'] = a.text
+        result['text'] = a.text.strip()
     except:
         import pdb; pdb.set_trace()
     result['href'] = a['href']
@@ -37,5 +37,5 @@ ul = soup.ul
 r = [dictify(ul)]
 import json
 with open(OUTFILE, 'w') as fp:
-    json.dump(r, fp, indent=1)
+    json.dump(r, fp, indent=0)
 # pprint(ul)
