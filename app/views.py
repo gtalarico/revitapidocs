@@ -62,7 +62,7 @@ def tree():
 
 @app.route('/2015/tree.json', methods=['GET'])
 def treejson():
-    with open('app/templates/treeview/OUT.json') as fp:
+    with open('app/templates/treeview/ns_2015.json') as fp:
         j = json.load(fp)
     return jsonify(j)
 

@@ -10,10 +10,11 @@
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
+
         {# Add menu for the correct year #}
         {# {% include '%s' % ns_template with context %}#}
         <div class="form-group" id="sidebarsearch">
-        {# <label class="control-label">Input addons</label>#}
+        <label class="control-label">Quick Search</label>
           <div class="input-group input-group-sm">
             <input type="text" class="form-control">
               <span class="input-group-btn">
@@ -27,7 +28,7 @@
         <div id="treeview"></div>
 
         {# Add Google Search Box #}
-        {% include 'google_search.html' %}
+        {#{% include 'google_search.html' %}#}
 
     </div>
 
@@ -79,26 +80,53 @@
         buildMenu()
     });
 
+
     function buildMenu() {
-    var active_ul_tag = $('node-treeview > a[href$="{{active_ul}}"]');
-    active_ul_tag.parents('li')
 
-    $('#menu-loading').animate({opacity: 0},250);
-    // $('#menu-loading').remove();
+        var $searchableTree = $('#treeview').treeview({
+              expandIcon: "glyphicon glyphicon-stop",
+            //   expandIcon: "glyphicon glyphicon-stop",
+              collapseIcon: "glyphicon glyphicon-unchecked",
+            //   emptyIcon: "glyphicon",
+              showBorder: false,
+              levels: 1,
+              enableLinks: true,
+              onhoverColor: '#fff',
+              backColor: '#eee',
+              data: string_json,
+            });
 
-    var $searchableTree = $('#treeview').treeview({
-          expandIcon: "glyphicon glyphicon-stop",
-          collapseIcon: "glyphicon glyphicon-unchecked",
-          showBorder: false,
-          levels: 1,
-          enableLinks: true,
-          onhoverColor: '#eee',
+        // https://github.com/jonmiles/bootstrap-treeview
+        var activeNodeId = parseInt($.cookie("activeNodeId"))
+        console.log(activeNodeId)
+        $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
+        $('#treeview').treeview('toggleNodeExpanded', [ activeNodeId, { silent: false } ]);
+        var active_ul = "{{active_ul}}";
+        var active_ul_tag = $('.node-treeview a[href$="{{active_ul}}"]').parents('li');
+        var activeNodeId = active_ul_tag.attr('data-nodeid')
+        // var activeNode = $('#treeview').treeview('getNode', activeNodeId);
+        $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
 
-          data: string_json,
+        console.log(active_ul)
+        console.log(active_ul_tag)
+        console.log(activeNodeId)
+        console.log(activeNode)
 
 
+        $('#menu-loading').animate({opacity: 0},250);
+        $('#menu-loading').remove();
+
+        // Sets nodeId as cookie on expand
+        $('#treeview').on('nodeExpanded', function(event, node) {
+            var activeNodeId = node.nodeId
+            $.cookie("activeNodeId", activeNodeId);
         });
-    }
+
+    };
+
+    $( document ).ready(function() {
+
+    });
 
     </script>
 

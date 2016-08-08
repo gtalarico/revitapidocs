@@ -10,7 +10,9 @@ css_assets = Bundle(join('css', 'yeti.css'),
                     output='packed/packed.css'
                     )
 
-js_assets = Bundle(join('js', 'bootstrap.js'),
+js_assets = Bundle(
+                   join('js', 'jquery.cookie.js'),
+                   join('js', 'bootstrap.js'),
                    join('js', 'main.js'),
                    join('js', 'treeview.js'),
                 #    join('js', 'jquery-3.1.0.min.js'),

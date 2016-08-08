@@ -60,6 +60,12 @@ html, body {
     height: 100vh;
     /*margin-bottom:40px;*/
 }
+
+#sidebar {
+background-color: #eee;
+border-right: 1px solid #ddd;
+}
+
 @media (min-width: 900px){
     #sidebar {
         position: absolute;
@@ -70,7 +76,6 @@ html, body {
         overflow-y: auto;
         margin-bottom: 40px;
         min-width: 275px;
-
         padding:0px;
         /*padding-left: 20px;*/
         /*padding-top: 20px;*/
@@ -89,12 +94,17 @@ html, body {
         /*padding-right: 40px;*/
     }
     #sidebarsearch {
-        padding:12px;
+        padding:20px;
         margin-bottom:0px;
+        margin-top:0px;
+
     }
     span.indent{
     margin-left: 4px;
     margin-right: 4px;
+    }
+    span#menu-loading{
+    padding-left: 15px;
     }
     li.list-group-item{
     padding-top:6px;

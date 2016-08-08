@@ -1,6 +1,7 @@
 [{
  "href": "d4648875-d41a-783b-d5f4-638df39ee413.htm",
  "text": "Namespaces",
+ "selectable":false,
  "nodes": [
   {
    "href": "9a5b0b20-5f31-9af9-78a1-a518ef92610c.htm",
@@ -8,8 +9,7 @@
    "nodes": [
     {
      "href": "87243309-4a1a-f50a-c787-a2fdbfa76785.htm",
-     "text": "BrowserOrganizationType Enumeration",
-     "nodes": []
+     "text": "BrowserOrganizationType Enumeration"
     }
    ]
   },
