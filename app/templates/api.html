@@ -101,24 +101,23 @@
               data: string_json,
             });
 
-
         // https://github.com/jonmiles/bootstrap-treeview
         var activeNodeId = $.cookie("activeNodeId")
         console.log(activeNodeId)
         if (activeNodeId == undefined){
             activeNodeId = 0;
+            console.log('activeNodeId Undefined')
             }
         else {
             var activeNodeId = parseInt(activeNodeId)
              };
 
-        // var active = $('#treeview').treeview('getNode', [ activeNodeId ]);
         $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
         $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
-        var active_ul_id = $('.node-treeview a[href$="{{active_ul}}"]').closest('li').data('nodeid')
+        // var active_ul_id = $('.node-treeview a[href$="{{active_ul}}"]').closest('li').data('nodeid')
 
 
-        // TRACK A HREF CLICKS ON MENU
+        // LISTEN TO CLICKS ON MENU
         $('#treeview').on('click','a',function() {
             var parentNodeId = $(this).parent('li').data('nodeid');
             console.log(parentNodeId);
@@ -127,19 +126,32 @@
             };
         });
 
-        // TRACK A HREF CLICKS ON MAIN CONTENT
+        // LISTEN TO CLICKS ON MAIN
         $('#main').on('click','a',function() {
             var url = $(this).attr('href')
             var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
             if(typeof parentNodeId !== "undefined") {
                 $.cookie("activeNodeId", parentNodeId);
                 }
+            else{
+                // ITERATES THROUGH NODE - this should be done only if not found in open menu items
+                console.log('Could not find id for content click. Iterating...')
+                var node, active_node, nodeId = 0;
+                do {
+                    node = $('#treeview').treeview("getNode", nodeId);
+                    if (node && node.href == $(this).attr('href')) {
+                        console.log(node)
+                        console.log('Found:')
+                        console.log(node.nodeId)
+                        $.cookie("activeNodeId", node.nodeId);
+                    };
+                    nodeId++;
+                    } while (node.nodeId != undefined);
+                }
         });
 
-        // AT END OF MENU-LOAD, HIDE LOADING GIF
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').remove();
-
 
     };
 
