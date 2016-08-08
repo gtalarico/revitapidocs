@@ -10,7 +10,7 @@
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
-
+        <!-- SIDEBAR SEARCH -->
         {# Add menu for the correct year #}
         {# {% include '%s' % ns_template with context %}#}
         <div class="form-group" id="sidebarsearch">
@@ -22,6 +22,7 @@
               </span>
           </div>
         </div>
+        <!-- SIDEBAR SEARCH -->
 
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
         &nbsp;Loading</span>
@@ -51,7 +52,7 @@
         {# </div>#}
     </div>
 
-    <!-- Modal -->
+    <!-- MODAL SEARCH -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -69,21 +70,22 @@
         </div>
       </div>
     </div>
+    <!-- MODAL SEARCH -->
 
 
 {% endblock %}
 
 {% block script %}
-    {# This script is added here because it usus the active_ul variable#}
     <script>
 
+    // LOAD MENU
     var string_json
     $.getJSON("tree.json", function(json) {
         string_json = JSON.stringify(json);
         buildMenu()
     });
 
-
+    // LOAD MENU CALL BACK
     function buildMenu() {
 
         var $searchableTree = $('#treeview').treeview({
@@ -99,6 +101,7 @@
               data: string_json,
             });
 
+
         // https://github.com/jonmiles/bootstrap-treeview
         var activeNodeId = $.cookie("activeNodeId")
         console.log(activeNodeId)
@@ -108,14 +111,14 @@
         else {
             var activeNodeId = parseInt(activeNodeId)
              };
-        console.log(activeNodeId)
-        // Once bootstrap-view can get node by ref, cookie won't be necessary
-        // and can copy similar behavious to what manual UL list had
+
         // var active = $('#treeview').treeview('getNode', [ activeNodeId ]);
         $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
         $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
         var active_ul_id = $('.node-treeview a[href$="{{active_ul}}"]').closest('li').data('nodeid')
 
+
+        // TRACK A HREF CLICKS ON MENU
         $('#treeview').on('click','a',function() {
             var parentNodeId = $(this).parent('li').data('nodeid');
             console.log(parentNodeId);
@@ -124,19 +127,16 @@
             };
         });
 
+        // TRACK A HREF CLICKS ON MAIN CONTENT
         $('#main').on('click','a',function() {
             var url = $(this).attr('href')
             var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
             if(typeof parentNodeId !== "undefined") {
                 $.cookie("activeNodeId", parentNodeId);
                 }
-            // var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
-            // console.log('MainClick');
-            // console.log(parentNodeId);
-            // console.log('---');
-            // $.cookie("activeNodeId-main", parentNodeId);
         });
 
+        // AT END OF MENU-LOAD, HIDE LOADING GIF
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').remove();
 
