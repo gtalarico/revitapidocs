@@ -16,9 +16,9 @@
         <div class="form-group" id="sidebarsearch">
         <label class="control-label">Quick Search</label>
           <div class="input-group input-group-sm">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="input-search">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Search</button>
+                <button class="btn btn-default" id="btn-search" type="button" data-toggle="modal" data-target="#myModal">Search</button>
               </span>
           </div>
         </div>
@@ -51,28 +51,31 @@
         {# </div>#}
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Results: </h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 {% endblock %}
 
 {% block script %}
     {# This script is added here because it usus the active_ul variable#}
     <script>
-    // $( document ).ready(function() {
-    //     var active_ul = "{{active_ul}}";
-    //     var active_ul_tag = $('a[href$="{{active_ul}}"]');
-    //
-    //     active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
-    //         // console.log(this)
-    //         $(this).show();
-    //         $(this).children('li').toggleClass("open closed");
-    //         // $(this).children('li').css('font-weight','bold');
-    //         $(this).parents('li').toggleClass("active");
-    //         // $(this).css('font-weight','bold');
-    //         $(this).siblings('ul').show(); // Revel Syster  ULs
-    //     });
-    //
-    //     active_ul_tag.parents('li').toggleClass("open closed");
-    //     active_ul_tag.parents('li').toggleClass("active");
-    // });
 
     var string_json
     $.getJSON("tree.json", function(json) {
@@ -97,34 +100,75 @@
             });
 
         // https://github.com/jonmiles/bootstrap-treeview
-        var activeNodeId = parseInt($.cookie("activeNodeId"))
+        var activeNodeId = $.cookie("activeNodeId")
         console.log(activeNodeId)
+        if (activeNodeId == undefined){
+            activeNodeId = 0;
+            }
+        else {
+            var activeNodeId = parseInt(activeNodeId)
+             };
+        console.log(activeNodeId)
+        // Once bootstrap-view can get node by ref, cookie won't be necessary
+        // and can copy similar behavious to what manual UL list had
+        // var active = $('#treeview').treeview('getNode', [ activeNodeId ]);
         $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
-        $('#treeview').treeview('toggleNodeExpanded', [ activeNodeId, { silent: false } ]);
-        var active_ul = "{{active_ul}}";
-        var active_ul_tag = $('.node-treeview a[href$="{{active_ul}}"]').parents('li');
-        var activeNodeId = active_ul_tag.attr('data-nodeid')
-        // var activeNode = $('#treeview').treeview('getNode', activeNodeId);
         $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
+        var active_ul_id = $('.node-treeview a[href$="{{active_ul}}"]').closest('li').data('nodeid')
 
-        console.log(active_ul)
-        console.log(active_ul_tag)
-        console.log(activeNodeId)
-        console.log(activeNode)
+        $('#treeview').on('click','a',function() {
+            var parentNodeId = $(this).parent('li').data('nodeid');
+            console.log(parentNodeId);
+            if(typeof parentNodeId !== "undefined") {
+            $.cookie("activeNodeId", parentNodeId);
+            };
+        });
 
+        $('#main').on('click','a',function() {
+            var url = $(this).attr('href')
+            var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
+            if(typeof parentNodeId !== "undefined") {
+                $.cookie("activeNodeId", parentNodeId);
+                }
+            // var parentNodeId = $('.node-treeview a[href$="' + url+'"]').closest('li').data('nodeid')
+            // console.log('MainClick');
+            // console.log(parentNodeId);
+            // console.log('---');
+            // $.cookie("activeNodeId-main", parentNodeId);
+        });
 
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').remove();
 
-        // Sets nodeId as cookie on expand
-        $('#treeview').on('nodeExpanded', function(event, node) {
-            var activeNodeId = node.nodeId
-            $.cookie("activeNodeId", activeNodeId);
-        });
 
     };
 
     $( document ).ready(function() {
+
+        function search(e){
+        var pattern = $('#input-search').val();
+        var string_json;
+            $.getJSON("/2015/search?query="+pattern, function(json) {
+                // results = json;
+                // results = JSON.parse(json);
+                results = JSON.stringify(json);
+                buildResults(results, pattern)
+            });
+        };
+
+        function buildResults(results, pattern){
+
+            // $.each(results, function (index, result) {
+            //   output += '<p>- ' + result.text + '</p>';
+            // });
+            $('.modal-body').append(results);
+            $('.modal-title').append(pattern);
+
+        };
+
+        $("#btn-search").click(function() {
+            search()
+        });
 
     });
 

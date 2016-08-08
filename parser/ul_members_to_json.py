@@ -3,8 +3,8 @@ from collections import OrderedDict
 import re
 import json
 
-FILE = 'app/templates/members_2015.html'
-OUTFILE = 'members_2015.json'
+FILE = 'app/templates/members_2016.html'
+OUTFILE = 'members_2016.json'
 with open(FILE, 'r') as fp:
     content = fp.read()
 

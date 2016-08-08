@@ -74,9 +74,9 @@ def search_tree(year):
     results = []
     query = request.args.get('query')
     if not query:
-        return jsonify([{'noresult': ''}])
+        return jsonify([{'noquery': ''}])
     for name, href in members.items():
-        match = re.match(query.lower(), name.lower())
+        match = re.findall(query.lower(), name.lower())
         if match:
             results.append({'name':name, 'link':href})
     return jsonify(results)
