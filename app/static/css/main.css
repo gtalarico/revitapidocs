@@ -192,6 +192,73 @@ background-color: #eee;
     max-width: 400px;
 }
 
+ul.CollapsibleList li {
+padding-bottom:2px;
+cursor:pointer;
+}
+
+li.closed{
+  list-style-image:url('../img/closed.gif');
+  cursor:pointer;
+}
+li.open{
+  list-style-image:url('../img/open.gif');
+  cursor:pointer;
+}
+
+li.childless{
+    list-style-image:url('../img/childless.gif');
+  /*cursor:pointer;*/
+}
+
+li.open a{
+  font-weight: bold;
+}
+
+li.active a{
+    color: #f04d24;
+    /*color: #f04124; yeti red*/
+    /*color: #18bc9c; flatly*/
+}
+
+ul.CollapsibleList {
+    opacity: 0;
+}
+
+ul.CollapsibleList {
+list-style-type: circle;
+list-style-position: inside;
+font-size:10px;
+padding-left:0px;
+}
+
+ul.CollapsibleList > li{
+    font-weight: bold;
+}
+
+
+ul.CollapsibleList  ul {
+    padding-left:6px;
+    display: none;
+}
+ul.CollapsibleList > ul > ul {
+    /*display: none;*/
+}
+
+#alsofor {
+    top:20px;
+    right:20px;
+    position: absolute;
+    background-color: #eee;
+    padding:4px 8px 4px 8px;
+
+    margin:0px;
+    border-radius: 5px;
+}
+#alsofor p{
+    margin:0px;
+}
+
 li.list-group-item-text {
     list-style: none;
 }
