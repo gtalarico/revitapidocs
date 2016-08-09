@@ -33,7 +33,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="wrapper">
+        {# <div id="wrapper">#}
             <!-- NAV MENU -->
             {% include "nav.html" ignore missing with context %}
             <!-- NAV MENU -->
@@ -44,7 +44,7 @@
                 {% endblock %}
             </div>
             <!-- MAIN BODY -->
-            <div class"push"></div>
+            {# <div class"push"></div>#}
 
             <div id="myfooter">
                 <p><span class="hidden-xs">
@@ -52,15 +52,15 @@
                 <a href="http://flask.pocoo.org/">Flask</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                 Bootstrap Theme by <a href="https://bootswatch.com/flatly/">Bootswatch</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                Compiled and Styled by <a href="http://gtalarico.com">Gui Talarico</a></p>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                Compiled and Styled by <a href="http://gtalarico.com">Gui Talarico</a></span></p>
             </div>
-        </div>
+        {# </div>#}
 
 
         {% include 'messages.html' %}
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
         {% assets "js_assets" %}
         <script src="{{ ASSET_URL }}"></script>
         {% endassets %}

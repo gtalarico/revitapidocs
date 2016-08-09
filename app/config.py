@@ -6,6 +6,7 @@ class Config(object):
     TESTING = False
     # DATABASE_URI = 'sqlite://:memory:'
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    TEMPLATEDIR = os.path.join(BASEDIR, 'templates')
 
 
 class ProductionConfig(Config):

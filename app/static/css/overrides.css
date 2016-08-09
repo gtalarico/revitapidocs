@@ -6,12 +6,12 @@ border-bottom:1px solid #/eee !important;
 }
 
 #mainSection, #header{
-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-color:#2c3e50 !importnat;
+/*font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !important;*/
+color:#666 !importnat;
 }
 
 #mainSection .summary{
-/*     margin-top:16px; */
+     /*margin-top:16px; */
 }
 
 #mainSection span{
@@ -20,7 +20,7 @@ color:#2c3e50 !importnat;
 
 #mainSection .heading {
     font-weight:100;
-    color:#2c3e50;
+    color:#999;
 }
 #mainSection .heading img{
     display:none;
@@ -46,23 +46,25 @@ background-color:#fff !important;
 }
 
 #mainSection th {
-color:#2c3e50 !important;
+color:#666 !important;
 background-color:#fff !important;
 }
 
 
 #mainSection span .identifier  {
     font-weight:bold;
-    color:#e74c3c;
+    color:#f04d24;
+    /*color:#e74c3c; red-orange*/
 }
 
 #mainSection span .keyword {
     font-weight:bold;
-    color:#18bc9c;
+    color:#008cba;
 }
 .highlight-keyword{
     font-weight:bold;
-    color:#18bc9c !important;
+    color:#008cba !important;
+    /*color:#18bc9c !important;*/
     }
 
 .code pre{
@@ -99,7 +101,7 @@ headerTableRow1 {}
 }
 
 div #header{
-    margin-top:-10px;
+    margin-top:-20px;
 }
 
 /*FIX INVALID*/
@@ -108,4 +110,8 @@ body #mainBody {
     /*margin-left: 15px;*/
     /*margin-top: 10px;*/
     /*padding-bottom: 20;*/
+}
+
+#runningHeaderText{
+    display:none !important;
 }

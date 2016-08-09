@@ -1,9 +1,10 @@
 import os
 import sys
-
+import json
+import re
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
-from flask import abort, flash
+from flask import abort, flash, jsonify
 from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
@@ -26,22 +27,21 @@ def index():
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
     """Add Docs"""
-    ns_template = 'ns_{year}.html'.format(year=year)
-    active_ul = None
+    active_href = filename
 
     if filename:
         content_path = '{year}/{html}'.format(year=year, html=filename)
         available_in = check_available_years(filename)
-        active_ul = filename
+        active_href = filename
         schema = get_schema(year, filename)
     else:
-        content_path = 'new_{year}.html'.format(year=year)
+        content_path = 'home.html'
         available_in = AVAILABLE_APIS
-        schema = {'name': "What's New"}
+        schema = {'name': "Revit API {} Index".format(year)}
     try:
         logger.debug('Schema: %s', schema)
-        return render_template('api.html', year=year, active_ul=active_ul,
-                               ns_template=ns_template, content=content_path,
+        return render_template('api.html', year=year, active_href=active_href,
+                               content=content_path,
                                available_in=available_in, schema=schema)
 
     except TemplateNotFound as error:
@@ -49,6 +49,35 @@ def api_year(year, filename=None):
         dynamically by request path"""
         logger.error('Template not found. Path: %s', request.path)
         abort(404)
+
+
+@app.route('/<string:year>/namespace.json', methods=['GET'])
+def namespace_get(year):
+    cwd = app.config['BASEDIR']
+    filename = 'ns_{year}.json'.format(year=year)
+    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
+                                    'json', filename)
+    with open(fullpath) as fp:
+        j = json.load(fp)
+    return jsonify(j)
+
+
+@app.route('/<string:year>/search', methods=['GET'])
+def namespace_search(year):
+    cwd = app.config['BASEDIR']
+    filename = 'members_{year}.json'.format(year=year)
+    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder, 'json', filename)
+    with open(fullpath) as fp:
+        members = json.load(fp)
+    results = []
+    query = request.args.get('query')
+    if not query:
+        return jsonify([])
+    for name, href in members.items():
+        match = re.findall(query.lower(), name.lower())
+        if match:
+            results.append({'name': name, 'link': href})
+    return jsonify(results)
 
 
 # This handles the static files form the .CHM content

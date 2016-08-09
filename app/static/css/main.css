@@ -3,7 +3,9 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
 .alert {
   position: absolute;
   top: 75px;
@@ -22,14 +24,8 @@
 
 a {
   /*text-decoration: None;*/
-  color: #666
+  /*color: #666*/
 }
-
-/*
-a:link, a:visited {
-  color: #rgba(27, 148, 112, 0.82)
-}*/
-
 
 .navbar {
   border-radius: 0px;
@@ -40,12 +36,13 @@ a:link, a:visited {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #18bc9c;
-  background-color: inherit;
+  /*color: #008cba;*/
+  /*color: #18bc9c;*/
+  /*background-color: inherit;*/
 }
 
 .navbar-brand {
-    font-weight: 100;
+    /*font-weight: 100;*/
     /*font-size: 14px;*/
 }
 
@@ -56,46 +53,98 @@ div {
 
 html, body {
     margin: 0px;
-    padding: 0px;
-    min-height: 100%;
-    height: 100%;
-}
-#wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
-    position: relative;
-}
-
-.push {
-    height: 40px;
-    clear: both;
 }
 
 #content {
-    height: 100%;
-    margin-bottom:40px;
+    overflow: hidden;
+    /*height: 100vh;*/
+    /*overflow: hidden;*/
+    /*margin-bottom:40px;*/
 }
 
 #sidebar {
-    overflow: auto;
-    padding-left: 20px;
-    padding-right: 12px;
-    min-width: 300px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    min-height:100vh;
-    /*top: 60px;*/
-    /*width: 380px;*/
-    /*position: absolute;*/
-    /*left: 0;*/
+background-color: #eee;
 }
-#main {
-    padding-top: 20px;
-    padding-right: 40px;
-    /*margin-bottom: 40px;*/
-    /*margin-left: 400px !important;*/
+
+@media (min-width: 900px){
+    #sidebar {
+        position: absolute;
+        top: 45px;
+        bottom: 40px;
+        /*margin-bottom: 40px;*/
+        left: 0;
+        width: 30%;
+        overflow-y: auto;
+        min-width: 275px;
+        padding:0px;
+        /*padding-left: 20px;*/
+        /*padding-top: 20px;*/
+        /*padding-right: 12px;*/
+        /*padding-bottom: 20px;*/
+        border-right: 1px solid #ddd;
+    }
+    #main {
+        position: absolute;
+        top: 45px;
+        bottom: 40px;
+        /*margin-bottom: 40px;*/
+        right: 0;
+        width: 70%;
+        overflow-y: scroll;
+        padding-top: 20px;
+        padding-right: 20px;
+    }
+    #sidebarsearch {
+        padding:20px;
+        margin-bottom:0px;
+        margin-top:0px;
+
+    }
+    span.indent{
+    margin-left: 4px;
+    margin-right: 4px;
+    }
+    span#menu-loading{
+    padding-left: 15px;
+    }
+    li.list-group-item{
+    padding-top:6px;
+    padding-bottom:6px;
+
+    }
+}
+}
+@media (max-width: 900px){
+    html, body {
+        /*margin: 0px;*/
+        }
+
+    #content {
+        /*height: 100%;*/
+        overflow-y: scroll;
+    }
+    #sidebar {
+        position: relative;
+        /*height:100%;*/
+        /*overflow-y: scroll;*/
+        margin-bottom: 40px;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    #main {
+        position: relative;
+        /*height:100%;*/
+        /*overflow-y: scroll;*/
+        margin-bottom: 40px;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+    }
 }
 #comment-bar{
     margin-top: 50px;
@@ -106,7 +155,8 @@ html, body {
     text-align: center;
     position: fixed;
     bottom: 0;
-    background-color: #dce4e6;
+    background-color: #e0e0e0;
+    border-top: 1px solid #ccc;
     padding-top: 2px;
     line-height: 40px;
     height: 40px;
@@ -116,6 +166,9 @@ html, body {
 #myfooter p {
     font-size: 70%;
     text-align: center;
+    color: #aaa;
+}
+#myfooter a {
     color: #999;
 }
 
@@ -148,7 +201,9 @@ li.open a{
 }
 
 li.active a{
-    color: #18bc9c;
+    color: #f04d24;
+    /*color: #f04124; yeti red*/
+    /*color: #18bc9c; flatly*/
 }
 
 ul.CollapsibleList {
@@ -168,7 +223,7 @@ ul.CollapsibleList > li{
 
 
 ul.CollapsibleList  ul {
-    padding-left:12px;
+    padding-left:6px;
     display: none;
 }
 ul.CollapsibleList > ul > ul {
@@ -176,11 +231,19 @@ ul.CollapsibleList > ul > ul {
 }
 
 #alsofor {
-    /*float: right;*/
+    top:20px;
+    right:20px;
     position: absolute;
-    /*right:0px;*/
-    top:10px;
-    color:#aaa;
-    /*right:40px;*/
+    background-color: #eee;
+    padding:4px 8px 4px 8px;
 
+    margin:0px;
+    border-radius: 5px;
+}
+#alsofor p{
+    margin:0px;
+}
+
+li.list-group-item-text {
+    list-style: none;
 }

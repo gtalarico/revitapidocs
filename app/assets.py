@@ -2,15 +2,20 @@ import os
 from flask_assets import Bundle
 
 join = os.path.join
-css_assets = Bundle(join('css', 'bootstrap.css'),
+css_assets = Bundle(join('css', 'yeti.css'),
                     join('css', 'main.css'),
                     join('css', 'overrides.css'),
+                    join('css', 'treeview.css'),
                     filters='cssmin',
                     output='packed/packed.css'
                     )
 
-js_assets = Bundle(join('js', 'bootstrap.js'),
+js_assets = Bundle(
+                   join('js', 'jquery.min.js'),
+                   join('js', 'jquery.cookie.js'),
+                   join('js', 'bootstrap.js'),
                    join('js', 'main.js'),
+                   join('js', 'treeview.js'),
                 #    join('js', 'jquery-3.1.0.min.js'),
                    filters='rjsmin',
                    output='packed/packed.js'

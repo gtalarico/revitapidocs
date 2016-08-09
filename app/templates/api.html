@@ -10,60 +10,164 @@
 
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
-        <h5>Revit API {{year}}</h5>
+        <!-- SIDEBAR SEARCH -->
+        <div class="form-group" id="sidebarsearch">
+        <label class="control-label">Quick Search</label>
+          <div class="input-group input-group-sm">
+            <input type="text" class="form-control" id="input-search" placeholder="ElementClass">
+              <span class="input-group-btn">
+                <button class="btn btn-default" id="btn-search" type="button" data-toggle="modal" data-target="#myModal">Search</button>
+              </span>
+          </div>
+        </div>
+        <!-- SIDEBAR SEARCH -->
 
-        <p class="small"><a class="api-link" href="{{ url_for('api_year', year=year )}}">
-         What's New
-        </a></p>
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
         &nbsp;Loading</span>
-
-        {# Add menu for the correct year #}
-        {% include '%s' % ns_template with context %}
+        <div id="treeview"></div>
 
         {# Add Google Search Box #}
-        {% include 'google_search.html' %}
+        {#{% include 'google_search.html' %}#}
 
     </div>
 
     <div class="col-sm-12 col-md-8 col-lg-9" id="main">
-        {% if active_ul and available_in%}
+        {% if active_href and available_in %}
             <div id='alsofor'>
                 <p class="small"><small>
-                    API VERSIONS |
+                    API VERSIONS :
                     {% for year in available_in %}
-                    <a href="/{{year}}/{{active_ul}}"> {{year}} </a>
+                    <a href="/{{year}}/{{active_href}}"> {{year}} </a>
                     {% endfor %}
                 </small></p>
             </div>
         {%endif%}
 
         {% include '%s' % content %}
+        <hr />
+        {# <div class="comment-bar">#}
         {% include 'disqus.html' %}
+        {# </div>#}
     </div>
+
+    <!-- MODAL SEARCH -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Results: </h4>
+          </div>
+          <div class="modal-body">
+              <ul class="list-group" id="modal-list-group">
+                  <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
+                  &nbsp;Loading</span>
+              </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL SEARCH -->
+
 
 {% endblock %}
 
-{% block script %}
-    {# This script is added here because it usus the active_ul variable#}
-    <script>
-    $( document ).ready(function() {
-        var active_ul = "{{active_ul}}";
-        var active_ul_tag = $('a[href$="{{active_ul}}"]');
 
-        active_ul_tag.parentsUntil('ul.Collapsible', 'ul').each(function(){
-            // console.log(this)
-            $(this).show();
-            $(this).children('li').toggleClass("open closed");
-            // $(this).children('li').css('font-weight','bold');
-            $(this).parents('li').toggleClass("active");
-            // $(this).css('font-weight','bold');
-            $(this).siblings('ul').show(); // Revel Syster  ULs
+{% block script %}
+<script>
+
+$(document).ready(function() {
+    // LOAD MENU
+    var string_json
+    var ajax = $.getJSON("namespace.json", function(json) {
+        string_json = JSON.stringify(json);
+        buildMenu()
+    });
+    ajax.always(function() {
+        console.log('Ajax JSON namespace loaded.');
         });
 
-        active_ul_tag.parents('li').toggleClass("open closed");
-        active_ul_tag.parents('li').toggleClass("active");
+    // LOAD MENU CALL BACK
+    function buildMenu() {
+
+        var $searchableTree = $('#treeview').treeview({
+              expandIcon: "glyphicon glyphicon-stop",
+              collapseIcon: "glyphicon glyphicon-unchecked",
+              emptyIcon: "glyphicon glyphicon-unchecked",
+            //   selectedIcon: 'glyphicon glyphicon-chevron-right',
+              selectedBackColor: "#333",
+              selectedColor: "#eee",
+              showBorder: false,
+              levels: 1,
+              enableLinks: true,
+              onhoverColor: '#e0e0e0',
+              backColor: '#eee',
+              data: string_json,
+            });
+
+        if ("{{active_href}}" == 'None'){
+            // console.log('active_href not defined. Using 0')
+            activeNodeId = 0
+        } else {
+                var node, activeNodeId, nodeId = 0;
+                do {
+                    node = $('#treeview').treeview("getNode", nodeId);
+                    if (node && node.href == "{{active_href}}") {
+                        // console.log(node.nodeId)
+                        activeNodeId = node.nodeId
+                    };
+                    nodeId++;
+                    }
+                while (node.nodeId != undefined);
+                };
+        if (activeNodeId == undefined){
+        activeNodeId = 0
+        };
+
+        $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
+        $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
+        $('#menu-loading').animate({opacity: 0},250);
+        $('#menu-loading').remove();
+
+    };
+
+
+
+    function search(e){
+    var pattern = $('#input-search').val();
+    var string_json;
+        $.getJSON("/2015/search?query=" + pattern, function(json) {
+            results = json;
+            // results = JSON.parse(json);
+            // results = JSON.stringify(json);
+            buildResults(results, pattern)
+        });
+    };
+
+    function buildResults(results, pattern){
+        $('.modal-title').html('Results: <strong>'+pattern+'</stron>');
+        $('#modal-loading').show();
+        // var output
+        var content = ''
+        $.each(results, function (index, value) {
+        var href = '<a href="' + value.link + '" class="list-group-item">'
+        var body = '<li class="list-group-item-text">' + value.name +'</li></a>'
+        content += href+body
+        });
+        $('#modal-list-group').html(content);
+        // $('#modal-loading').hide();
+    };
+
+    $("#btn-search").click(function() {
+        search()
     });
+
+}); //END OF DOC READY
+
     </script>
 
 {% endblock %}
