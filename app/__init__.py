@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_compress import Compress
 from flask_assets import Bundle, Environment
+from flask_cache import Cache
 
 from app.assets import css_assets, js_assets
 from app.assets import css_chm, js_chm
@@ -10,6 +11,7 @@ from app.logger import logger
 
 app = Flask(__name__)
 Compress(app)
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 # ASSETS
 assets = Environment(app)

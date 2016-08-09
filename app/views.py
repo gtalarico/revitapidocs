@@ -8,7 +8,7 @@ from flask import abort, flash, jsonify
 from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
-from app import app
+from app import app, cache
 from app.logger import logger
 from app.utils import *
 
@@ -51,6 +51,7 @@ def api_year(year, filename=None):
         abort(404)
 
 
+@cache.cached(timeout=600)
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
     cwd = app.config['BASEDIR']
