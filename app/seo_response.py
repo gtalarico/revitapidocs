@@ -30,7 +30,7 @@ def year_sitemap(year):
                                                             filename=filename)
         pages.append(url)
 
-    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+    sitemap_xml = render_template('sitemap_template.xml', pages=pages, priority=0.5)
     response = make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
 
@@ -45,7 +45,7 @@ def sitemap():
              'http://www.revitapidocs.com/2016/',
              'http://www.revitapidocs.com/2017']
 
-    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+    sitemap_xml = render_template('sitemap_template.xml', pages=pages, priority=1.0)
     response = make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
 

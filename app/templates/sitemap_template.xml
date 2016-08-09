@@ -3,9 +3,9 @@
     {% for page in pages %}
     <url>
         <loc>{{page|safe}}</loc>
-        <lastmod>2016-08-01</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <lastmod>2016-08-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>{{priority}}</priority>
     </url>
     {% endfor %}
 </urlset>
