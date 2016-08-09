@@ -3,15 +3,15 @@ from collections import OrderedDict
 import re
 import json
 
-FILE = 'app/templates/members_2015.html'
-OUTFILE = 'app/templates/json/members_2015.json'
+FILE = 'app/templates/json/html/members_2017.html'
+OUTFILE = 'app/templates/json/members_2017.json'
 with open(FILE, 'r') as fp:
     content = fp.read()
 
 
 soup = BeautifulSoup(content, 'html.parser')
 ul = soup.ul
-lis = {}
+lis = OrderedDict()
 for li in ul.find_all('li', recursive=False):
     result = OrderedDict()
     a = li.find('a')

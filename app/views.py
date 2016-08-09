@@ -2,17 +2,20 @@ import os
 import sys
 import json
 import re
+from collections import OrderedDict
+
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
 from flask import abort, flash, jsonify
 from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
-from app import app
+from app import app, cache
 from app.logger import logger
 from app.utils import *
 
 
+@cache.cached(timeout=60)
 @app.route('/')
 @app.route('/index.html', methods=['GET'])
 def index():
@@ -23,6 +26,7 @@ def index():
 
 # API: /2015/
 # API Pages: /2015/123sda-asds-asd.htmll
+@cache.cached(timeout=3600)
 @app.route('/<string:year>/', methods=["GET"])
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
@@ -51,6 +55,7 @@ def api_year(year, filename=None):
         abort(404)
 
 
+@cache.cached(timeout=3600)
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
     cwd = app.config['BASEDIR']
@@ -68,7 +73,7 @@ def namespace_search(year):
     filename = 'members_{year}.json'.format(year=year)
     fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder, 'json', filename)
     with open(fullpath) as fp:
-        members = json.load(fp)
+        members = json.load(fp, object_pairs_hook=OrderedDict)
     results = []
     query = request.args.get('query')
     if not query:

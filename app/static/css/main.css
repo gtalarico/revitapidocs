@@ -26,6 +26,10 @@ a {
   /*text-decoration: None;*/
   /*color: #666*/
 }
+p {
+font-size:70%;
+}
+
 
 .navbar {
   border-radius: 0px;
@@ -66,17 +70,18 @@ html, body {
 background-color: #eee;
 }
 
+
 @media (min-width: 900px){
     #sidebar {
         position: absolute;
         top: 45px;
         bottom: 40px;
-        /*margin-bottom: 40px;*/
         left: 0;
         width: 30%;
         overflow-y: auto;
         min-width: 275px;
         padding:0px;
+        /*margin-bottom: 40px;*/
         /*padding-left: 20px;*/
         /*padding-top: 20px;*/
         /*padding-right: 12px;*/
@@ -92,6 +97,7 @@ background-color: #eee;
         width: 70%;
         overflow-y: scroll;
         padding-top: 20px;
+        padding-left: 20px;
         padding-right: 20px;
     }
     #sidebarsearch {
@@ -100,19 +106,24 @@ background-color: #eee;
         margin-top:0px;
 
     }
-    span.indent{
-    margin-left: 4px;
-    margin-right: 4px;
-    }
-    span#menu-loading{
+
+    #sidebar #menu-loading{
     padding-left: 15px;
     }
-    li.list-group-item{
-    padding-top:6px;
-    padding-bottom:6px;
 
+    #alsofor {
+            top:20px;
+            right:20px;
+            position: absolute;
+            background-color: #eee;
+            padding: 5px 10px 5px 10px;
+            margin: 0px;
+            border-radius: 5px;
     }
-}
+    #alsofor p{
+        color:999px;
+        margin:0px;
+    }
 }
 @media (max-width: 900px){
     html, body {
@@ -121,17 +132,17 @@ background-color: #eee;
 
     #content {
         /*height: 100%;*/
-        overflow-y: scroll;
+        overflow-y: auto;
     }
     #sidebar {
         position: relative;
         /*height:100%;*/
         /*overflow-y: scroll;*/
-        margin-bottom: 40px;
-        padding-left: 20px;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-bottom: 20px;
+        /*margin-bottom: 20px;*/
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
         border-bottom: 1px solid #ddd;
     }
     #main {
@@ -144,6 +155,10 @@ background-color: #eee;
         padding-right: 20px;
         padding-bottom: 20px;
         margin-bottom: 40px;
+    }
+
+    #alsofor {
+    display:none;
     }
 }
 #comment-bar{
@@ -158,7 +173,7 @@ background-color: #eee;
     background-color: #e0e0e0;
     border-top: 1px solid #ccc;
     padding-top: 2px;
-    line-height: 40px;
+    line-height: 35px;
     height: 40px;
     width: 100%;
 }
@@ -175,73 +190,6 @@ background-color: #eee;
 #search{
     /*display:inline-block;*/
     max-width: 400px;
-}
-
-ul.CollapsibleList li {
-padding-bottom:2px;
-cursor:pointer;
-}
-
-li.closed{
-  list-style-image:url('../img/closed.gif');
-  cursor:pointer;
-}
-li.open{
-  list-style-image:url('../img/open.gif');
-  cursor:pointer;
-}
-
-li.childless{
-    list-style-image:url('../img/childless.gif');
-  /*cursor:pointer;*/
-}
-
-li.open a{
-  font-weight: bold;
-}
-
-li.active a{
-    color: #f04d24;
-    /*color: #f04124; yeti red*/
-    /*color: #18bc9c; flatly*/
-}
-
-ul.CollapsibleList {
-    opacity: 0;
-}
-
-ul.CollapsibleList {
-list-style-type: circle;
-list-style-position: inside;
-font-size:10px;
-padding-left:0px;
-}
-
-ul.CollapsibleList > li{
-    font-weight: bold;
-}
-
-
-ul.CollapsibleList  ul {
-    padding-left:6px;
-    display: none;
-}
-ul.CollapsibleList > ul > ul {
-    /*display: none;*/
-}
-
-#alsofor {
-    top:20px;
-    right:20px;
-    position: absolute;
-    background-color: #eee;
-    padding:4px 8px 4px 8px;
-
-    margin:0px;
-    border-radius: 5px;
-}
-#alsofor p{
-    margin:0px;
 }
 
 li.list-group-item-text {

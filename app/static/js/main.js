@@ -2,7 +2,7 @@ $(".alert").delay(2500).fadeOut(500, function() {
     $(this).alert('close');
 });
 
-
+// OLD MENU JS
 // $('ul.CollapsibleList li').on('click', function () {
 //     $(this).siblings('ul').toggle(); // Hides sister ULs
 //     $(this).toggleClass("open closed"); // Togles class of li
