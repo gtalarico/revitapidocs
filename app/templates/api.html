@@ -61,7 +61,8 @@
             <h4 class="modal-title" id="myModalLabel">Results: </h4>
           </div>
           <div class="modal-body">
-            ...
+              <ul class="list-group" id="modal-list-group">
+              </ul>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -138,10 +139,10 @@ $(document).ready(function() {
     function search(e){
     var pattern = $('#input-search').val();
     var string_json;
-        $.getJSON("/2015/search?query="+pattern, function(json) {
-            // results = json;
+        $.getJSON("/2015/search?query=" + pattern, function(json) {
+            results = json;
             // results = JSON.parse(json);
-            results = JSON.stringify(json);
+            // results = JSON.stringify(json);
             buildResults(results, pattern)
         });
     };
@@ -149,11 +150,14 @@ $(document).ready(function() {
     function buildResults(results, pattern){
         $('.modal-title').append(pattern);
 
-        // $.each(results, function (index, result) {
-        //   output += '<p>- ' + result.text + '</p>';
-        // });
-        $('.modal-body').append(results);
-
+        // var decoder = $('<div />');
+        // var decodedText = '';
+        var output
+        $.each(results, function (index, value) {
+        output = '<li class="list-group-item"><a href="' + value.link + '">' + value.name + ':' +'</a></li>'
+        $('#modal-list-group').append(output);
+        // decodedText += decoder.text();
+            });
     };
 
     $("#btn-search").click(function() {

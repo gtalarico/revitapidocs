@@ -6,5 +6,5 @@ for filename in os.listdir('app/templates'):
     files.append('app/templates/' + filename)
 for filename in os.listdir('app/templates/treeview'):
     files.append('app/templates/treeview/' + filename)
-print(files)
+# print(files)
 app.run(extra_files=files)
