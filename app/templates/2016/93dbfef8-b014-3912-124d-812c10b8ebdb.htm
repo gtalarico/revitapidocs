@@ -10,7 +10,7 @@
 	<span class="parameter">viewFamilyTypeId</span> <span class="keyword">As</span> <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a> _
 ) <span class="keyword">As</span> <a href="d0876cac-a93b-b89c-fa30-bcc14ab9d7f0.htm">ViewDrafting</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="d0876cac-a93b-b89c-fa30-bcc14ab9d7f0.htm">ViewDrafting</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
 	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">viewFamilyTypeId</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document in which the new drafting view will be created.
@@ -18,21 +18,21 @@
    The id of the ViewFamilyType that should be assigned to the new drafting view.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The newly created drafting view.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// For simplicity, we'll look what drafting view types are already available,</span>
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// For simplicity, we'll look what drafting view types are already available,</span>
 <span class="highlight-comment">// and we'll use the first one we can find to create our new drafting view.</span>
 FilteredElementCollector collector = <span class="highlight-keyword">new</span> FilteredElementCollector(document);
 collector.OfClass(<span class="highlight-keyword">typeof</span>(ViewFamilyType));
 ViewFamilyType viewFamilyType = collector.Cast&lt;ViewFamilyType&gt;().First(vft =&gt; vft.ViewFamily == ViewFamily.Drafting);
 
 <span class="highlight-comment">// Create a new ViewDrafting instance</span>
-ViewDrafting view = ViewDrafting.Create(document, viewFamilyType.Id); 
+ViewDrafting view = ViewDrafting.Create(document, viewFamilyType.Id);
 view.ViewName = <span class="highlight-literal">"MyViewDrafting"</span>;
 
 <span class="highlight-comment">// Set the CropBox</span>
 BoundingBoxXYZ boundingBox = <span class="highlight-keyword">new</span> BoundingBoxXYZ();
 boundingBox.Max = <span class="highlight-keyword">new</span> XYZ(<span class="highlight-number">100</span>, <span class="highlight-number">100</span>, <span class="highlight-number">50</span>);
 boundingBox.Min = <span class="highlight-keyword">new</span> XYZ(<span class="highlight-number">-100</span>, <span class="highlight-number">-100</span>, <span class="highlight-number">-50</span>);
-view.CropBox = boundingBox;</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' For simplicity, we'll look what drafting view types are already available,</span>
+view.CropBox = boundingBox;</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' For simplicity, we'll look what drafting view types are already available,</span>
 <span class="highlight-comment">' and we'll use the first one we can find to create our new drafting view.</span>
 <span class="highlight-keyword">Dim</span> collector <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> FilteredElementCollector(document)
 collector.OfClass(<span class="highlight-keyword">GetType</span>(ViewFamilyType))

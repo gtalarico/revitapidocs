@@ -10,13 +10,13 @@
    When it is a dialog box, the event's argument is an object of <a href="8b6b969f-45d2-5b90-ca6d-593348ddf8d4.htm">DialogBoxShowingEventArgs</a>.
    When it is a message box, the event's argument is an object of <a href="aa1b432c-e9b9-b528-aa3b-60514aaea2a3.htm">MessageBoxShowingEventArgs</a>,which is subclass of DialogBoxShowingEventArgs.
    When it is a task dialog, the event's argument is an object of <a href="96cc0900-708b-5a2c-8d07-b2596ec20700.htm">TaskDialogShowingEventArgs</a>,which is subclass of DialogBoxShowingEventArgs.</p><p>No document may be modified during this event.</p><p>The following API functions are not available for the current document during this event:
-   <ul><li><a href="da2f27b9-7255-4950-82a2-86e1432ff9f0.htm">Close<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a> and similar overloads.</li><li><a href="8dec13b6-71f4-45d2-74e3-b109153721b5.htm">Save<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a> and similar overloads.</li><li><a href="25c44d4a-b220-5898-b28c-a2cf6a8a8673.htm">SaveAs(String)</a> and similar overloads.</li></ul></p><p>Exception <a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a> will be thrown if any of the above methods is called during this event.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> <span class="highlight-keyword">class</span> Application_DialogBoxShowing : IExternalApplication
+   <ul><li><a href="da2f27b9-7255-4950-82a2-86e1432ff9f0.htm">Close<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a> and similar overloads.</li><li><a href="8dec13b6-71f4-45d2-74e3-b109153721b5.htm">Save<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a> and similar overloads.</li><li><a href="25c44d4a-b220-5898-b28c-a2cf6a8a8673.htm">SaveAs(String)</a> and similar overloads.</li></ul></p><p>Exception <a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a> will be thrown if any of the above methods is called during this event.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> <span class="highlight-keyword">class</span> Application_DialogBoxShowing : IExternalApplication
 {
     <span class="highlight-comment">// Implement the OnStartup method to register events when Revit starts.</span>
     <span class="highlight-keyword">public</span> Result OnStartup(UIControlledApplication application)
     {
         <span class="highlight-comment">// Register related events</span>
-        application.DialogBoxShowing += 
+        application.DialogBoxShowing +=
             <span class="highlight-keyword">new</span> EventHandler&lt;Autodesk.Revit.UI.Events.DialogBoxShowingEventArgs&gt;(AppDialogShowing);
         <span class="highlight-keyword">return</span> Result.Succeeded;
     }
@@ -25,7 +25,7 @@
     <span class="highlight-keyword">public</span> Result OnShutdown(UIControlledApplication application)
     {
         <span class="highlight-comment">// unregister events</span>
-        application.DialogBoxShowing -= 
+        application.DialogBoxShowing -=
             <span class="highlight-keyword">new</span> EventHandler&lt;Autodesk.Revit.UI.Events.DialogBoxShowingEventArgs&gt;(AppDialogShowing);
         <span class="highlight-keyword">return</span> Result.Succeeded;
     }
@@ -45,7 +45,7 @@
         <span class="highlight-comment">// Show the prompt message, and allow the user to close the dialog directly.</span>
         TaskDialog taskDialog = <span class="highlight-keyword">new</span> TaskDialog(<span class="highlight-literal">"Revit"</span>);
         taskDialog.MainContent = promptInfo;
-        TaskDialogCommonButtons buttons = TaskDialogCommonButtons.Ok | 
+        TaskDialogCommonButtons buttons = TaskDialogCommonButtons.Ok |
                                             TaskDialogCommonButtons.Cancel;
         taskDialog.CommonButtons = buttons;
         TaskDialogResult result = taskDialog.Show();
@@ -60,7 +60,7 @@
             args.OverrideResult(<span class="highlight-number">0</span>);
         }
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Class</span> Application_DialogBoxShowing
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Class</span> Application_DialogBoxShowing
     <span class="highlight-keyword">Implements</span> IExternalApplication
     <span class="highlight-comment">' Implement the OnStartup method to register events when Revit starts.</span>
     <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Function</span> OnStartup(application <span class="highlight-keyword">As</span> UIControlledApplication) <span class="highlight-keyword">As</span> Autodesk.Revit.UI.Result <span class="highlight-keyword">Implements</span> IExternalApplication.OnStartup

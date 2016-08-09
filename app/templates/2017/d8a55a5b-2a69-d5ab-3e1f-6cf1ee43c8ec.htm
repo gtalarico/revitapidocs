@@ -12,19 +12,19 @@ structures, so try to minimize calls if performance is critical.</p><p>Geometry 
 the element is changed for any reason, the geometry will be recalculated by Revit and geometry
 objects obtained before the change are likely to no longer be valid.  If you need to preserve
 geometry information obtained an element even after changes to that element, you should copy
-the geometry objects or save the properties independently.</p><p>Although the geometry obtained from this method comes directly from the element, any attempt to modify 
-any of the geometry objects will operate only on a disconnected copy of the original geometry object from the element.  
-The modification will not affect the geometry of the original element from which it was obtained - 
-to change the geometry of the element you must use methods that directly affect the geometry calculated or 
-stored by Revit for this element.</p><p>If you require that the geometry items obtained contain valid 
+the geometry objects or save the properties independently.</p><p>Although the geometry obtained from this method comes directly from the element, any attempt to modify
+any of the geometry objects will operate only on a disconnected copy of the original geometry object from the element.
+The modification will not affect the geometry of the original element from which it was obtained -
+to change the geometry of the element you must use methods that directly affect the geometry calculated or
+stored by Revit for this element.</p><p>If you require that the geometry items obtained contain valid
 <a href="d28155ae-817b-1f31-9c3f-c9c6a28acc0d.htm">Reference objects</a>, be sure to set the ComputeReferences
-property of the Options.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> GetCurvesFromABeam(Autodesk.Revit.DB.FamilyInstance beam,
+property of the Options.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> GetCurvesFromABeam(Autodesk.Revit.DB.FamilyInstance beam,
                                Autodesk.Revit.DB.Options options)
 {
     Autodesk.Revit.DB.GeometryElement geomElem = beam.get_Geometry(options);
 
     Autodesk.Revit.DB.CurveArray curves = <span class="highlight-keyword">new</span> CurveArray();
-    System.Collections.Generic.List&lt;Autodesk.Revit.DB.Solid&gt; solids = <span class="highlight-keyword">new</span> System.Collections.Generic.List&lt;Autodesk.Revit.DB.Solid&gt;(); 
+    System.Collections.Generic.List&lt;Autodesk.Revit.DB.Solid&gt; solids = <span class="highlight-keyword">new</span> System.Collections.Generic.List&lt;Autodesk.Revit.DB.Solid&gt;();
 
     <span class="highlight-comment">//Find all solids and insert them into solid array</span>
     AddCurvesAndSolids(geomElem, <span class="highlight-keyword">ref</span> curves, <span class="highlight-keyword">ref</span> solids);
@@ -57,7 +57,7 @@ property of the Options.</p></div><h1 class="heading"><span onclick="ExpandColla
             AddCurvesAndSolids(transformedGeomElem, <span class="highlight-keyword">ref</span> curves, <span class="highlight-keyword">ref</span> solids);
         }
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve">  <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> GetCurvesFromABeam(beam <span class="highlight-keyword">As</span> Autodesk.Revit.DB.FamilyInstance, options <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Options)
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve">  <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> GetCurvesFromABeam(beam <span class="highlight-keyword">As</span> Autodesk.Revit.DB.FamilyInstance, options <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Options)
       <span class="highlight-keyword">Dim</span> geomElem <span class="highlight-keyword">As</span> Autodesk.Revit.DB.GeometryElement = beam.Geometry(options)
 
       <span class="highlight-keyword">Dim</span> curves <span class="highlight-keyword">As</span> Autodesk.Revit.DB.CurveArray = <span class="highlight-keyword">New</span> CurveArray()

@@ -10,7 +10,7 @@
 	<span class="parameter">instance2</span> <span class="keyword">As</span> <a href="4e60704c-dfe3-72b6-7892-6440503fa078.htm">AssemblyInstance</a> _
 ) <span class="keyword">As</span> <a href="51d7603f-be85-5d67-eeb1-7cd7a6d199a8.htm">AssemblyDifference</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="51d7603f-be85-5d67-eeb1-7cd7a6d199a8.htm">AssemblyDifference</a>^ <span class="identifier">CompareAssemblyInstances</span>(
-	<a href="4e60704c-dfe3-72b6-7892-6440503fa078.htm">AssemblyInstance</a>^ <span class="parameter">instance1</span>, 
+	<a href="4e60704c-dfe3-72b6-7892-6440503fa078.htm">AssemblyInstance</a>^ <span class="parameter">instance1</span>,
 	<a href="4e60704c-dfe3-72b6-7892-6440503fa078.htm">AssemblyInstance</a>^ <span class="parameter">instance2</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="instance1"><dt><span class="parameter">instance1</span></dt><dd>Type: <a href="4e60704c-dfe3-72b6-7892-6440503fa078.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>AssemblyInstance</a><br />
    The first assembly instance to compare
@@ -21,7 +21,7 @@
 </div><h1 class="heading"><span onclick="ExpandCollapse(remarksToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(remarksToggle, event)" tabindex="0"><img id="remarksToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Remarks</span></h1><div id="remarksSection" class="section" name="collapseableSection" style="">
    Only the first found difference is returned.
    If the instances are identical, AssemblyDifferenceNone will be returned.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// Identify the difference, if any, between two assembly instances</span>
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// Identify the difference, if any, between two assembly instances</span>
 <span class="highlight-keyword">void</span> FindAssemblyDifferences(AssemblyInstance instance1, AssemblyInstance instance2)
 {
     Autodesk.Revit.DB.Document doc = instance1.Document;
@@ -53,7 +53,7 @@
         {
             <span class="highlight-keyword">int</span> catInt1 = diffNameCat.NamingCategoryId1.IntegerValue;
             <span class="highlight-keyword">int</span> catInt2 = diffNameCat.NamingCategoryId2.IntegerValue;
-            TaskDialog.Show(<span class="highlight-literal">"Revit"</span>, <span class="highlight-literal">"Naming categories differ: "</span> + 
+            TaskDialog.Show(<span class="highlight-literal">"Revit"</span>, <span class="highlight-literal">"Naming categories differ: "</span> +
                 doc.Settings.Categories.get_Item((BuiltInCategory)catInt1).Name + <span class="highlight-literal">" &amp; "</span> +
                 doc.Settings.Categories.get_Item((BuiltInCategory)catInt2).Name);
             <span class="highlight-keyword">return</span>;
@@ -94,7 +94,7 @@
             }
         }
         <span class="highlight-keyword">return</span>;
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' Identify the difference, if any, between two assembly instances</span>
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' Identify the difference, if any, between two assembly instances</span>
 <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> FindAssemblyDifferences(instance1 <span class="highlight-keyword">As</span> AssemblyInstance, instance2 <span class="highlight-keyword">As</span> AssemblyInstance)
    <span class="highlight-keyword">Dim</span> doc <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document = instance1.Document
    <span class="highlight-keyword">Dim</span> difference <span class="highlight-keyword">As</span> AssemblyDifference = AssemblyInstance.CompareAssemblyInstances(instance1, instance2)

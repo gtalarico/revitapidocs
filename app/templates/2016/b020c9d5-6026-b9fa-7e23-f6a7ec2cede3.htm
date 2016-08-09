@@ -30,17 +30,17 @@
 	<span class="parameter">createNewShape</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">Boolean</a> _
 ) <span class="keyword">As</span> <a href="70fd7426-f4a4-591c-8c06-3c18dda45e7d.htm">Rebar</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="70fd7426-f4a4-591c-8c06-3c18dda45e7d.htm">Rebar</a>^ <span class="identifier">CreateFromCurves</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">doc</span>, 
-	<a href="a9ac65a6-29e6-25e5-caca-502e21385f47.htm">RebarStyle</a> <span class="parameter">style</span>, 
-	<a href="467b44cc-54e7-3ecf-07e1-ad15d05fe800.htm">RebarBarType</a>^ <span class="parameter">barType</span>, 
-	<a href="3c7a78d5-f92b-e58b-e7c9-7927537498fd.htm">RebarHookType</a>^ <span class="parameter">startHook</span>, 
-	<a href="3c7a78d5-f92b-e58b-e7c9-7927537498fd.htm">RebarHookType</a>^ <span class="parameter">endHook</span>, 
-	<a href="eb16114f-69ea-f4de-0d0d-f7388b105a16.htm">Element</a>^ <span class="parameter">host</span>, 
-	<a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a>^ <span class="parameter">norm</span>, 
-	<a href="http://msdn2.microsoft.com/en-us/library/5y536ey6" target="_blank">IList</a>&lt;<a href="400cc9b6-9ff7-de85-6fd8-c20002209d25.htm">Curve</a>^&gt;^ <span class="parameter">curves</span>, 
-	<a href="e8365754-0811-8d4e-864a-55bf34af3a87.htm">RebarHookOrientation</a> <span class="parameter">startHookOrient</span>, 
-	<a href="e8365754-0811-8d4e-864a-55bf34af3a87.htm">RebarHookOrientation</a> <span class="parameter">endHookOrient</span>, 
-	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">useExistingShapeIfPossible</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">doc</span>,
+	<a href="a9ac65a6-29e6-25e5-caca-502e21385f47.htm">RebarStyle</a> <span class="parameter">style</span>,
+	<a href="467b44cc-54e7-3ecf-07e1-ad15d05fe800.htm">RebarBarType</a>^ <span class="parameter">barType</span>,
+	<a href="3c7a78d5-f92b-e58b-e7c9-7927537498fd.htm">RebarHookType</a>^ <span class="parameter">startHook</span>,
+	<a href="3c7a78d5-f92b-e58b-e7c9-7927537498fd.htm">RebarHookType</a>^ <span class="parameter">endHook</span>,
+	<a href="eb16114f-69ea-f4de-0d0d-f7388b105a16.htm">Element</a>^ <span class="parameter">host</span>,
+	<a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a>^ <span class="parameter">norm</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/5y536ey6" target="_blank">IList</a>&lt;<a href="400cc9b6-9ff7-de85-6fd8-c20002209d25.htm">Curve</a>^&gt;^ <span class="parameter">curves</span>,
+	<a href="e8365754-0811-8d4e-864a-55bf34af3a87.htm">RebarHookOrientation</a> <span class="parameter">startHookOrient</span>,
+	<a href="e8365754-0811-8d4e-864a-55bf34af3a87.htm">RebarHookOrientation</a> <span class="parameter">endHookOrient</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">useExistingShapeIfPossible</span>,
 	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">createNewShape</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="doc"><dt><span class="parameter">doc</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    A document.
@@ -88,7 +88,7 @@
    have enough shape parameters to define a shape for these curves.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The newly created Rebar instance, or <span class="keyword"><span class="languageSpecificText"><span class="cs">null</span><span class="vb">Nothing</span><span class="cpp">nullptr</span></span></span><span class="nu">a null reference (<span class="keyword">Nothing</span> in Visual Basic)</span> if the operation fails.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">Rebar CreateRebar(Autodesk.Revit.DB.Document document, FamilyInstance column, RebarBarType barType, RebarHookType hookType)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">Rebar CreateRebar(Autodesk.Revit.DB.Document document, FamilyInstance column, RebarBarType barType, RebarHookType hookType)
 {
     <span class="highlight-comment">// Define the rebar geometry information - Line rebar</span>
     LocationPoint location = column.Location <span class="highlight-keyword">as</span> LocationPoint;
@@ -114,7 +114,7 @@
     }
 
     <span class="highlight-keyword">return</span> rebar;
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Function</span> CreateRebar(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, column <span class="highlight-keyword">As</span> FamilyInstance, barType <span class="highlight-keyword">As</span> RebarBarType, hookType <span class="highlight-keyword">As</span> RebarHookType) <span class="highlight-keyword">As</span> Rebar
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Function</span> CreateRebar(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, column <span class="highlight-keyword">As</span> FamilyInstance, barType <span class="highlight-keyword">As</span> RebarBarType, hookType <span class="highlight-keyword">As</span> RebarHookType) <span class="highlight-keyword">As</span> Rebar
     <span class="highlight-comment">' Define the rebar geometry information - Line rebar</span>
     <span class="highlight-keyword">Dim</span> location <span class="highlight-keyword">As</span> LocationPoint = <span class="highlight-keyword">TryCast</span>(column.Location, LocationPoint)
     <span class="highlight-keyword">Dim</span> origin <span class="highlight-keyword">As</span> XYZ = location.Point

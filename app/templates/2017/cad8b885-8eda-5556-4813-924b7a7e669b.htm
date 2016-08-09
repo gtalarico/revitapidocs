@@ -12,8 +12,8 @@
 	<span class="parameter">desiredDisplayUnit</span> <span class="keyword">As</span> <a href="7d3d3306-a4c2-c577-0aeb-cca42d6cfd2f.htm">DisplayUnitType</a> _
 ) <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">Double</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="identifier">Convert</span>(
-	<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="parameter">value</span>, 
-	<a href="7d3d3306-a4c2-c577-0aeb-cca42d6cfd2f.htm">DisplayUnitType</a> <span class="parameter">currentDisplayUnit</span>, 
+	<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="parameter">value</span>,
+	<a href="7d3d3306-a4c2-c577-0aeb-cca42d6cfd2f.htm">DisplayUnitType</a> <span class="parameter">currentDisplayUnit</span>,
 	<a href="7d3d3306-a4c2-c577-0aeb-cca42d6cfd2f.htm">DisplayUnitType</a> <span class="parameter">desiredDisplayUnit</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="value"><dt><span class="parameter">value</span></dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">System<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Double</a><br />
    The value to convert.
@@ -23,16 +23,16 @@
    The desired display unit.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The converted value.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">void</span> SetTopOffset(Wall wall, <span class="highlight-keyword">double</span> dOffsetInches)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">void</span> SetTopOffset(Wall wall, <span class="highlight-keyword">double</span> dOffsetInches)
 {
     <span class="highlight-comment">// convert user-defined offset value to feet from inches prior to setting</span>
-    <span class="highlight-keyword">double</span> dOffsetFeet = UnitUtils.Convert(dOffsetInches, 
-                                            DisplayUnitType.DUT_DECIMAL_INCHES, 
+    <span class="highlight-keyword">double</span> dOffsetFeet = UnitUtils.Convert(dOffsetInches,
+                                            DisplayUnitType.DUT_DECIMAL_INCHES,
                                             DisplayUnitType.DUT_DECIMAL_FEET);
 
     Parameter paramTopOffset = wall.get_Parameter(BuiltInParameter.WALL_TOP_OFFSET);
     paramTopOffset.Set(dOffsetFeet);
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> SetTopOffset(wall <span class="highlight-keyword">As</span> Wall, dOffsetInches <span class="highlight-keyword">As</span> <span class="highlight-keyword">Double</span>)
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> SetTopOffset(wall <span class="highlight-keyword">As</span> Wall, dOffsetInches <span class="highlight-keyword">As</span> <span class="highlight-keyword">Double</span>)
    <span class="highlight-comment">' convert user-defined offset value to feet from inches prior to setting</span>
    <span class="highlight-keyword">Dim</span> dOffsetFeet <span class="highlight-keyword">As</span> <span class="highlight-keyword">Double</span> = UnitUtils.Convert(dOffsetInches, DisplayUnitType.DUT_DECIMAL_INCHES, DisplayUnitType.DUT_DECIMAL_FEET)
 

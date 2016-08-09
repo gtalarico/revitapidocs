@@ -14,9 +14,9 @@
 	<span class="parameter">planViewId</span> <span class="keyword">As</span> <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a> _
 ) <span class="keyword">As</span> <a href="ed5913d6-1219-9c7c-7e52-317dd58d7cd3.htm">StairsPath</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="ed5913d6-1219-9c7c-7e52-317dd58d7cd3.htm">StairsPath</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
-	<a href="6e18abde-8787-9906-8576-ab0c9c5432c6.htm">LinkElementId</a>^ <span class="parameter">stairsId</span>, 
-	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">typeId</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
+	<a href="6e18abde-8787-9906-8576-ab0c9c5432c6.htm">LinkElementId</a>^ <span class="parameter">stairsId</span>,
+	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">typeId</span>,
 	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">planViewId</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document.
@@ -28,7 +28,7 @@
    The plan view in which the stairs path will be shown.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The new stairs path.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateStairsPath(Document document, Stairs stairs)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateStairsPath(Document document, Stairs stairs)
 {
     Transaction transNewPath = <span class="highlight-keyword">new</span> Transaction(document, <span class="highlight-literal">"New Stairs Path"</span>);
     transNewPath.Start();
@@ -54,7 +54,7 @@
     LinkElementId stairsLinkId = <span class="highlight-keyword">new</span> LinkElementId(stairs.Id);
     StairsPath.Create(stairs.Document, stairsLinkId, stairsPathIds.First(), planViewId);
     transNewPath.Commit();
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateStairsPath(document <span class="highlight-keyword">As</span> Document, stairs <span class="highlight-keyword">As</span> Stairs)
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateStairsPath(document <span class="highlight-keyword">As</span> Document, stairs <span class="highlight-keyword">As</span> Stairs)
     <span class="highlight-keyword">Dim</span> transNewPath <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Transaction(document, <span class="highlight-literal">"New Stairs Path"</span>)
     transNewPath.Start()
 

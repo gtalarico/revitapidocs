@@ -8,7 +8,7 @@
 	<span class="parameter">elevation</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">Double</a> _
 ) <span class="keyword">As</span> <a href="577e5d4e-a558-118c-9dea-3b810b061775.htm">Level</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="577e5d4e-a558-118c-9dea-3b810b061775.htm">Level</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
 	<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="parameter">elevation</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document in which the new instance is created
@@ -16,10 +16,10 @@
    The elevation of the level to be created.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The newly created level instance.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">Level CreateLevel(Autodesk.Revit.DB.Document document)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">Level CreateLevel(Autodesk.Revit.DB.Document document)
 {
     <span class="highlight-comment">// The elevation to apply to the new level</span>
-    <span class="highlight-keyword">double</span> elevation = <span class="highlight-number">20.0</span>; 
+    <span class="highlight-keyword">double</span> elevation = <span class="highlight-number">20.0</span>;
 
     <span class="highlight-comment">// Begin to create a level</span>
     Level level = Level.Create(document, elevation);
@@ -32,7 +32,7 @@
     level.Name = <span class="highlight-literal">"New level"</span>;
 
     <span class="highlight-keyword">return</span> level;
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Function</span> CreateLevel(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document) <span class="highlight-keyword">As</span> Level
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Function</span> CreateLevel(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document) <span class="highlight-keyword">As</span> Level
    <span class="highlight-comment">' The elevation to apply to the new level</span>
    <span class="highlight-keyword">Dim</span> elevation <span class="highlight-keyword">As</span> <span class="highlight-keyword">Double</span> = <span class="highlight-number">20.0</span>
 

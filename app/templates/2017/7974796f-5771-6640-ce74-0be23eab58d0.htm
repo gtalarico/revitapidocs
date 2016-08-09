@@ -29,7 +29,7 @@
    Formulas may include all standard arithmetic operations and logical operations (as functions <b>and</b>,
    <b>or</b>, <b>not</b>.) Input to logical operations must be Boolean values (parameters of <b>YesNo</b> type).
    Consequently, arithmetic operations can be applied to numeric values only. While there are no operations
-   supported for string (text) arguments, strings can be used as results of a logical <b>If</b> operation.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">/// &lt;summary&gt;</span>
+   supported for string (text) arguments, strings can be used as results of a logical <b>If</b> operation.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">/// &lt;summary&gt;</span>
 <span class="highlight-comment">/// Create global parameters and then set a formula to one so it has a value of</span>
 <span class="highlight-comment">/// either of two other parameters depending on the boolean value of the forth one.</span>
 <span class="highlight-comment">/// &lt;/summary&gt;</span>
@@ -69,7 +69,7 @@
         <span class="highlight-keyword">string</span> expression = <span class="highlight-literal">"if(GPB,GPT,GPF)"</span>; <span class="highlight-comment">// XPX &lt;== if (GPB == TRUE) then GPT else GPF</span>
         <span class="highlight-keyword">if</span> (gpX.IsValidFormula(expression))
         {
-            gpX.SetFormula(expression);  
+            gpX.SetFormula(expression);
         }
 
         trans.Commit();

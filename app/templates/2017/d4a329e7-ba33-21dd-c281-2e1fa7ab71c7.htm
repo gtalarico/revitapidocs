@@ -16,10 +16,10 @@
 	<span class="parameter">endConnector</span> <span class="keyword">As</span> <a href="11e07082-b3f2-26a1-de79-16535f44716c.htm">Connector</a> _
 ) <span class="keyword">As</span> <a href="72548466-370d-b010-eb4d-cde0c3f72482.htm">Duct</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="72548466-370d-b010-eb4d-cde0c3f72482.htm">Duct</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
-	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">ductTypeId</span>, 
-	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">levelId</span>, 
-	<a href="11e07082-b3f2-26a1-de79-16535f44716c.htm">Connector</a>^ <span class="parameter">startConnector</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
+	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">ductTypeId</span>,
+	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">levelId</span>,
+	<a href="11e07082-b3f2-26a1-de79-16535f44716c.htm">Connector</a>^ <span class="parameter">startConnector</span>,
 	<a href="11e07082-b3f2-26a1-de79-16535f44716c.htm">Connector</a>^ <span class="parameter">endConnector</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document.
@@ -38,7 +38,7 @@
    to two component who owns the specified connectors. If necessary, additional fitting(s) are included to make a valid connection.
    If the new duct can not be connected to the next component (e.g., mismatched direction, no valid fitting, and etc), the new duct
    will still be created at the specified connector position, and an InvalidOperationException is thrown.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> Duct CreateDuctBetweenConnectors(UIDocument uiDocument)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">public</span> Duct CreateDuctBetweenConnectors(UIDocument uiDocument)
 {
     <span class="highlight-comment">// prior to running this example</span>
     <span class="highlight-comment">// select some mechanical equipment with a supply air connector</span>
@@ -62,7 +62,7 @@
                 <span class="highlight-keyword">while</span> (csi.MoveNext())
                 {
                     Connector conn = csi.Current <span class="highlight-keyword">as</span> Connector;
-                    <span class="highlight-keyword">if</span> (conn.Direction == FlowDirectionType.Out &amp;&amp; 
+                    <span class="highlight-keyword">if</span> (conn.Direction == FlowDirectionType.Out &amp;&amp;
                         conn.DuctSystemType == DuctSystemType.SupplyAir)
                     {
                         connector1 = conn;
@@ -124,7 +124,7 @@
     }
 
     <span class="highlight-keyword">return</span> duct;
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Function</span> CreateDuctBetweenConnectors(uiDocument <span class="highlight-keyword">As</span> UIDocument) <span class="highlight-keyword">As</span> Duct
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Function</span> CreateDuctBetweenConnectors(uiDocument <span class="highlight-keyword">As</span> UIDocument) <span class="highlight-keyword">As</span> Duct
    <span class="highlight-comment">' prior to running this example</span>
    <span class="highlight-comment">' select some mechanical equipment with a supply air connector</span>
    <span class="highlight-comment">' and an elbow duct fitting with a connector in line with that connector</span>

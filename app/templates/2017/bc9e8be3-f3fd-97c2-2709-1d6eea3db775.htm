@@ -10,7 +10,7 @@
 	<span class="parameter">titleBlockTypeId</span> <span class="keyword">As</span> <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a> _
 ) <span class="keyword">As</span> <a href="af2ee879-173d-df3a-9793-8d5750a17b49.htm">ViewSheet</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="af2ee879-173d-df3a-9793-8d5750a17b49.htm">ViewSheet</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
 	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">titleBlockTypeId</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document to which the ViewSheet will be added.
@@ -19,7 +19,7 @@
    For no TitleBlock, pass invalid element ID.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The new ViewSheet.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateSheetView(Autodesk.Revit.DB.Document document, View3D view3D)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateSheetView(Autodesk.Revit.DB.Document document, View3D view3D)
 {
 
     <span class="highlight-comment">// Get an available title block from document</span>
@@ -72,15 +72,15 @@
             }
         }
     }
-}</pre></div></span><span id="cbc_2" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateSheetView(Autodesk.Revit.DB.Document document, View3D view3D)
+}</pre></div></span><span id="cbc_2" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">void</span> CreateSheetView(Autodesk.Revit.DB.Document document, View3D view3D)
 {
 
     <span class="highlight-comment">// Get an available title block from document</span>
     IEnumerable&lt;FamilySymbol&gt;�familyList =�from�elem�<span class="highlight-keyword">in</span>�<span class="highlight-keyword">new</span>�FilteredElementCollector(document)
                                                .OfClass(<span class="highlight-keyword">typeof</span>(FamilySymbol))
-                                               .OfCategory(BuiltInCategory.OST_TitleBlocks)�        
+                                               .OfCategory(BuiltInCategory.OST_TitleBlocks)�
                                            let�type = elem�<span class="highlight-keyword">as</span>�FamilySymbol    �
-                                           where�type.Name.Contains(<span class="highlight-literal">"E1"</span>)�        
+                                           where�type.Name.Contains(<span class="highlight-literal">"E1"</span>)�
                                            select�type;
 
 
@@ -116,7 +116,7 @@
             viewSheet.Print();
         }
     }
-}</pre></div></span><span id="cbc_3" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateSheetView(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, view3D <span class="highlight-keyword">As</span> View3D)
+}</pre></div></span><span id="cbc_3" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateSheetView(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, view3D <span class="highlight-keyword">As</span> View3D)
 
     <span class="highlight-comment">' Get an available title block from document</span>
     <span class="highlight-keyword">Dim</span> collector <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> FilteredElementCollector(document)
@@ -159,7 +159,7 @@
             <span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span>
         <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
     <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
-<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span></pre></div></span><span id="cbc_4" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateSheetView(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, view3D <span class="highlight-keyword">As</span> View3D)
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span></pre></div></span><span id="cbc_4" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> CreateSheetView(document <span class="highlight-keyword">As</span> Autodesk.Revit.DB.Document, view3D <span class="highlight-keyword">As</span> View3D)
 
     <span class="highlight-comment">' Get an available title block from document</span>
     <span class="highlight-keyword">Dim</span> collector1 <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> FilteredElementCollector(document)

@@ -12,8 +12,8 @@
 	<span class="parameter">areaSchemeId</span> <span class="keyword">As</span> <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a> _
 ) <span class="keyword">As</span> <a href="0dae24ba-5dcb-9a34-cccc-0cf8cc52bcd3.htm">ViewSchedule</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="0dae24ba-5dcb-9a34-cccc-0cf8cc52bcd3.htm">ViewSchedule</a>^ <span class="identifier">CreateSchedule</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
-	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">categoryId</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
+	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">categoryId</span>,
 	<a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a>^ <span class="parameter">areaSchemeId</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document to which the new schedule will be added.
@@ -23,7 +23,7 @@
    The ID of an area scheme in an area schedule, InvalidElementId otherwise.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The newly created schedule.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">ViewSchedule areaSchedule = <span class="highlight-keyword">null</span>;
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">ViewSchedule areaSchedule = <span class="highlight-keyword">null</span>;
 
 <span class="highlight-keyword">using</span> (Transaction transaction = <span class="highlight-keyword">new</span> Transaction(doc, <span class="highlight-literal">"Creating Schedule"</span>))
 {
@@ -48,7 +48,7 @@
     {
         transaction.RollBack();
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Dim</span> areaSchedule <span class="highlight-keyword">As</span> ViewSchedule = <span class="highlight-keyword">Nothing</span>
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Dim</span> areaSchedule <span class="highlight-keyword">As</span> ViewSchedule = <span class="highlight-keyword">Nothing</span>
 
 <span class="highlight-keyword">Using</span> transaction <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Transaction(doc, <span class="highlight-literal">"Creating Schedule"</span>)
     transaction.Start()

@@ -10,7 +10,7 @@
 	<span class="parameter">fillPattern</span> <span class="keyword">As</span> <a href="cc546ee9-ba80-c13d-4b74-8c0e2517bc28.htm">FillPattern</a> _
 ) <span class="keyword">As</span> <a href="64ecefd0-f5c4-5cd9-53bd-10a64739257e.htm">FillPatternElement</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="64ecefd0-f5c4-5cd9-53bd-10a64739257e.htm">FillPatternElement</a>^ <span class="identifier">Create</span>(
-	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>, 
+	<a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a>^ <span class="parameter">document</span>,
 	<a href="cc546ee9-ba80-c13d-4b74-8c0e2517bc28.htm">FillPattern</a>^ <span class="parameter">fillPattern</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="document"><dt><span class="parameter">document</span></dt><dd>Type: <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Document</a><br />
    The document in which to create the FillPatternElement.
@@ -18,7 +18,7 @@
    The FillPattern associated to the newly created FillPatternElement.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The newly created FillPatternElement.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// Create a complex fill pattern</span>
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">// Create a complex fill pattern</span>
 <span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> CreateComplexFillPattern(Document doc)
 {
     <span class="highlight-comment">// Create the fill pattern</span>
@@ -68,7 +68,7 @@
     fillGrid.SetSegments(segmentsList);
 
     <span class="highlight-keyword">return</span> fillGrid;
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' Create a complex fill pattern</span>
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">' Create a complex fill pattern</span>
 <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> CreateComplexFillPattern(doc <span class="highlight-keyword">As</span> Document)
     <span class="highlight-comment">' Create the fill pattern</span>
     <span class="highlight-keyword">Dim</span> fillPattern <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> FillPattern(<span class="highlight-literal">"API-created"</span>, FillPatternTarget.Model, FillPatternHostOrientation.ToHost)

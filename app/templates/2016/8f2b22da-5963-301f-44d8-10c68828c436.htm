@@ -38,7 +38,7 @@
    <a href="dc93cd7f-dc11-45da-3ed6-c459d1c55c97.htm">ChangeNumber</a> gives the programmer a way to explicitly overwrite a specific number as long
    as the new number is unique in the numbering sequence. The caller specifies a number to be changed and a new value that is
    to be applied, providing the value does not exist yet in the same numbering sequence. Although this operation may seem rather
-   limited, it provides the programmer with freedom to change practically any number even if it may be achieved in multiple steps.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">/// &lt;summary&gt;</span>
+   limited, it provides the programmer with freedom to change practically any number even if it may be achieved in multiple steps.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">/// &lt;summary&gt;</span>
 <span class="highlight-comment">/// This function consolidates the numbers on Rebar elements by removing</span>
 <span class="highlight-comment">/// any remaining gaps in numbering sequences and setting the start number</span>
 <span class="highlight-comment">/// of each sequence so numbers in sequences do not overlap.</span>
@@ -72,7 +72,7 @@
             <span class="highlight-comment">// Here we use First() from the Linq extension.</span>
             <span class="highlight-comment">// There is always at least one range in every sequence,</span>
             <span class="highlight-comment">// and after gaps are closed there is exactly one range.</span>
-            IntegerRange range = schema.GetNumbers(name).First();  
+            IntegerRange range = schema.GetNumbers(name).First();
             <span class="highlight-keyword">int</span> rangeSpan = <span class="highlight-number">1</span> + (range.High - range.Low);
             <span class="highlight-keyword">if</span> (rangeSpan &gt; maxRange)
             {
@@ -96,7 +96,7 @@
 
         transaction.Commit();
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">''' &lt;summary&gt;</span>
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-comment">''' &lt;summary&gt;</span>
 <span class="highlight-comment">''' This function consolidates the numbers on Rebar elements by removing</span>
 <span class="highlight-comment">''' any remaining gaps in numbering sequences and setting the start number</span>
 <span class="highlight-comment">''' of each sequence so numbers in sequences do not overlap.</span>

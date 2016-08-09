@@ -19,7 +19,7 @@
    wish to cancel the transaction silently without showing the errors to the user, set the processing result to
    ProceedWithRollback, however you must also call
    <a href="bebe6efd-b05f-7a0b-4cc3-609ec35be42c.htm">SetClearAfterRollback(Boolean)</a> in
-   order to dismiss the errors and silently cancel the transaction.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Automatic)]
+   order to dismiss the errors and silently cancel the transaction.</p></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Automatic)]
 
 <span class="highlight-keyword">public</span> <span class="highlight-keyword">class</span> NoUnenclosedRoomWarnings : IExternalApplication
 {
@@ -43,7 +43,7 @@
         IList&lt;FailureMessageAccessor&gt; failList = <span class="highlight-keyword">new</span> List&lt;FailureMessageAccessor&gt;();
         failList = fa.GetFailureMessages(); <span class="highlight-comment">// Inside event handler, get all warnings</span>
         <span class="highlight-keyword">foreach</span> (FailureMessageAccessor failure <span class="highlight-keyword">in</span> failList)
-        { 
+        {
             <span class="highlight-comment">// check FailureDefinitionIds against ones that you want to dismiss, </span>
             FailureDefinitionId failID = failure.GetFailureDefinitionId();
             <span class="highlight-comment">// prevent Revit from showing Unenclosed room warnings</span>
@@ -53,7 +53,7 @@
             }
         }
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve">&lt;Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Automatic)&gt; _
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve">&lt;Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Automatic)&gt; _
 <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Class</span> NoUnenclosedRoomWarnings
     <span class="highlight-keyword">Implements</span> IExternalApplication
     <span class="highlight-keyword">Shared</span> m_appId <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> AddInId(<span class="highlight-keyword">New</span> Guid(<span class="highlight-literal">"EB296268-8364-4d25-96E6-F664C608503C"</span>))

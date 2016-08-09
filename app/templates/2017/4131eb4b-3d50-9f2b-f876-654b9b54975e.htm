@@ -16,10 +16,10 @@
 	<span class="parameter">forEditing</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">Boolean</a> _
 ) <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
 <span class="keyword">static</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>^ <span class="identifier">Format</span>(
-	<a href="89d89465-897f-4105-b935-27edf67aab3e.htm">Units</a>^ <span class="parameter">units</span>, 
-	<a href="4155880c-f243-3456-fbb8-542c8f8ad692.htm">UnitType</a> <span class="parameter">unitType</span>, 
-	<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="parameter">value</span>, 
-	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">maxAccuracy</span>, 
+	<a href="89d89465-897f-4105-b935-27edf67aab3e.htm">Units</a>^ <span class="parameter">units</span>,
+	<a href="4155880c-f243-3456-fbb8-542c8f8ad692.htm">UnitType</a> <span class="parameter">unitType</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">double</a> <span class="parameter">value</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">maxAccuracy</span>,
 	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">forEditing</span>
 )</pre></td></tr></table></span></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="units"><dt><span class="parameter">units</span></dt><dd>Type: <a href="89d89465-897f-4105-b935-27edf67aab3e.htm">Autodesk.Revit.DB<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>Units</a><br />
    The units formatting settings, typically obtained from <a href="9ed56178-e9ae-b4bc-1c0e-e6a867ae3557.htm">Document.GetUnits()</a>.
@@ -33,7 +33,7 @@
    True if the formatting should be modified as necessary so that the formatted string can be successfully parsed, for example by suppressing digit grouping.  False if unmodified settings should be used, suitable for display only.
 </dd></dl></div><h4 class="subHeading">Return Value</h4>
    The formatted string.
-</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">void</span> DisplayDensityOfMaterial(Material material)
+</div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">void</span> DisplayDensityOfMaterial(Material material)
 {
     <span class="highlight-keyword">double</span> density = <span class="highlight-number">0</span>;
     <span class="highlight-comment">// get structural asset of material in order to get the density</span>
@@ -55,7 +55,7 @@
             TaskDialog.Show(<span class="highlight-literal">"Material Density"</span>, msg);
         }
     }
-}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/CopyCode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> DisplayDensityOfMaterial(material <span class="highlight-keyword">As</span> Material)
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" src="../icons/copycode.gif" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> DisplayDensityOfMaterial(material <span class="highlight-keyword">As</span> Material)
    <span class="highlight-keyword">Dim</span> density <span class="highlight-keyword">As</span> <span class="highlight-keyword">Double</span> = <span class="highlight-number">0</span>
    <span class="highlight-comment">' get structural asset of material in order to get the density</span>
    <span class="highlight-keyword">Dim</span> strucAssetId <span class="highlight-keyword">As</span> ElementId = material.StructuralAssetId
