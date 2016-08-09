@@ -26,6 +26,10 @@ a {
   /*text-decoration: None;*/
   /*color: #666*/
 }
+p {
+font-size:70%;
+}
+
 
 .navbar {
   border-radius: 0px;
@@ -71,12 +75,12 @@ background-color: #eee;
         position: absolute;
         top: 45px;
         bottom: 40px;
-        /*margin-bottom: 40px;*/
         left: 0;
         width: 30%;
         overflow-y: auto;
         min-width: 275px;
         padding:0px;
+        /*margin-bottom: 40px;*/
         /*padding-left: 20px;*/
         /*padding-top: 20px;*/
         /*padding-right: 12px;*/
@@ -92,6 +96,7 @@ background-color: #eee;
         width: 70%;
         overflow-y: scroll;
         padding-top: 20px;
+        padding-left: 20px;
         padding-right: 20px;
     }
     #sidebarsearch {
@@ -100,14 +105,11 @@ background-color: #eee;
         margin-top:0px;
 
     }
-    span.indent{
-    margin-left: 4px;
-    margin-right: 4px;
-    }
-    span#menu-loading{
+
+    #sidebar #menu-loading{
     padding-left: 15px;
     }
-    li.list-group-item{
+    #sidebar li.list-group-item{
     padding-top:6px;
     padding-bottom:6px;
 
@@ -158,7 +160,7 @@ background-color: #eee;
     background-color: #e0e0e0;
     border-top: 1px solid #ccc;
     padding-top: 2px;
-    line-height: 40px;
+    line-height: 35px;
     height: 40px;
     width: 100%;
 }
@@ -221,7 +223,6 @@ ul.CollapsibleList > li{
     font-weight: bold;
 }
 
-
 ul.CollapsibleList  ul {
     padding-left:6px;
     display: none;
@@ -235,12 +236,12 @@ ul.CollapsibleList > ul > ul {
     right:20px;
     position: absolute;
     background-color: #eee;
-    padding:4px 8px 4px 8px;
-
-    margin:0px;
+    padding: 5px 10px 5px 10px;
+    margin: 0px;
     border-radius: 5px;
 }
 #alsofor p{
+    color:999px;
     margin:0px;
 }
 

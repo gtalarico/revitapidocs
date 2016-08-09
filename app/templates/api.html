@@ -8,18 +8,39 @@
 
 {% block content %}
 
+    <!-- MODAL SEARCH -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Results: </h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL SEARCH -->
+
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
         <!-- SIDEBAR SEARCH -->
+        <form id="quick-search">
         <div class="form-group" id="sidebarsearch">
         <label class="control-label">Quick Search</label>
           <div class="input-group input-group-sm">
-            <input type="text" class="form-control" id="input-search" placeholder="ElementClass">
+            <input type="text" class="form-control" id="input-search" placeholder="Regex">
               <span class="input-group-btn">
-                <button class="btn btn-default" id="btn-search" type="button" data-toggle="modal" data-target="#myModal">Search</button>
+                <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal">Search</button>
               </span>
           </div>
         </div>
+        </form>
         <!-- SIDEBAR SEARCH -->
 
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
@@ -49,30 +70,6 @@
         {% include 'disqus.html' %}
         {# </div>#}
     </div>
-
-    <!-- MODAL SEARCH -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Results: </h4>
-          </div>
-          <div class="modal-body">
-              <ul class="list-group" id="modal-list-group">
-                  <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
-                  &nbsp;Loading</span>
-              </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- MODAL SEARCH -->
-
 
 {% endblock %}
 
@@ -155,14 +152,16 @@ $(document).ready(function() {
         var content = ''
         $.each(results, function (index, value) {
         var href = '<a href="' + value.link + '" class="list-group-item">'
-        var body = '<li class="list-group-item-text">' + value.name +'</li></a>'
+        var body = '<small><li class="list-group-item-text">' + value.name +'</li></small></a>'
         content += href+body
         });
-        $('#modal-list-group').html(content);
+        $('.modal-body').html(content);
         // $('#modal-loading').hide();
     };
 
-    $("#btn-search").click(function() {
+    $("#quick-search").submit(function(e) {
+        e.preventDefault()
+        $('.modal-body').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
         search()
     });
 
