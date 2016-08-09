@@ -11,8 +11,6 @@
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
         <!-- SIDEBAR SEARCH -->
-        {# Add menu for the correct year #}
-        {# {% include '%s' % ns_template with context %}#}
         <div class="form-group" id="sidebarsearch">
         <label class="control-label">Quick Search</label>
           <div class="input-group input-group-sm">
@@ -34,12 +32,12 @@
     </div>
 
     <div class="col-sm-12 col-md-8 col-lg-9" id="main">
-        {% if active_ul and available_in%}
+        {% if active_href and available_in %}
             <div id='alsofor'>
                 <p class="small"><small>
                     API VERSIONS :
                     {% for year in available_in %}
-                    <a href="/{{year}}/{{active_ul}}"> {{year}} </a>
+                    <a href="/{{year}}/{{active_href}}"> {{year}} </a>
                     {% endfor %}
                 </small></p>
             </div>
@@ -62,6 +60,8 @@
           </div>
           <div class="modal-body">
               <ul class="list-group" id="modal-list-group">
+                  <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
+                  &nbsp;Loading</span>
               </ul>
           </div>
           <div class="modal-footer">
@@ -76,8 +76,9 @@
 
 {% endblock %}
 
+
 {% block script %}
-    <script>
+<script>
 
 $(document).ready(function() {
     // LOAD MENU
@@ -108,19 +109,20 @@ $(document).ready(function() {
               data: string_json,
             });
 
-        if ("{{active_ul}}" == 'None'){
-            // console.log('active_ul not defined. Using 0')
+        if ("{{active_href}}" == 'None'){
+            // console.log('active_href not defined. Using 0')
             activeNodeId = 0
         } else {
                 var node, activeNodeId, nodeId = 0;
                 do {
                     node = $('#treeview').treeview("getNode", nodeId);
-                    if (node && node.href == "{{active_ul}}") {
+                    if (node && node.href == "{{active_href}}") {
                         // console.log(node.nodeId)
                         activeNodeId = node.nodeId
                     };
                     nodeId++;
-                    } while (node.nodeId != undefined);
+                    }
+                while (node.nodeId != undefined);
                 };
         if (activeNodeId == undefined){
         activeNodeId = 0
@@ -128,7 +130,6 @@ $(document).ready(function() {
 
         $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
         $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
-
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').remove();
 
@@ -148,16 +149,17 @@ $(document).ready(function() {
     };
 
     function buildResults(results, pattern){
-        $('.modal-title').append(pattern);
-
-        // var decoder = $('<div />');
-        // var decodedText = '';
-        var output
+        $('.modal-title').html('Results: <strong>'+pattern+'</stron>');
+        $('#modal-loading').show();
+        // var output
+        var content = ''
         $.each(results, function (index, value) {
-        output = '<li class="list-group-item"><a href="' + value.link + '">' + value.name + ':' +'</a></li>'
-        $('#modal-list-group').append(output);
-        // decodedText += decoder.text();
-            });
+        var href = '<a href="' + value.link + '" class="list-group-item">'
+        var body = '<li class="list-group-item-text">' + value.name +'</li></a>'
+        content += href+body
+        });
+        $('#modal-list-group').html(content);
+        // $('#modal-loading').hide();
     };
 
     $("#btn-search").click(function() {

@@ -27,23 +27,21 @@ def index():
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
     """Add Docs"""
-    ns_template = 'ns_{year}.html'.format(year=year)
-    active_ul = None
+    active_href = filename
 
     if filename:
         content_path = '{year}/{html}'.format(year=year, html=filename)
         available_in = check_available_years(filename)
-        active_ul = filename
+        active_href = filename
         schema = get_schema(year, filename)
     else:
         content_path = 'home.html'
-        # content_path = 'new_{year}.html'.format(year=year)
         available_in = AVAILABLE_APIS
         schema = {'name': "Revit API {} Index".format(year)}
     try:
         logger.debug('Schema: %s', schema)
-        return render_template('api.html', year=year, active_ul=active_ul,
-                               ns_template=ns_template, content=content_path,
+        return render_template('api.html', year=year, active_href=active_href,
+                               content=content_path,
                                available_in=available_in, schema=schema)
 
     except TemplateNotFound as error:
@@ -54,7 +52,7 @@ def api_year(year, filename=None):
 
 
 @app.route('/<string:year>/namespace.json', methods=['GET'])
-def treejson(year):
+def namespace_get(year):
     cwd = app.config['BASEDIR']
     filename = 'ns_{year}.json'.format(year=year)
     fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
@@ -65,21 +63,20 @@ def treejson(year):
 
 
 @app.route('/<string:year>/search', methods=['GET'])
-def search_tree(year):
+def namespace_search(year):
     cwd = app.config['BASEDIR']
     filename = 'members_{year}.json'.format(year=year)
-    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
-                                            'json', filename)
+    fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder, 'json', filename)
     with open(fullpath) as fp:
         members = json.load(fp)
     results = []
     query = request.args.get('query')
     if not query:
-        return jsonify([{'noquery': ''}])
+        return jsonify([])
     for name, href in members.items():
         match = re.findall(query.lower(), name.lower())
         if match:
-            results.append({'name':name, 'link':href})
+            results.append({'name': name, 'link': href})
     return jsonify(results)
 
 

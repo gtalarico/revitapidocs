@@ -91,8 +91,8 @@ background-color: #eee;
         right: 0;
         width: 70%;
         overflow-y: scroll;
-        /*padding-top: 20px;*/
-        /*padding-right: 40px;*/
+        padding-top: 20px;
+        padding-right: 20px;
     }
     #sidebarsearch {
         padding:20px;
@@ -242,4 +242,8 @@ ul.CollapsibleList > ul > ul {
 }
 #alsofor p{
     margin:0px;
+}
+
+li.list-group-item-text {
+    list-style: none;
 }

@@ -6,12 +6,12 @@ from app.logger import logger
 
 AVAILABLE_APIS = ['2015', '2016', '2017']
 
+
 def check_available_years(filename):
     available_in = []
     for year in AVAILABLE_APIS:
-        cwd = app.config['BASEDIR']
-        fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
-                                        year, filename)
+        template_dir = app.config['TEMPLATEDIR']
+        fullpath = '{}/{}/{}'.format(template_dir, year, filename)
 
         if os.path.exists(fullpath):
             available_in.append(year)
@@ -20,9 +20,9 @@ def check_available_years(filename):
 
 def get_schema(*path):
     """This should be stored/cached in database"""
-    cwd = app.config['BASEDIR']
+    template_dir = app.config['TEMPLATEDIR']
     filepath = '/'.join(path)
-    fullpath = '{}/{}/{}'.format(cwd, app.template_folder, filepath)
+    fullpath = '{}/{}'.format(template_dir, filepath)
     logger.debug('Getting schema for : %s', fullpath)
     try:
         with open(fullpath) as fp:
@@ -38,7 +38,7 @@ def get_schema(*path):
             logger.error(errmsg)
         else:
             return {'name': name,
-            'description': description,
-            'namespace': namespace}
+                    'description': description,
+                    'namespace': namespace}
     logger.error('Failed to get schema:: %s', fullpath)
     return
