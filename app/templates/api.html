@@ -96,8 +96,8 @@ $(document).ready(function() {
               collapseIcon: "glyphicon glyphicon-unchecked",
               emptyIcon: "glyphicon glyphicon-unchecked",
             //   selectedIcon: 'glyphicon glyphicon-chevron-right',
-              selectedBackColor: "#333",
-              selectedColor: "#eee",
+              selectedBackColor: "#444",
+              selectedColor: "#e0e0e0",
               showBorder: false,
               levels: 1,
               enableLinks: true,
@@ -107,7 +107,7 @@ $(document).ready(function() {
             });
         var is_desktop = ($(window).width() > 900)
         if (("{{active_href}}" != 'None') && is_desktop){
-            console.log('active_href is not None. Iterating to find matching href');
+            // console.log('active_href is not None. Iterating to find matching href');
             var node, activeNodeId, nodeId = 0;
                 do {
                     node = $('#treeview').treeview("getNode", nodeId);
@@ -122,7 +122,7 @@ $(document).ready(function() {
 
         console.log('activeNodeId: '+ activeNodeId)
         if (activeNodeId != undefined){
-        console.log('Found Node.')
+        // console.log('Found Node.')
 
         $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
         $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);

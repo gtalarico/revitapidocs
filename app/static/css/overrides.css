@@ -6,8 +6,8 @@ border-bottom:1px solid #/eee !important;
 }
 
 #mainSection, #header{
-/*font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !important;*/
-color:#666 !importnat;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    color:#666 !important;
 }
 
 #mainSection .summary{
@@ -78,7 +78,10 @@ background-color:#fff !important;
 .highlight-comment{
     color:#999 !important;
 }
-headerTableRow1 {}
+
+.headerTableRow1 {
+
+}
 
 .footerLine {
     display:none;

@@ -3,9 +3,15 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
+
+p, body {
+    font-size:14px;
+    }
+
 .alert {
   position: absolute;
   top: 75px;
@@ -14,45 +20,13 @@ body, h1, h2, h3, h4, h5, h6 {
   right: 50px;
 }
 
-/*added to center panels*/
-.center {
-  margin:0px;
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-a {
-  /*text-decoration: None;*/
-  /*color: #666*/
-}
-p {
-font-size:70%;
-}
 
 
 .navbar {
-  border-radius: 0px;
-  border: 0px;
-  margin-bottom: 0px;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  /*color: #008cba;*/
-  /*color: #18bc9c;*/
-  /*background-color: inherit;*/
-}
-
-.navbar-brand {
-    /*font-weight: 100;*/
-    /*font-size: 14px;*/
-}
-
-
-div {
-    /*border:2px solid black !important;*/
+    border-radius: 0px;
+    border: 0px;
+    margin-bottom: 0px;
 }
 
 html, body {
@@ -62,8 +36,6 @@ html, body {
 #content {
     overflow: hidden;
     /*height: 100vh;*/
-    /*overflow: hidden;*/
-    /*margin-bottom:40px;*/
 }
 
 #sidebar {
@@ -81,34 +53,28 @@ background-color: #eee;
         overflow-y: auto;
         min-width: 275px;
         padding:0px;
-        /*margin-bottom: 40px;*/
-        /*padding-left: 20px;*/
-        /*padding-top: 20px;*/
-        /*padding-right: 12px;*/
-        /*padding-bottom: 20px;*/
         border-right: 1px solid #ddd;
     }
     #main {
         position: absolute;
         top: 45px;
         bottom: 40px;
-        /*margin-bottom: 40px;*/
         right: 0;
         width: 70%;
         overflow-y: scroll;
         padding-top: 20px;
         padding-left: 20px;
         padding-right: 20px;
+        /*margin-bottom: 40px;*/
     }
     #sidebarsearch {
         padding:20px;
         margin-bottom:0px;
         margin-top:0px;
-
     }
 
     #sidebar #menu-loading{
-    padding-left: 15px;
+        padding-left: 15px;
     }
 
     #alsofor {
@@ -163,9 +129,9 @@ background-color: #eee;
     display:none;
     }
 }
+
 #comment-bar{
     margin-top: 50px;
-    /*font-size:10px;*/
 }
 
 #myfooter {
@@ -188,13 +154,6 @@ background-color: #eee;
 #myfooter a {
     color: #999;
 }
-
-#search{
-    /*display:inline-block;*/
-    max-width: 400px;
-}
-
-
 
 li.list-group-item-text {
     list-style: none;
