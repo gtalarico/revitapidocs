@@ -14,14 +14,15 @@
         <!-- CHILD HEADER -->
 
         <meta name="google-site-verification" content="Dn1KWTK6Dm3XMYL1XHu2FUNgz4YH8bUA0YGoFkoWpi0" />
-
+        <meta name="theme-color" content="#222">
         <meta name="description" content="Online Documentation for Autodesk's Revit API: 2015, 2016, 2017">
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         <meta name="ROBOTS" content="INDEX, FOLLOW">
 
-        <link rel="shortcut icon" href="{{ url_for('static', filename="favicon.png") }}">
-        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+        <link rel="icon" sizes="192x192" href="{{ url_for('static', filename="icon-192.png") }}">
+        <link rel="apple-touch-icon" href="{{ url_for('static', filename="icon-144.png") }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename="icon-16.png") }}">
         {% assets "css_assets" %}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
         {% endassets %}
