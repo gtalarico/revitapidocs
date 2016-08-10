@@ -36,9 +36,14 @@
 	cursor: not-allowed;
 }
 
+.treeview .node-selected {
+	font-weight: 400;
+}
+
 .treeview ul.list-group {
     margin-bottom: 0px;
 }
+
 
 @media (max-width: 900px){
     /*.treeview li.list-group-item {*/

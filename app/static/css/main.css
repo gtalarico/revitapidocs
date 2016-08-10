@@ -155,6 +155,7 @@ background-color: #eee;
     color: #999;
 }
 
+/*results list*/
 li.list-group-item-text {
     list-style: none;
 }

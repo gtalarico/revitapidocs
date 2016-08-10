@@ -58,12 +58,18 @@ background-color:#fff !important;
 }
 
 #mainSection span .keyword {
-    font-weight:bold;
-    color:#008cba;
+    font-weight:normal;
+    color:#54b593;
+    /*color:#008cba; blue */
 }
 .highlight-keyword{
-    font-weight:bold;
-    color:#008cba !important;
+    font-weight:normal;
+    color:#54b593 !important;
+    /*color:#18bc9c !important;*/
+    }
+
+.highlight-number{
+    color:#70678e !important;
     /*color:#18bc9c !important;*/
     }
 
@@ -72,11 +78,13 @@ background-color:#fff !important;
 }
 
 .highlight-literal{
-    color: #f39c12 !important;
+    font-style: italic;
+    color: #e89066 !important;
 }
 
 .highlight-comment{
-    color:#999 !important;
+    font-weight: bold;
+    color:#b7b9b8 !important;
 }
 
 .footerLine {
@@ -112,18 +120,8 @@ div#header a{
 
 
 /*FIX INVALID*/
-body #mainBody {
+body #mainBody, body #mainBody a, body #mainBody p, body #mainBody span {
     font-size: 12px !important;
-    /*margin-left: 15px;*/
-    /*margin-top: 10px;*/
-    /*padding-bottom: 20;*/
-}
-
-body #mainBody a {
-    font-size: 12px !important;
-    /*margin-left: 15px;*/
-    /*margin-top: 10px;*/
-    /*padding-bottom: 20;*/
 }
 
 #runningHeaderText{
