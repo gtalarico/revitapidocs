@@ -106,11 +106,13 @@ $(document).ready(function() {
         var is_desktop = ($(window).width() > 900)
         if (("{{active_href}}" != 'None') && is_desktop){
             // console.log('active_href is not None. Iterating to find matching href');
-            var node, activeNodeId, nodeId = 0;
+            var node, activeNode
+            var activeNodeId, nodeId = 0;
                 do {
                     node = $('#treeview').treeview("getNode", nodeId);
                     if (node && node.href == "{{active_href}}") {
                         // console.log(node.nodeId)
+                        activeNode = node
                         activeNodeId = node.nodeId
                     };
                     nodeId++;
@@ -120,10 +122,16 @@ $(document).ready(function() {
 
         console.log('activeNodeId: '+ activeNodeId)
         if (activeNodeId != undefined){
-        // console.log('Found Node.')
+            console.log('Found Node.')
+            $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
+            $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
 
-        $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
-        $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
+            var scrollto = $('a[href="' + activeNode.href +'"]').offset().top - 300;
+            $('#sidebar').animate({ scrollTop: scrollto }, 500, "swing");
+            // var activeNode = $('#treeview').treeview('getNode', activeNodeId);
+            // $('#sidebar').animate({
+            // scrollTop: $('#treeview').treeview('getNode', activeNodeId).offset().top}, 2000);
+
         } else {console.log('Could not find matching node.')};
 
         $('#menu-loading').animate({opacity: 0},250);
