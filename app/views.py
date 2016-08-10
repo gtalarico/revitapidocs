@@ -38,10 +38,12 @@ def api_year(year, filename=None):
         available_in = check_available_years(filename)
         active_href = filename
         schema = get_schema(year, filename)
-    else:
+    elif year in AVAILABLE_APIS:
         content_path = 'home.html'
         available_in = AVAILABLE_APIS
         schema = {'name': "Revit API {} Index".format(year)}
+    else:
+        abort(404)
     try:
         logger.debug('Schema: %s', schema)
         return render_template('api.html', year=year, active_href=active_href,
