@@ -82,9 +82,10 @@ background-color: #eee;
             right:20px;
             position: absolute;
             background-color: #eee;
+            border: 1px solid #ddd;
             padding: 5px 10px 5px 10px;
             margin: 0px;
-            border-radius: 5px;
+            /*border-radius: 5px;*/
     }
     #alsofor p{
         color:999px;

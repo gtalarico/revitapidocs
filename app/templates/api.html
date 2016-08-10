@@ -3,10 +3,13 @@
 <!-- Rendered tempaltes must include header() macro#} -->
 {% from '%s' % content import header %}
 {% block header %}
+<!-- START  API HEADER -->
     {{ header() }}
+<!-- END  API HEADER -->
 {% endblock %}
 
 {% block content %}
+<!-- START  API HTML -->
 
     <!-- MODAL SEARCH -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -27,6 +30,7 @@
     </div>
     <!-- MODAL SEARCH -->
 
+    <!-- START SIDEBAR -->
     <div class="col-sm-12 col-md-4 col-lg-3" id="sidebar">
 
         <!-- SIDEBAR SEARCH -->
@@ -45,14 +49,19 @@
 
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
         &nbsp;Loading</span>
+        <!-- START BOOTSTRAP TREEVIEW -->
         <div id="treeview"></div>
+        <!-- END BOOTSTRAP TREEVIEW -->
 
         {# Add Google Search Box #}
         {#{% include 'google_search.html' %}#}
 
     </div>
+    <!-- END SIDEBAR -->
 
+    <!-- START MAIN -->
     <div class="col-sm-12 col-md-8 col-lg-9" id="main">
+
         {% if active_href and available_in %}
             <div id='alsofor'>
                 <p class="small"><small>
@@ -63,25 +72,35 @@
                 </small></p>
             </div>
         {%endif%}
-
+        <!-- START MAIN CONTENT -->
         {% include '%s' % content %}
-        <hr />
-        {% include 'disqus.html' %}
-    </div>
+        <!-- END MAIN CONTENT -->
 
+        <hr />
+        <!-- START DISQUS -->
+        {% include 'disqus.html' %}
+        <!-- END DISQUS -->
+
+    </div>
+    <!-- END MAIN -->
+
+<!-- END API HTML -->
 {% endblock %}
 
 
 {% block script %}
+<!-- START API SCRIPT  -->
 <script>
-
 $(document).ready(function() {
+
     // LOAD MENU
     var string_json
     var ajax = $.getJSON("namespace.json", function(json) {
         string_json = JSON.stringify(json);
         buildMenu()
     });
+
+    // Needs fail handling
     ajax.always(function() {
         console.log('Ajax JSON namespace loaded.');
         });
@@ -103,9 +122,10 @@ $(document).ready(function() {
               backColor: '#eee',
               data: string_json,
             });
+
         var is_desktop = ($(window).width() > 900)
         if (("{{active_href}}" != 'None') && is_desktop){
-            // console.log('active_href is not None. Iterating to find matching href');
+            console.log('active_href is not None. Iterating to find matching href');
             var node, activeNode
             var activeNodeId, nodeId = 0;
                 do {
@@ -120,24 +140,22 @@ $(document).ready(function() {
                 while (node.nodeId != undefined);
                 };
 
-        console.log('activeNodeId: '+ activeNodeId)
         if (activeNodeId != undefined){
             console.log('Found Node.')
+
             $('#treeview').treeview('revealNode', [ activeNodeId, { silent: false } ]);
             $('#treeview').treeview('toggleNodeSelected', [ activeNodeId, { silent: false } ]);
 
-            var scrollto = $('a[href="' + activeNode.href +'"]').offset().top - 300;
-            $('#sidebar').animate({ scrollTop: scrollto }, 500, "swing");
-            // var activeNode = $('#treeview').treeview('getNode', activeNodeId);
-            // $('#sidebar').animate({
-            // scrollTop: $('#treeview').treeview('getNode', activeNodeId).offset().top}, 2000);
+            var scrollto = $('a[href="' + activeNode.href +'"]').offset().top - 200;
+            // $('#sidebar').animate({ scrollTop: scrollto }, 500, "swing");
+            $('#sidebar').scrollTop(scrollto); // Scroll, no animation
 
         } else {console.log('Could not find matching node.')};
 
         $('#menu-loading').animate({opacity: 0},250);
-        $('#menu-loading').remove();
+        $('#menu-loading').hide();
 
-    };
+    };  // End of Build Menue Call Back Function
 
     function search(e){
     var pattern = $('#input-search').val();
@@ -165,13 +183,14 @@ $(document).ready(function() {
     };
 
     $("#quick-search").submit(function(e) {
-        e.preventDefault()
+        e.preventDefault() // Keeps page from submitting and reloading
         $('.modal-body').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
         search()
     });
 
 }); //END OF DOC READY
 
-    </script>
+</script>
+<!-- END API SCRIPT  -->
 
 {% endblock %}
