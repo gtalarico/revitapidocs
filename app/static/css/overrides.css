@@ -103,7 +103,10 @@ div #header{
     margin-top:-20px;
 }
 
-div#header p, a{
+div#header p{
+    font-size: 10px !important;
+}
+div#header a{
     font-size: 10px !important;
 }
 
