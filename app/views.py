@@ -10,12 +10,13 @@ from flask import abort, flash, jsonify
 from jinja2.exceptions import TemplateNotFound
 from werkzeug.exceptions import NotFound
 
-from app import app, cache
+from app import app
+from app import cache
 from app.logger import logger
 from app.utils import *
 
 
-@cache.cached(timeout=60)
+# @cache.cached(timeout=60)
 @app.route('/')
 @app.route('/index.html', methods=['GET'])
 def index():
@@ -26,7 +27,7 @@ def index():
 
 # API: /2015/
 # API Pages: /2015/123sda-asds-asd.htmll
-@cache.cached(timeout=3600)
+# @cache.cached(timeout=3600)
 @app.route('/<string:year>/', methods=["GET"])
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
@@ -57,9 +58,11 @@ def api_year(year, filename=None):
         abort(404)
 
 
-@cache.cached(timeout=3600)
+# @cache.cached(timeout=3600)
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
+    print('>>>',request.path)
+    print('>>>',cache.get(request.path))
     cwd = app.config['BASEDIR']
     filename = 'ns_{year}.json'.format(year=year)
     fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
@@ -95,3 +98,9 @@ def namespace_search(year):
 def chm_static_redirect(filename=None):
     path = '/static' + request.path
     return redirect(path, 301)
+
+
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    return response
