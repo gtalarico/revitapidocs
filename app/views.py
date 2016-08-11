@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import re
+import requests
 from collections import OrderedDict
 
 from flask import render_template, redirect, url_for, send_from_directory
@@ -61,8 +62,6 @@ def api_year(year, filename=None):
 # @cache.cached(timeout=3600)
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
-    print('>>>',request.path)
-    print('>>>',cache.get(request.path))
     cwd = app.config['BASEDIR']
     filename = 'ns_{year}.json'.format(year=year)
     fullpath = '{}/{}/{}/{}'.format(cwd, app.template_folder,
@@ -104,3 +103,29 @@ def chm_static_redirect(filename=None):
 def add_header(response):
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
+
+@app.route('/gists/', methods=['GET'])
+def get_gists():
+    d = gists()
+    return render_template('gists.html', gists=d)
+
+# @app.route('/gists/gists.json', methods=['GET'])
+def gists():
+    GISTS_URL = 'https://api.github.com/users/gtalarico/gists'
+    gists = requests.get(GISTS_URL)
+    if gists.status_code == 200:
+        json_gists = json.loads(gists.text)
+        revit_api_gists = []
+
+        for gist in json_gists:
+            description = gist['description']
+            for gist_name, gist_dict in gist['files'].items():
+                gist_url = gist_dict['raw_url']
+                gist_code = requests.get(gist_url)
+                if gist_code.status_code == 200 and 'revitapi' in gist_name:
+                    gist_code_lines = gist_code.text.split('\n')
+                    revit_api_gists.append({'name':gist_name,
+                                            'description': description,
+                                            'code': gist_code_lines})
+        return revit_api_gists
+    # return jsonify(revit_api_gists)

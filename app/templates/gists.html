@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block header %}
+<title>Revit API Docs</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+    <br/>
+    <h4>Python Code</h4>
+    <hr />
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+    {% for gist in gists %}
+      <div class="panel panel-default">
+        <div class="panel-heading" role="button" id="heading{{loop.index}}"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
+          <h4 class="panel-title">
+            <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}"> -->
+              {{gist.description}}
+            <!-- </a> -->
+          </h4>
+        </div>
+        <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
+          <div class="panel-body">
+            <p>{{gist.name}}</p>
+            <code>
+            {% for line in gist.code %}
+                {{line}}<br/>
+            {% endfor %}
+            </code>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+
+    {% include 'disqus.html' %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<!-- START API SCRIPT  -->
+<script>
+$(document).ready(function() {
+
+};
+
+// $(document).ready(function() {
+//     var string_json;
+//     var ajax = $.getJSON("/gists/gists.json", function(json) {
+//             results = json;
+//             buildResults(results)
+//         });
+//     function buildResults(results) {
+//
+//         var content = ''
+//         $.each(results, function (index, value) {
+//         var name = '<p>' + value.name + '</p>'
+//         var desc = '<p>' + value.description + '</p>'
+//         var code = '<p>' + value.code + '</p>'
+//         content += name + desc + code
+//         });
+//
+//     };  // End of Build Menue Call Back Function
+// }); //END OF DOC READY
+
+</script>
+{% endblock %}
