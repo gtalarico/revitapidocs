@@ -8,37 +8,44 @@
 
 <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="col-sm-12 col-md-6 col-lg-6">
-    <br/>
-    <h4>Python Code</h4>
-    <hr />
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <br/>
+        <h4>Python Code</h4>
+        <hr />
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-    {% for gist in gists %}
-      <div class="panel panel-default">
-        <div class="panel-heading" role="button" id="heading{{loop.index}}"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
-          <h4 class="panel-title">
-            <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}"> -->
-              {{gist.description}}
-            <!-- </a> -->
-          </h4>
-        </div>
-        <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
-          <div class="panel-body">
-            <p>{{gist.name}}</p>
-            <code>
-            {% for line in gist.code %}
-                {{line}}<br/>
-            {% endfor %}
-            </code>
+        {% for gist in gists %}
+          <div class="panel panel-default">
+            <div class="panel-heading" role="button" id="heading{{loop.index}}"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
+              <h4 class="panel-title">
+                <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}"> -->
+                  {{gist.description}}
+                <!-- </a> -->
+              </h4>
+            </div>
+            <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
+              <div class="panel-body">
+                <p>{{gist.name}}</p>
+                <code>
+                {% for line in gist.code %}
+                    {{line}}<br/>
+                {% endfor %}
+                </code>
 
+              </div>
+            </div>
           </div>
+        {% endfor %}
         </div>
-      </div>
-    {% endfor %}
-    </div>
 
-    {% include 'disqus.html' %}
     </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+    <br />
+    <h4>Dynamo Code</h4>
+    </div>
+    <br />
+    <hr />
+    <br />
+    {% include 'disqus.html' %}
 </div>
 
 {% endblock %}
