@@ -104,12 +104,12 @@ def add_header(response):
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
-@app.route('/gists/', methods=['GET'])
-def gists():
+@app.route('/python/', methods=['GET'])
+def python():
     # ordered_gist = OrderedDict(sorted(get_gists().items()))
     gists_by_categories = get_gists()
     d = OrderedDict(sorted(gists_by_categories.items()))
-    return render_template('gists.html', gists_categories=d)
+    return render_template('python.html', gists_categories=d)
 
 # @app.route('/gists/gists.json', methods=['GET'])
 def get_gists():
