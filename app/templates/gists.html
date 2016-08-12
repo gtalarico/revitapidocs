@@ -6,11 +6,11 @@
 
 {% block content %}
  <br/>
-<div class="col-sm-12 col-md-12 col-lg-12" id="content">
+<div class="col-sm-12 col-md-12 col-lg-12">
 <h4>Python Gists</h4>
 <hr />
-<p>These Python code to help you fill the python gap is the official documentation.</p>
-<p>For more more examples of Python code interacting with the Revit API, check out the <a href="#">pyRevit Repository.</a></p>
+<p>As the official documentation lacks any mention of Python, I thought it would be helpful to create a page where one can find some python examples and snippets.</p>
+<p>For a much more comprehensive set of examples of Python interacting with the Revit API, check out the <a href="#">pyRevit Repository.</a></p>
     <div class="row"> <!--  ROW -->
     {% for category, gists in gists_categories.items() %}
     <div class="col-sm-12 col-md-6 col-lg-6">
@@ -27,7 +27,7 @@
                       </h4>
                     </div>
                     <div id="collapse{{cat_loop}}-{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{cat_loop}}-{{loop.index}}">
-                      <div class="panel-body">
+                      <div class="panel-body gist-panel">
                         <script src="{{gist.url}}"></script>
                       </div>
                     </div>
