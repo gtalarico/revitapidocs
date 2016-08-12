@@ -132,7 +132,8 @@ background-color: #eee;
 }
 
 #comment-bar{
-    margin-top: 50px;
+    /*clear: both;*/
+    padding-top: 75px;
 }
 
 #myfooter {

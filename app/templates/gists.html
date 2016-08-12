@@ -5,46 +5,38 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="col-sm-12 col-md-12 col-lg-12">
+ <br/>
+<div class="col-sm-12 col-md-12 col-lg-12" id="content">
+<h4>Python Gists</h4>
+<hr />
+<p>These Python code to help you fill the python gap is the official documentation.</p>
+<p>For more more examples of Python code interacting with the Revit API, check out the <a href="#">pyRevit Repository.</a></p>
+    <div class="row"> <!--  ROW -->
+    {% for category, gists in gists_categories.items() %}
     <div class="col-sm-12 col-md-6 col-lg-6">
         <br/>
-        <h4>Python Code</h4>
+        <h4>{{ category }}</h4>
         <hr />
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-        {% for gist in gists %}
-          <div class="panel panel-default">
-            <div class="panel-heading" role="button" id="heading{{loop.index}}"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
-              <h4 class="panel-title">
-                <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}"> -->
-                  {{gist.description}}
-                <!-- </a> -->
-              </h4>
-            </div>
-            <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
-              <div class="panel-body">
-                <p>{{gist.name}}</p>
-                <code>
-                {% for line in gist.code %}
-                    {{line}}<br/>
-                {% endfor %}
-                </code>
-
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+                {% set cat_loop = loop.index %}
+                {% for gist in gists %}
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="button" id="heading{{cat_loop}}-{{loop.index}}"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{cat_loop}}-{{loop.index}}" aria-expanded="true" aria-controls="collapse{{cat_loop}}-{{loop.index}}">
+                      <h4 class="panel-title">
+                          {{ gist.name }}
+                      </h4>
+                    </div>
+                    <div id="collapse{{cat_loop}}-{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{cat_loop}}-{{loop.index}}">
+                      <div class="panel-body">
+                        <script src="{{gist.url}}"></script>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
         </div>
-
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-6">
-    <br />
-    <h4>Dynamo Code</h4>
-    </div>
-    <br />
-    <hr />
-    <br />
+    {% endfor %}
+    </div> <!--  ROW -->
     {% include 'disqus.html' %}
 </div>
 

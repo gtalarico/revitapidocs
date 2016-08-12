@@ -3,7 +3,7 @@ import sys
 import json
 import re
 import requests
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
@@ -105,27 +105,24 @@ def add_header(response):
     return response
 
 @app.route('/gists/', methods=['GET'])
-def get_gists():
-    d = gists()
-    return render_template('gists.html', gists=d)
+def gists():
+    d = dict(get_gists())
+    return render_template('gists.html', gists_categories=d)
 
 # @app.route('/gists/gists.json', methods=['GET'])
-def gists():
+def get_gists():
     GISTS_URL = 'https://api.github.com/users/gtalarico/gists'
     gists = requests.get(GISTS_URL)
+    gists_categories = defaultdict(list)
+
     if gists.status_code == 200:
         json_gists = json.loads(gists.text)
-        revit_api_gists = []
-
         for gist in json_gists:
-            description = gist['description']
-            for gist_name, gist_dict in gist['files'].items():
-                gist_url = gist_dict['raw_url']
-                gist_code = requests.get(gist_url)
-                if gist_code.status_code == 200 and 'revitapi' in gist_name:
-                    gist_code_lines = gist_code.text.split('\n')
-                    revit_api_gists.append({'name':gist_name,
-                                            'description': description,
-                                            'code': gist_code_lines})
-        return revit_api_gists
+            if 'RevitAPI' not in gist['description']:
+                continue
+            gist_group, gist_name = gist['description'].split('::')[1:]
+            gist_embed_url = '{url}.js'.format(url=gist['html_url'])
+            gists_categories[gist_group].append({'name': gist_name,
+                                                'url': gist_embed_url})
+    return gists_categories
     # return jsonify(revit_api_gists)
