@@ -9,7 +9,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .margin-top {
-margin-top: 60px;
+margin-top: 40px;
 }
 
 p, body {
@@ -39,8 +39,12 @@ html, body {
     background-color: #eee;
 }
 #main-full{
+    position: absolute;
     padding:20px;
     width: 100%;
+    overflow-y: auto;;
+    bottom: 40px;
+    top: 45px;
 }
 
 /*DESKTOP*/
@@ -48,6 +52,7 @@ html, body {
     #content {
         overflow: hidden;
     }
+
     #sidebar {
         position: absolute;
         width: 30%;
