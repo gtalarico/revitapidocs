@@ -38,13 +38,11 @@ html, body {
 #sidebar {
     background-color: #eee;
 }
+
 #main-full{
-    position: absolute;
     padding:20px;
+    overflow-y: auto;
     width: 100%;
-    overflow-y: auto;;
-    bottom: 40px;
-    top: 45px;
 }
 
 /*DESKTOP*/
@@ -52,6 +50,12 @@ html, body {
     #content {
         overflow: hidden;
     }
+
+    #main-full{
+    position: absolute;
+    bottom: 40px;
+    top: 45px;
+}
 
     #sidebar {
         position: absolute;

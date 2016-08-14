@@ -1,19 +1,20 @@
 Core Tasks:
+☐ Python Gists: add handling
 ☐ Fix Google Search
-☐ Improve Namespace menu (long html)
-☐ Solution for Chm static
+✔ Improve Namespace menu (long html) @done(2016-08-14 12:55)
+✔ Solution for Chm static @done(2016-08-14 12:55)
 ✔ Parse 2015 @done
 ✔ Parse 2016 @done
 ✔ Parse 2017 @done
 
 Minor Tasks:
-☐ Add block {%header%} to chm  content to add header tags for indexing
-☐ Clean up code on content to improve performance and remove junk.
+✔ Add block {%header%} to chm  content to add header tags for indexing @done(2016-08-14 12:55)
+✔ Clean up code on content to improve performance and remove junk. @done(2016-08-14 12:56)
 ✔ Improve CSS on CHM material @done(2016-08-02 01:27)
 ✔ Keep menu open @done(2016-07-30 19:52)
 
 Features:
-☐ Roll Panes separately
+✔ Roll Panes separately @done(2016-08-14 12:56)
 ✔ Add Commenting System @done(2016-08-02 01:27)
 
 Bugs:

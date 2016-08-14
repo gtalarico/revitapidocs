@@ -103,6 +103,7 @@ def add_header(response):
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
+
 @app.route('/python/', methods=['GET'])
 def python():
     # ordered_gist = OrderedDict(sorted(get_gists().items()))
@@ -110,22 +111,26 @@ def python():
     d = OrderedDict(sorted(gists_by_categories.items()))
     return render_template('python.html', gists_categories=d)
 
-# @app.route('/gists/gists.json', methods=['GET'])
+
 def get_gists():
     GISTS_URL = 'https://api.github.com/users/gtalarico/gists'
-    gists = requests.get(GISTS_URL)
-    gists_by_categories = defaultdict(list)
+    try:
+        gists = requests.get(GISTS_URL, timeout=(1, 1.5))
+    except requests.exceptions.RequestException as errmsg:
+        logger.warning('Failed to get GISTS: %s', errmsg)
+        gists_by_categories = {'error': errmsg.__doc__}
+    else:
+        gists_by_categories = defaultdict(list)
 
-    if gists.status_code == 200:
-        json_gists = json.loads(gists.text) # Json Gists
+        if gists.status_code == 200:
+            json_gists = json.loads(gists.text)  # Json Gists
 
-        sorted_gists = sorted(json_gists, key=lambda k: k['description'])
-        for gist in sorted_gists:
-            if 'RevitAPI' not in gist['description']:
-                continue
-            gist_group, gist_name = gist['description'].split('::')[1:]
-            gist_embed_url = '{url}.js'.format(url=gist['html_url'])
-            gists_by_categories[gist_group].append({'name': gist_name,
-                                                    'url': gist_embed_url})
+            sorted_gists = sorted(json_gists, key=lambda k: k['description'])
+            for gist in sorted_gists:
+                if 'RevitAPI' not in gist['description']:
+                    continue
+                gist_group, gist_name = gist['description'].split('::')[1:]
+                gist_embed_url = '{url}.js'.format(url=gist['html_url'])
+                gists_by_categories[gist_group].append({'name': gist_name,
+                                                        'url': gist_embed_url})
     return gists_by_categories
-    # return jsonify(revit_api_gists)
