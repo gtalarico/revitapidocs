@@ -22,7 +22,6 @@ from app.utils import *
 @app.route('/index.html', methods=['GET'])
 def index():
     title = 'Revit API Docs'
-    # flash('Loaded')
     return render_template('index.html', title=title)
 
 

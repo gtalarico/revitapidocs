@@ -5,21 +5,16 @@
 {% endblock %}
 
 {% block content %}
-<br/>
-<div class="col-sm-12 col-md-12 col-lg-12">
+<div class="col-sm-12 col-md-12 col-lg-12" id="main-full">
     <h4>Online Documentation for the Revit API</h4>
     <hr />
-    This website was created to facilitate access to the
+    <p>This website was created to facilitate access to the
         Revit API documentation by providing a web-based,
-        searchable copy of the official API documentation.
-        <br />
-        <br />
-        For more information about the API visit the
+        searchable copy of the official API documentation.</p>
+        <p>For more information about the API visit the
         <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=2484975">
-        Autodesk Developer Network</a>
-    <br />
-    <br />
-    <h5>Available APIs:</h5>
+        Autodesk Developer Network</a></p>
+    <h5 class="margin-top">Available APIs:</h5>
     <a class="btn btn-default" href="/2015/">2015</a>
     <a class="btn btn-default" href="/2016/">2016</a>
     <a class="btn btn-default" href="/2017/">2017</a>
@@ -33,11 +28,7 @@
     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <br />
     <a href="https://twitter.com/intent/tweet?screen_name=gtalarico" class="twitter-mention-button" data-show-count="false">Tweet to @gtalarico</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <br />
-    <br />
-    <br />
-
-    <h4>Other Revit API Learning Resources</h4>
+    <h4 class="margin-top">Other Revit API Learning Resources</h4>
     <hr />
     <div class="row">
     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -75,6 +66,7 @@
 
     {% include 'disqus.html' %}
 
+</div>
 </div>
 
 {% endblock %}

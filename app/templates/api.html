@@ -20,6 +20,8 @@
             <h4 class="modal-title" id="myModalLabel">Results: </h4>
           </div>
           <div class="modal-body">
+            <div class="list-group" id="result-div">
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -60,7 +62,7 @@
     <!-- END SIDEBAR -->
 
     <!-- START MAIN -->
-    <div class="col-sm-12 col-md-8 col-lg-9" id="main">
+    <div class="col-sm-12 col-md-8 col-lg-9" id="main-sidebar">
 
         {% if active_href and available_in %}
             <div id='alsofor'>
@@ -68,6 +70,7 @@
                     API VERSIONS :
                     {% for year in available_in %}
                     <a href="/{{year}}/{{active_href}}"> {{year}} </a>
+                    <span class="spaced"> </span>
                     {% endfor %}
                 </small></p>
             </div>
@@ -173,17 +176,15 @@ $(document).ready(function() {
         // var output
         var content = ''
         $.each(results, function (index, value) {
-        var href = '<a href="' + value.link + '" class="list-group-item">'
-        var body = '<small><li class="list-group-item-text">' + value.name +'</li></small></a>'
-        content += href+body
+        var ahref = '<a href="' + value.link + '" class="list-group-item">' + value.name + '</a>'
+        content += ahref
         });
-        $('.modal-body').html(content);
-        // $('#modal-loading').hide();
+        $('#result-div').html(content);
     };
 
     $("#quick-search").submit(function(e) {
         e.preventDefault() // Keeps page from submitting and reloading
-        $('.modal-body').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
+        $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
         search()
     });
 
