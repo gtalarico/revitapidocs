@@ -2,12 +2,13 @@ import os
 
 from flask import render_template, make_response, redirect, request
 from app import app
+from app.logger import logger
 
 
 @app.route('/robots.txt', methods=["GET"])
 def static_from_root():
-    is_staging = 'STAGING' in os.environ
-    if is_staging:
+    logger.info('ROBOTS: STAGING: %s', app.config['STAGING'])
+    if app.config['STAGING']:
         path = os.path.join('static', 'block_robots.txt')
         return redirect(path, code=302)
     else:
