@@ -34,6 +34,7 @@ if is_production:
     logger.info('PRODUCTION CONFIG - HEROKU')
     config = ProductionConfig
 elif is_staging:
+    logger.info('STAGING IS ON - HEROKU')
     config = StagingConfig
 else:
     logger.info('DEVELOPMENT CONFIG')
