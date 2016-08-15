@@ -30,12 +30,12 @@ logger.info('PRODUCTION={}'.format(is_production))
 is_staging = bool(int(os.getenv('STAGING', 0)))
 logger.info('STAGING={}'.format(is_staging))
 
-if is_production:
-    logger.info('PRODUCTION CONFIG - HEROKU')
-    config = ProductionConfig
-elif is_staging:
+if is_staging:
     logger.info('STAGING IS ON - HEROKU')
     config = StagingConfig
+elif is_production:
+    logger.info('PRODUCTION CONFIG - HEROKU')
+    config = ProductionConfig
 else:
     logger.info('DEVELOPMENT CONFIG')
     config = DevelopmentConfig
