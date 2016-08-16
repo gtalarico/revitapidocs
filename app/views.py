@@ -122,7 +122,10 @@ def get_gists():
     else:
         gists_by_categories = defaultdict(list)
 
-        if gists.status_code == 200:
+        if gists.status_code != 200:
+            logger.error('Gist Get Failed. Status Code: %s', gists.status_code)
+            gists_by_categories = {'error': 'Could not get Gists from Github. '}
+        else:# add handler for other error codes
             json_gists = json.loads(gists.text)  # Json Gists
 
             sorted_gists = sorted(json_gists, key=lambda k: k['description'])
