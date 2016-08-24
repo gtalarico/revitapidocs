@@ -11,12 +11,24 @@
         <!-- CHILD HEADER -->
         <!-- ADDED HEDE SO CSS FROM CHM CONTENT IS OVERRIDEN -->
         {% block header %}
+        <!-- NO CHILD HEADER LOADED -->
         {% endblock %}
         <!-- CHILD HEADER -->
 
+        {% if schema %}
+        <!-- CUSTOM SCHEME META TAGS LOADED -->
+        <meta name="title" content="{{schema.name}}">
+        <meta name="description" content="{{schema.description}}">
+        <!-- CUSTOM SCHEME META TAGS -->
+        {% else %}
+        <!-- DEFAULT SCHEME META TAGS -->
+        <meta name="description" content="Online Documentation for Autodesk's Revit API: 2015, 2016, 2017">
+        <!-- DEFAULT SCHEME META TAGS -->
+        {% endif %}
+
         <meta name="google-site-verification" content="Dn1KWTK6Dm3XMYL1XHu2FUNgz4YH8bUA0YGoFkoWpi0" />
         <meta name="theme-color" content="#222">
-        <meta name="description" content="Online Documentation for Autodesk's Revit API: 2015, 2016, 2017">
+
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         <meta name="ROBOTS" content="INDEX, FOLLOW">

@@ -32,7 +32,11 @@ def get_schema(*path):
     else:
         try:
             name = soup.title.string.strip()
-            description = soup.find(id='mainBody').find('div').text.strip()
+            description = soup.find(id='mainBody').find('div', { "class": "summary"}).text.strip()
+            # Pages that have no summary description return symbol "A"
+            # If description is too short (< 3), name is used instead
+            if len(description) < 3:
+                description = 'Documenation of {}'.format(name)
             namespace = soup.find(id='mainBody').find('a').text.strip()
         except AttributeError as errmsg:
             logger.error(errmsg)

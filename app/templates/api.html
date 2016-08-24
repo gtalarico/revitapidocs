@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 <!-- Rendered tempaltes must include header() macro#} -->
-{% from '%s' % content import header %}
+{% from '%s' % content import header with context %}
 {% block header %}
-<!-- START  API HEADER -->
+<!-- START  API MACRO HEADER -->
     {{ header() }}
-<!-- END  API HEADER -->
+<!-- END  API MACRO HEADER -->
 {% endblock %}
 
 {% block content %}
