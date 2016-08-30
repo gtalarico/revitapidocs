@@ -79,13 +79,17 @@ def namespace_search(year):
     with open(fullpath) as fp:
         members = json.load(fp, object_pairs_hook=OrderedDict)
     results = []
+    NO_RESULTS_RESPONSE = [{'name':'No Results', 'link': '#'}]
     query = request.args.get('query')
+    query = re.sub(r'\s', r'(\s)?', query)
     if not query:
-        return jsonify([])
+        return jsonify(NO_RESULTS_RESPONSE)
     for name, href in members.items():
         match = re.findall(query.lower(), name.lower())
         if match:
             results.append({'name': name, 'link': href})
+    if not results:
+        results = NO_RESULTS_RESPONSE
     return jsonify(results)
 
 
