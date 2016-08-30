@@ -136,11 +136,15 @@ $(document).ready(function() {
                         // console.log(node.nodeId)
                         activeNode = node
                         activeNodeId = node.nodeId
+                        break;
                     };
                     nodeId++;
                     }
                 while (node.nodeId != undefined);
-                };
+                }
+        else {
+            console.log("Small Screen Detected. Will not expand Menue")
+        };
 
         if (activeNodeId != undefined){
             console.log('Found Node.')
@@ -151,8 +155,16 @@ $(document).ready(function() {
             var scrollto = $('a[href="' + activeNode.href +'"]').offset().top - 200;
             // $('#sidebar').animate({ scrollTop: scrollto }, 500, "swing");
             $('#sidebar').scrollTop(scrollto); // Scroll, no animation
+        }
 
-        } else {console.log('Could not find matching node.')};
+        else {
+            console.log('Could not find matching node.')
+             if (is_desktop) {
+                // Auto Expand First level on Desktop
+                console.log("Active Node Not found, but it's a desktop. Open Node1")
+                $('#treeview').treeview('revealNode', [ 1, { silent: false } ]);
+                };
+        };
 
         $('#menu-loading').animate({opacity: 0},250);
         $('#menu-loading').hide();
