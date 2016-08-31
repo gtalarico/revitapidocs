@@ -3,7 +3,7 @@ import sys
 import json
 import re
 import requests
-from collections import OrderedDict, defaultdict
+from collections import OrderedDict
 
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
@@ -14,7 +14,8 @@ from werkzeug.exceptions import NotFound
 from app import app
 from app import cache
 from app.logger import logger
-from app.utils import *
+from app.utils import AVAILABLE_APIS
+from app.utils import get_schema, check_available_years, get_gists
 
 
 # @cache.cached(timeout=60)
@@ -118,29 +119,4 @@ def python():
     d = OrderedDict(sorted(gists_by_categories.items()))
     return render_template('python.html', gists_categories=d)
 
-
-def get_gists():
-    GISTS_URL = 'https://api.github.com/users/gtalarico/gists'
-    try:
-        gists = requests.get(GISTS_URL, timeout=(1, 1.5))
-    except requests.exceptions.RequestException as errmsg:
-        logger.warning('Failed to get GISTS: %s', errmsg)
-        gists_by_categories = {'error': errmsg.__doc__}
-    else:
-        gists_by_categories = defaultdict(list)
-
-        if gists.status_code != 200:
-            logger.error('Gist Get Failed. Status Code: %s', gists.status_code)
-            gists_by_categories = {'error': 'Could not get Gists from Github. '}
-        else:# add handler for other error codes
-            json_gists = json.loads(gists.text)  # Json Gists
-
-            sorted_gists = sorted(json_gists, key=lambda k: k['description'])
-            for gist in sorted_gists:
-                if 'RevitAPI' not in gist['description']:
-                    continue
-                gist_group, gist_name = gist['description'].split('::')[1:]
-                gist_embed_url = '{url}.js'.format(url=gist['html_url'])
-                gists_by_categories[gist_group].append({'name': gist_name,
-                                                        'url': gist_embed_url})
-    return gists_by_categories
+    # return jsonify(gists_by_categories)
