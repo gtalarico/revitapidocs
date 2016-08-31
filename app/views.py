@@ -59,7 +59,7 @@ def api_year(year, filename=None):
         abort(404)
 
 
-# @cache.cached(timeout=3600)
+@cache.cached(timeout=86400)
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
     cwd = app.config['BASEDIR']
@@ -94,6 +94,7 @@ def namespace_search(year):
 
 
 # This handles the static files form the .CHM content
+@cache.cached(timeout=86400)
 @app.route('/favicon.ico', methods=["GET"])
 @app.route('/icons/<string:filename>', methods=["GET"])
 @app.route('/scripts/<string:filename>', methods=["GET"])
@@ -105,7 +106,8 @@ def chm_static_redirect(filename=None):
 
 @app.after_request
 def add_header(response):
-    response.headers['Cache-Control'] = 'public, max-age=3600'
+    config_cache = app.config['SEND_FILE_MAX_AGE_DEFAULT']
+    response.headers['Cache-Control'] = 'public, max-age={}'.format(config_cache)
     return response
 
 

@@ -8,6 +8,7 @@ class Config(object):
     STAGING = False
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     TEMPLATEDIR = os.path.join(BASEDIR, 'templates')
+    SEND_FILE_MAX_AGE_DEFAULT = 604800  # 60*60*24*7 = 1 Week
 
 
 class ProductionConfig(Config):
