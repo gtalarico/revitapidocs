@@ -3,7 +3,8 @@ import sys
 import json
 import re
 import requests
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
+from github import Github
 
 from flask import render_template, redirect, url_for, send_from_directory
 from flask import session, request, make_response
@@ -15,7 +16,7 @@ from app import app
 from app import cache
 from app.logger import logger
 from app.utils import AVAILABLE_APIS
-from app.utils import get_schema, check_available_years, get_gists
+from app.utils import get_schema, check_available_years
 
 
 # @cache.cached(timeout=60)
@@ -117,6 +118,30 @@ def python():
     # ordered_gist = OrderedDict(sorted(get_gists().items()))
     gists_by_categories = get_gists()
     d = OrderedDict(sorted(gists_by_categories.items()))
+    # d = {'error':'Nothing'}
     return render_template('python.html', gists_categories=d)
 
-    # return jsonify(gists_by_categories)
+
+oauth = '94e9d489cc282b34a41c9ea89a3c0f396fb42f58'
+github = Github(oauth)
+github_user = github.get_user()
+gist_pages = github_user.get_gists()
+
+
+def get_gists():
+    # github.get_api_status().rate.remaining
+    # except requests.exceptions.RequestException as errmsg:
+    #     logger.warning('Failed to get GISTS: %s', errmsg)
+    #     gists_by_categories = {'error': errmsg.__doc__}
+    gists_by_categories = defaultdict(list)
+    # gists= []
+    flash('{}/{}'.format(github.get_rate_limit().rate.remaining, github.get_rate_limit().rate.limit))
+    for gist in gist_pages:
+        if 'RevitAPI' in gist.description:
+            # gists.append(gist)
+            gist_group, gist_name = gist.description.split('::')[1:]
+            gist_embed_url = '{url}.js'.format(url=gist.html_url)
+            gists_by_categories[gist_group].append({'name': gist_name,
+                                                    'url': gist_embed_url})
+
+    return gists_by_categories

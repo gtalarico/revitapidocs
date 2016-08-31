@@ -22,10 +22,12 @@ html, body {
 
 .alert {
   position: absolute;
-  top: 75px;
+  top: 60px;
   /*bottom: 20px;*/
-  left: 50px;
-  right: 50px;
+  /*left: 20px;*/
+  width: 300px;
+  right: 20px;
+  height: 50px;
 }
 
 

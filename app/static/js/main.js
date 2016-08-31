@@ -1,4 +1,4 @@
-$(".alert").delay(2500).fadeOut(500, function() {
+$(".alert").delay(8000).fadeOut(300, function() {
     $(this).alert('close');
 });
 

@@ -18,8 +18,16 @@ or some of the links in the <a href="/">main page.</a></p>
 <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     {% if 'error' in gists_categories.keys() %}
-    <p class="margin-top text-danger">Something went wrong requesting the latest code snippets. You can access all the code directly in the <a href="https://gist.github.com/gtalarico/">github</a>.</p>
-    <p class="small text-muted">Error: {{ gists_categories.error }}</p>
+    <div class="panel panel-danger margin-top ">
+      <div class="panel-heading">Error Getting Latest Gists</div>
+        <div class="panel-body">
+        <p>Something went wrong requesting the latest code snippets.</p>
+        <p>But it's all good; you can access all the code directly in the <a href="https://gist.github.com/gtalarico/">github</a>.</p>
+        <p class="text-muted">Error Code: {{ gists_categories.error }}</p>
+      </div>
+    </div>
+
+
     {% else %}
     <div class="row"> <!--  ROW -->
         {% for category, gists in gists_categories.items() %}
