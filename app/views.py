@@ -27,7 +27,7 @@ def index():
 
 # API: /2015/
 # API Pages: /2015/123sda-asds-asd.htmll
-# @cache.cached(timeout=3600)
+@cache.cached(timeout=600)
 @app.route('/<string:year>/', methods=["GET"])
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
@@ -59,7 +59,7 @@ def api_year(year, filename=None):
         abort(404)
 
 
-@cache.cached(timeout=86400)
+@cache.cached(timeout=604800)  # 1 Week
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
     cwd = app.config['BASEDIR']
@@ -71,6 +71,7 @@ def namespace_get(year):
     return jsonify(j)
 
 
+# Not Cached to Prevent High Memory Usage
 @app.route('/<string:year>/search', methods=['GET'])
 def namespace_search(year):
     cwd = app.config['BASEDIR']
@@ -109,38 +110,3 @@ def add_header(response):
     config_cache = app.config['SEND_FILE_MAX_AGE_DEFAULT']
     response.headers['Cache-Control'] = 'public, max-age={}'.format(config_cache)
     return response
-
-
-@app.route('/python/', methods=['GET'])
-def python():
-    # ordered_gist = OrderedDict(sorted(get_gists().items()))
-    gists_by_categories = get_gists()
-    d = OrderedDict(sorted(gists_by_categories.items()))
-    return render_template('python.html', gists_categories=d)
-
-
-def get_gists():
-    GISTS_URL = 'https://api.github.com/users/gtalarico/gists'
-    try:
-        gists = requests.get(GISTS_URL, timeout=(1, 1.5))
-    except requests.exceptions.RequestException as errmsg:
-        logger.warning('Failed to get GISTS: %s', errmsg)
-        gists_by_categories = {'error': errmsg.__doc__}
-    else:
-        gists_by_categories = defaultdict(list)
-
-        if gists.status_code != 200:
-            logger.error('Gist Get Failed. Status Code: %s', gists.status_code)
-            gists_by_categories = {'error': 'Could not get Gists from Github. '}
-        else:# add handler for other error codes
-            json_gists = json.loads(gists.text)  # Json Gists
-
-            sorted_gists = sorted(json_gists, key=lambda k: k['description'])
-            for gist in sorted_gists:
-                if 'RevitAPI' not in gist['description']:
-                    continue
-                gist_group, gist_name = gist['description'].split('::')[1:]
-                gist_embed_url = '{url}.js'.format(url=gist['html_url'])
-                gists_by_categories[gist_group].append({'name': gist_name,
-                                                        'url': gist_embed_url})
-    return gists_by_categories
