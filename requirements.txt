@@ -10,6 +10,7 @@ htmlmin==0.1.10
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
+PyGithub==1.27.1
 requests==2.11.0
 webassets==0.11.1
 Werkzeug==0.11.10
