@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
 
-from app import app
+from app import app, cache
 from app.logger import logger
 
 AVAILABLE_APIS = ['2015', '2016', '2017']

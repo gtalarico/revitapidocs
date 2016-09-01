@@ -23,7 +23,8 @@ assets.register('js_chm', js_chm)
 logger.info('ASSETS DEBUG: {}'.format(assets.debug))
 
 
-from app import views, seo_response, errors
-from app import assets
 from app.config import config
 app.config.from_object(config)
+
+from app import views, seo_response, errors
+from app import assets

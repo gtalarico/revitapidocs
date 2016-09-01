@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="col-sm-12 col-md-12 col-lg-12" id="main-full">
-<h4>Python + Revit API [BETA]</h4>
+<h4>Python + Revit API <span class="text-muted small"> BETA</span></h4>
 <hr />
 <p>As the official documentation lacks Python coverage, I thought it would be helpful to include some examples and snippets alongside it.</p>
 <p>The code below should work with <a href="https://github.com/architecture-building-systems/revitpythonshell">RevitPythonShell</a>
@@ -15,15 +15,15 @@ and <a href="https://github.com/eirannejad/pyRevit">pyRevit</a>, but can be also
 or some of the links in the <a href="/">main page.</a></p>
 <p>Code is hosted on <a href="https://gist.github.com/gtalarico/">gist.github.com</a>.</p>
 <br />
-<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+<a href="http://twitter.com/intent/tweet?text=Check out &url=http://www.RevitAPIDocs.com/python/&hashtags=revitapi"><img src="{{ url_for('static', filename="img/tweet.png") }}" alt="Tweet" /></a>
     {% if 'error' in gists_categories.keys() %}
     <div class="panel panel-danger margin-top ">
-      <div class="panel-heading">Error Getting Latest Gists</div>
+      <div class="panel-heading">Damn</div>
         <div class="panel-body">
         <p>Something went wrong requesting the latest code snippets.</p>
-        <p>But it's all good; you can access all the code directly in the <a href="https://gist.github.com/gtalarico/">github</a>.</p>
-        <p class="text-muted">Error Code: {{ gists_categories.error }}</p>
+        <p>While we get this sorted out, you can access all the code directly on <a href="https://gist.github.com/gtalarico/">github</a>.</p>
+        <p class="small text-muted">Error Code: {{ gists_categories.error }}</p>
       </div>
     </div>
 
@@ -62,28 +62,4 @@ or some of the links in the <a href="/">main page.</a></p>
 {% endblock %}
 
 {% block script %}
-<!-- START API SCRIPT  -->
-<script>
-$(document).ready(function() {
-
-};
-// $(document).ready(function() {
-//     var string_json;
-//     var ajax = $.getJSON("/gists/gists.json", function(json) {
-//             results = json;
-//             buildResults(results)
-//         });
-//     function buildResults(results) {
-//
-//         var content = ''
-//         $.each(results, function (index, value) {
-//         var name = '<p>' + value.name + '</p>'
-//         var desc = '<p>' + value.description + '</p>'
-//         var code = '<p>' + value.code + '</p>'
-//         content += name + desc + code
-//         });
-//
-//     };  // End of Build Menue Call Back Function
-// }); //END OF DOC READY
-</script>
 {% endblock %}
