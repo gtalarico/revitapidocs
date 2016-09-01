@@ -3,7 +3,7 @@
     {% for page in pages %}
     <url>
         <loc>{{page|safe}}</loc>
-        <lastmod>2016-08-24</lastmod>
+        <lastmod>2016-09-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>{{priority}}</priority>
     </url>
