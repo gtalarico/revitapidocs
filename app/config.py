@@ -12,6 +12,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
+    PRODUCTION = True
     SECRET_KEY = os.getenv('SECRET_KEY', None)
 
 
@@ -32,13 +33,13 @@ is_staging = bool(int(os.getenv('STAGING', 0)))
 logger.info('STAGING={}'.format(is_staging))
 
 if is_staging:
-    logger.info('STAGING IS ON - HEROKU')
+    logger.info('*** STAGING IS ON - HEROKU')
     config = StagingConfig
 elif is_production:
-    logger.info('PRODUCTION CONFIG - HEROKU')
+    logger.info('*** PRODUCTION CONFIG - HEROKU')
     config = ProductionConfig
 else:
-    logger.info('DEVELOPMENT CONFIG')
+    logger.info('*** DEVELOPMENT CONFIG')
     config = DevelopmentConfig
 
 
@@ -48,7 +49,7 @@ else:
 #       GITHUB_TOKEN
 #   Mode
 #       PRODUCTION = [1]  :  If One, No Debug, and env Key
-#       STAGING = [1]  :  1 Same as Production, but blocks robots
+#       STAGING = [1]  :  1 Same as Production, disable Bots and GA
 #   DEBUG:
 #        ASSETS_DEBUG = [0/1] Debug for Webassets
 #        LOG_LEVEL = [ INFO/DEBUG.ERROR ]

@@ -141,9 +141,6 @@ $(document).ready(function() {
                     nodeId++;
                     }
                 while (node.nodeId != undefined);
-                }
-        else {
-            console.log("Small Screen Detected. Will not expand Menue")
         };
 
         if (activeNodeId != undefined){
@@ -171,14 +168,17 @@ $(document).ready(function() {
 
     };  // End of Build Menue Call Back Function
 
-    function search(e){
-    var pattern = $('#input-search').val();
-    var string_json;
-        $.getJSON("/2015/search?query=" + pattern, function(json) {
-            results = json;
-            // results = JSON.parse(json);
-            // results = JSON.stringify(json);
-            buildResults(results, pattern)
+    function search(pattern){
+    var results_json;
+    $.getJSON("search?query=" + pattern, function(json) {
+        // results_json = JSON.parse(json);
+        // results_json = JSON.stringify(json);
+        results_json = json;
+        })
+        .done(function(){
+            // Search successful
+            buildResults(results_json, pattern)
+            ga('send', 'pageview', '/{{year}}/search?query=' + pattern);
         });
     };
 
@@ -196,9 +196,10 @@ $(document).ready(function() {
     };
 
     $("#quick-search").submit(function(e) {
+        var pattern = $('#input-search').val();
         e.preventDefault() // Keeps page from submitting and reloading
         $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
-        search()
+        search(pattern)
     });
 
 }); //END OF DOC READY
