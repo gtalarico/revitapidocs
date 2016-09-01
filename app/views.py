@@ -28,7 +28,7 @@ def index():
 
 # API: /2015/
 # API Pages: /2015/123sda-asds-asd.htmll
-# @cache.cached(timeout=3600)
+@cache.cached(timeout=600)
 @app.route('/<string:year>/', methods=["GET"])
 @app.route('/<string:year>/<path:filename>', methods=["GET"])
 def api_year(year, filename=None):
@@ -60,7 +60,7 @@ def api_year(year, filename=None):
         abort(404)
 
 
-@cache.cached(timeout=86400)
+@cache.cached(timeout=604800)  # 1 Week
 @app.route('/<string:year>/namespace.json', methods=['GET'])
 def namespace_get(year):
     cwd = app.config['BASEDIR']
@@ -72,6 +72,7 @@ def namespace_get(year):
     return jsonify(j)
 
 
+# Not Cached to Prevent High Memory Usage
 @app.route('/<string:year>/search', methods=['GET'])
 def namespace_search(year):
     cwd = app.config['BASEDIR']
