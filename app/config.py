@@ -40,3 +40,15 @@ elif is_production:
 else:
     logger.info('DEVELOPMENT CONFIG')
     config = DevelopmentConfig
+
+
+#  ENV CONFIG VARS
+#   REQUIRED:
+#       SECRET_KEY
+#       GITHUB_TOKEN
+#   Mode
+#       PRODUCTION = [1]  :  If One, No Debug, and env Key
+#       STAGING = [1]  :  1 Same as Production, but blocks robots
+#   DEBUG:
+#        ASSETS_DEBUG = [0/1] Debug for Webassets
+#        LOG_LEVEL = [ INFO/DEBUG.ERROR ]
