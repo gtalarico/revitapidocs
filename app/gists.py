@@ -62,7 +62,7 @@ class GistWrapper:
 @cache.cached(timeout=43200, key_prefix='gists')  # 12 Hour
 def get_gists():
     github_gist = GistWrapper()
-    logger.info('Gist Rate Limit(): {}/{}'.format(github_gist.remaining,
+    logger.info('Gettings Gists. Rate: {}/{}'.format(github_gist.remaining,
                                                   github_gist.limit))
     if not github_gist:
         return {'error': github_gist.error}
