@@ -11,7 +11,7 @@ class GistWrapper:
     - Simplify and abstract PyGithub check_available_years
     - Add ensure single session is created"""
 
-    OAUTH = app.config['GITHUB_TOKEN']
+    OAUTH = app.config.get('GITHUB_TOKEN')
     class __GistWrapper:
         def __init__(self):
             logger.info('Initializing Gist Session')

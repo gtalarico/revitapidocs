@@ -15,7 +15,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # ASSETS
 assets = Environment(app)
-assets.debug = bool(int(os.environ.get('ASSETS_DEBUG', False)))
+assets.debug = bool(int(os.getenv('ASSETS_DEBUG', False)))
 assets.register('css_assets', css_assets)
 assets.register('js_assets', js_assets)
 assets.register('css_chm', css_chm)
