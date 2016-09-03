@@ -180,7 +180,8 @@ $(document).ready(function() {
         .done(function(){
             // Search successful
             buildResults(results_json, pattern)
-            ga('send', 'pageview', '/{{year}}/search?query=' + pattern);
+            ga('send', 'pageview', '?query=' + pattern);
+            console.log('GA PV Sent:' + '?query=' + pattern)
         });
     };
 
