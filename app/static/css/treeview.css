@@ -19,16 +19,21 @@
 
 .treeview .list-group-item {
 	cursor: pointer;
+    font-size: 11px;
+    padding-left: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: : 11px;
 }
 
 .treeview span.indent {
-	margin-left: 6px;
-	margin-right: 6px;
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 .treeview span.icon {
-	width: 12px;
-	margin-right: 5px;
+	width: 10px;
+	margin-right: 3px;
 }
 
 .treeview .node-disabled {
@@ -44,6 +49,10 @@
     margin-bottom: 0px;
 }
 
+.treeview span.hover{
+    /*display: none;*/
+    color: #008cba;
+}
 
 @media (max-width: 900px){
     /*.treeview li.list-group-item {*/
