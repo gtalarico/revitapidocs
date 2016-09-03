@@ -61,7 +61,7 @@ html, body {
 
     #sidebar {
         position: absolute;
-        width: 30%;
+        width: 35%;
         top: 45px;          /* Height of Nav Bar*/
         bottom: 40px;       /* Height of Footer*/
         left: 0;
@@ -71,7 +71,7 @@ html, body {
     }
     #main-sidebar {
         position: absolute;
-        width: 70%;
+        width: 65%;
         top: 45px;          /* Height of Nav Bar*/
         bottom: 40px;       /* Height of Footer*/
         right: 0;
