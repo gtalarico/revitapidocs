@@ -83,7 +83,7 @@ def namespace_search(year):
     results = []
     NO_RESULTS_RESPONSE = [{'name':'No Results', 'link': '#'}]
     query = request.args.get('query')
-    query = re.sub(r'\s', r'(\s)?', query)
+    query = re.sub(r'\s', r'(\s|\.)?', query)
     if not query:
         return jsonify(NO_RESULTS_RESPONSE)
     for name, href in members.items():
