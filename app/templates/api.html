@@ -45,6 +45,7 @@
             <input type="text" class="form-control" id="input-search" placeholder="Regex">
               <span class="input-group-btn">
                 <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-default" id="btn-google-search" type="button">Google</button>
               </span>
           </div>
         </div>
@@ -220,6 +221,12 @@ $(document).ready(function() {
         e.preventDefault() // Keeps page from submitting and reloading
         $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
         search(pattern)
+    });
+
+    $("#btn-google-search").click(function(e) {
+        var query = $("#input-search").val()
+        var url = "https://www.google.com/search?q=site:www.revitapidocs.com " + query
+        window.open(url)
     });
 
 
