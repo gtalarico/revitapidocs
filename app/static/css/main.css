@@ -209,3 +209,11 @@ a > img:hover {
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
 }
+
+/*#accordion .panel-heading:hover {
+    color: #333;
+    background-color: #cecece;
+}
+#accordion .panel-default:hover {
+    border-color: #adadad;
+}*/
