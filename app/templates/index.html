@@ -14,23 +14,30 @@
         <p>For more information about the API visit the
         <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=2484975">
         Autodesk Developer Network</a></p>
-    <h5 class="margin-top">Available APIs:</h5>
+    <h5 class="margin-top">Available APIs</h5>
     <a class="btn btn-default" href="/2015/">2015</a>
     <a class="btn btn-default" href="/2016/">2016</a>
     <a class="btn btn-default" href="/2017/">2017</a>
-    <br />
-    <hr />
 
-    <small class="text-muted">This website was created with content extracted from the official Revit SDK.</small>
-    <small class="text-muted">Please don't sue me.</small>
-    <br />
-    <br />
-    <a href="http://twitter.com/intent/tweet?text=Check out &url=http://www.RevitAPIdocs.com&hashtags=revitapi"><img src="{{ url_for('static', filename="img/tweet.png") }}" alt="Tweet" /></a>
-    <br />
-    <a href="http://twitter.com/intent/tweet?text=%20%40gtalarico"><img src="{{ url_for('static', filename="img/tweet_at_gtalarico.png") }}" alt="Tweet" /></a>
-    <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-    <br />
-    <!-- <a href="https://twitter.com/intent/tweet?screen_name=gtalarico" class="twitter-mention-button" data-show-count="false">Tweet to @gtalarico</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+    {# <p class="small text-muted">This website was created with content extracted from the official Revit SDK.
+    Please don't sue me.</p>#}
+
+    <div class="row margin-top">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <hr />
+            <p class="small text-muted">Want to contribute? Suggest ideas and report issues to help improve this project</p>
+            <a class="github-button" href="https://github.com/gtalarico/revitapidocs/issues" aria-label="Issue gtalarico/revitapidocs on GitHub">Issues</a>
+            <br />
+            <br />
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Share</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a href="https://twitter.com/intent/tweet?screen_name=gtalarico" class="twitter-mention-button" data-show-count="false">Tweet to @gtalarico</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            {# <br />#}
+            {# <br />#}
+            {# <a href="http://twitter.com/intent/tweet?text=Check out &url=http://www.RevitAPIdocs.com&hashtags=revitapi"><img src="{{ url_for('static', filename="img/tweet.png") }}" alt="Tweet" /></a>#}
+            {# <br />#}
+            {# <a href="http://twitter.com/intent/tweet?text=%20%40gtalarico"><img src="{{ url_for('static', filename="img/tweet_at_gtalarico.png") }}" alt="Tweet" /></a>#}
+        </div>
+    </div>
 
     <h4 class="margin-top">Other Revit API Learning Resources</h4>
     <hr />
@@ -71,6 +78,8 @@
     {% include 'disqus.html' %}
 
 </div>
-</div>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 {% endblock %}

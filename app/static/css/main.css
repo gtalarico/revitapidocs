@@ -145,8 +145,10 @@ html, body {
     text-align: center;
     position: fixed;
     bottom: 0;
-    background-color: #e0e0e0;
-    border-top: 1px solid #ccc;
+    background-color: #e6e6e6;
+    /*background-color: #e0e0e0;*/
+    border-top: 1px solid #d6d6d6;
+    /*border-top: 1px solid #ccc;*/
     padding-top: 2px;
     line-height: 35px;
     height: 40px;
