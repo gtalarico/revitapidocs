@@ -220,29 +220,28 @@ a > img:hover {
 
 
 .bottom-shadow {
-    -moz-transition: all 180ms ease-in-out;
-    -o-transition: all 180ms ease-in-out;
-    -webkit-transition: all 180ms ease-in-out;
-    transition: all 180ms ease-in-out;
+    -moz-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    -o-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    -webkit-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
     box-shadow:
      0px 1px 25px 0px rgba(0,0,0,0.4);
-
      background-color: #e5e5e5 !important;
-     height: 120px;
      border-bottom: 1px solid #bbb;
+     height: 110px;
 }
 
 
 .no-bottom-shadow {
-    -moz-transition: all 180ms ease-in-out;
-    -o-transition: all 180ms ease-in-out;
-    -webkit-transition: all 180ms ease-in-out;
-    transition: all 180ms ease-in-out;
+    -moz-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    -o-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    -webkit-transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
+    transition: box-shadow 180ms ease-in-out, background-color 180ms, height 180ms ease-in-out;
     box-shadow:
      0px 0px 0px 0px rgba(0,0,0,0.0);
 
      background-color: #eee !important;
     border-bottom: 0px solid #eee;
-     /*height: auto;*/
+     height: 105px;
 
 }
