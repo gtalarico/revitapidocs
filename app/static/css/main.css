@@ -70,6 +70,7 @@ html, body {
         overflow-y: auto;
         padding:0px;
         border-right: 1px solid #ddd;
+        /*Quick search space*/
     }
     #main-sidebar {
         position: absolute;
@@ -80,9 +81,16 @@ html, body {
         overflow-y: auto;
         padding: 20px;
     }
-    #sidebarsearch {
+
+    #sidebar-search {
+        /*position: fixed;*/
+        /*width: inherit;*/
+        z-index: 99;
+        position: relative;
         padding:20px;
+        padding-bottom: 8px;
         margin:0px;
+        background-color: #eee;
     }
 
     #sidebar #menu-loading{
@@ -217,3 +225,34 @@ a > img:hover {
 #accordion .panel-default:hover {
     border-color: #adadad;
 }*/
+
+.bottom-shadow {
+    -moz-transition: box-shadow 150ms, transform 0.5s; /* Firefox 4 */
+    -o-transition: box-shadow 150ms, transform 0.5s; /* Opera     */
+    -webkit-transition: box-shadow 150ms, transform 0.5s; /* Chrome    */
+    transition: box-shadow 150ms, transform 0.5s;
+    box-shadow:
+     0px 1px 25px 0px rgba(0,0,0,0.4);
+
+     background-color: #e9e9e9 !important;
+     /*transform: scale(0.95);*/
+     /*border-bottom: 1px solid #bbb;*/
+}
+
+-webkit-transition: width 2s, height 2s, -webkit-transform 0.5s; /* Safari */
+transition: width 2s, height 2s, transform 0.5s;
+}
+
+
+.no-bottom-shadow {
+    -moz-transition: box-shadow 150ms, transform 0.5s; /* Firefox 4 */
+    -o-transition: box-shadow 150ms, transform 0.5s; /* Opera     */
+    -webkit-transition: box-shadow 150ms, transform 0.5s; /* Chrome    */
+    transition: box-shadow 150ms, transform 0.5s;
+    box-shadow:
+     0px 0px 0px 0px rgba(0,0,0,0.0);
+
+     background-color: #eee !important;
+    /*transform: scale(1);*/
+
+}

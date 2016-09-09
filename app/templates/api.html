@@ -38,17 +38,19 @@
     <div class="col-sm-12 col-md-5 col-lg-4" id="sidebar">
 
         <!-- SIDEBAR SEARCH -->
-        <form id="quick-search">
-        <div class="form-group" id="sidebarsearch">
-        <label class="control-label">Quick Search</label>
-          <div class="input-group input-group-sm">
-            <input type="text" class="form-control" id="input-search" placeholder="Regex">
-              <span class="input-group-btn">
-                <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
-              </span>
-          </div>
+        <div id="sidebar-search">
+            <form id="form-quicksearch">
+            <div class="form-group">
+                <label class="control-label">Quick Search</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="input-search" placeholder="Regex">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
+                      </span>
+                  </div>
+            </div>
+            </form>
         </div>
-        </form>
         <!-- SIDEBAR SEARCH -->
 
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
@@ -165,8 +167,9 @@ $(document).ready(function() {
                 };
         };
 
-        $('#menu-loading').animate({opacity: 0},250);
+        $('#menu-loading').animate({opacity: 0},200);
         $('#menu-loading').hide();
+        $('#treeview').animate({opacity: 1}, 200);
 
         // function addHoverListener(node){
         //     console.log("Listener Added")
@@ -215,12 +218,26 @@ $(document).ready(function() {
         $('#result-div').html(content);
     };
 
-    $("#quick-search").submit(function(e) {
+    $("#form-quicksearch").submit(function(e) {
         var pattern = $('#input-search').val();
         e.preventDefault() // Keeps page from submitting and reloading
         $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
         search(pattern)
     });
+
+    $("#sidebar").scroll(function(){
+    if ($("#sidebar").scrollTop() > 1){
+        $("#sidebar-search").css("top", $("#sidebar").scrollTop() + 0 + "px");
+        $("#sidebar-search").addClass("bottom-shadow")
+        $("#sidebar-search").removeClass("no-bottom-shadow")
+
+    } else {
+        $("#sidebar-search").css("top", "0px");
+        $("#sidebar-search").addClass("no-bottom-shadow")
+        $("#sidebar-search").removeClass("bottom-shadow")
+    }
+    });
+
 
 
 }); //END OF DOC READY
