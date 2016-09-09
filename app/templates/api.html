@@ -38,17 +38,19 @@
     <div class="col-sm-12 col-md-5 col-lg-4" id="sidebar">
 
         <!-- SIDEBAR SEARCH -->
-        <form id="quick-search">
-        <div class="form-group" id="sidebarsearch">
-        <label class="control-label">Quick Search</label>
-          <div class="input-group input-group-sm">
-            <input type="text" class="form-control" id="input-search" placeholder="Regex">
-              <span class="input-group-btn">
-                <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
-              </span>
-          </div>
+        <div id="sidebar-search">
+            <form id="form-quicksearch">
+            <div class="form-group">
+                <label class="control-label">Quick Search</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="input-search" placeholder="Regex">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
+                      </span>
+                  </div>
+            </div>
+            </form>
         </div>
-        </form>
         <!-- SIDEBAR SEARCH -->
 
         <span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">
@@ -165,24 +167,19 @@ $(document).ready(function() {
                 };
         };
 
-        $('#menu-loading').animate({opacity: 0},250);
+        $('#menu-loading').animate({opacity: 0},200);
         $('#menu-loading').hide();
+        $('#treeview').animate({opacity: 1}, 200);
 
-        // function addHoverListener(node){
-        //     console.log("Listener Added")
-        //     $(node).children('ul').children(".node-treeview").hover(
-        //         function() {
-        //             console.log('Hovered ON')
-        //             $( this ).children('span.glyphicon').toggleClass('hover');
-        //         }, function() {
-        //             console.log('Hovered OUT')
-        //             $( this ).children('span.glyphicon').toggleClass('hover');
-        //         }
-        //         );
-        // }
-        // addHoverListener('#treeview')
-        // $('#treeview').on('nodeExpanded', function(event, data) {
-        //     addHoverListener('#treeview')
+
+        // $('#treeview').on('nodeExpanded', function(event, node) {
+        //     $(event.target).addClass("node-expanded")
+        //     $(event.target).removeClass("node-collapsed")
+        // });
+        //
+        // $('#treeview').on('nodeCollapsed', function(event, node) {
+        //     $(event.target).addClass("node-collapsed")
+        //     $(event.target).removeClass("node-expanded")
         // });
 
     };  // End of Build Menue Call Back Function
@@ -215,7 +212,7 @@ $(document).ready(function() {
         $('#result-div').html(content);
     };
 
-    $("#quick-search").submit(function(e) {
+    $("#form-quicksearch").submit(function(e) {
         var pattern = $('#input-search').val();
         e.preventDefault() // Keeps page from submitting and reloading
         $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
@@ -223,11 +220,19 @@ $(document).ready(function() {
         search(pattern)
     });
 
-    $("#btn-google-search").click(function(e) {
-        var query = $("#input-search").val()
-        var url = "https://www.google.com/search?q=site:www.revitapidocs.com " + query
-        window.open(url)
+    $("#sidebar").scroll(function(){
+    if ($("#sidebar").scrollTop() > 1){
+        $("#sidebar-search").css("top", $("#sidebar").scrollTop() + 0 + "px");
+        $("#sidebar-search").addClass("bottom-shadow")
+        $("#sidebar-search").removeClass("no-bottom-shadow")
+
+    } else {
+        $("#sidebar-search").css("top", "0px");
+        $("#sidebar-search").addClass("no-bottom-shadow")
+        $("#sidebar-search").removeClass("bottom-shadow")
+    }
     });
+
 
 
 }); //END OF DOC READY

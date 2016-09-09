@@ -17,12 +17,14 @@ class GistWrapper:
             logger.info('Initializing Gist Session')
             self._session = Github(GistWrapper.OAUTH, per_page=100)
             try:
-                self.update_rates()
+                self._session.get_user().id
             except Exception as errmsg:
+                logger.error('GitWrapper Error:')
                 self.nullify_session(errmsg)
             else:
+                self.update_rates()
                 self._user = self._session.get_user()
-                self._pages = self._user.get_gists()
+                self.pages = self._user.get_gists()
                 self.limit = self._session.get_rate_limit().rate.limit
                 logger.info('Rate Limit: {}/{}'.format(self.remaining,
                                                        self.limit))
@@ -30,9 +32,9 @@ class GistWrapper:
                     self.nullify_session()
         def nullify_session(self, errmsg):
             # Sets Variables to ensure error handling
-            logger.error('GitWrapper Error:')
+
             logger.info(errmsg)
-            self._pages = []
+            self.pages = []
             self.remaining = 0
             self.limit = 0
             self.error = errmsg
@@ -51,12 +53,8 @@ class GistWrapper:
     def __getattr__(self, name):
         return getattr(self.instance, name)
 
-    def __iter__(self):
-        for gist in self.instance._pages:
-            yield gist
-
     def __bool__(self):
-        return bool(self.instance._pages)
+        return bool(self.instance.pages)
 
 
 @cache.cached(timeout=43200, key_prefix='gists')  # 12 Hour
@@ -68,8 +66,8 @@ def get_gists():
         return {'error': github_gist.error}
 
     gists_by_categories = defaultdict(list)
+    for gist in github_gist.pages:
 
-    for gist in github_gist:
         if 'RevitAPI' in gist.description:
             gist_group, gist_name = gist.description.split('::')[1:]
             gist_embed_url = '{url}.js'.format(url=gist.html_url)

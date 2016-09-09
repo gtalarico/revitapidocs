@@ -16,9 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================= */
-
+#treeview {
+    opacity: 0;
+}
 .treeview .list-group-item {
-	cursor: pointer;
+	/*cursor: pointer;*/
     font-size: 11px;
     padding-left: 20px;
     padding-top: 8px;
@@ -49,12 +51,12 @@
     margin-bottom: 0px;
 }
 
-.treeview span.hover{
-    /*display: none;*/
-    color: #008cba;
+.treeview a:hover{
+	cursor: pointer;
+    /*cursor:  url(cursor1.png) 4 12, auto;*/
 }
 
-@media (max-width: 900px){
-    /*.treeview li.list-group-item {*/
-    /*display:none;*/
-    }
+.treeview .list-group-item {
+    cursor:  url("/static/cursors/both.png") 8 8, auto !important;
+    /*cursor:  s-resize !important;*/
+}
