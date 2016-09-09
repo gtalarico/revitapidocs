@@ -24,8 +24,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <span class="text-muted small pull-left" style="line-height:40px">Could not find what you were looking for? Try the Custom
-            <a href="https://cse.google.com/cse/publicurl?cx=014747897160299638528:fxtbgkrsxas" target="=_blank">Google Search</a></span>
+            <span class="text-muted small pull-left" style="line-height:40px">Could not find what you were looking for? Try a 
+            <a id="google-link" target="=_blank">Google Search</a></span>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
@@ -45,7 +45,6 @@
             <input type="text" class="form-control" id="input-search" placeholder="Regex">
               <span class="input-group-btn">
                 <button class="btn btn-default" id="btn-search" type="submit" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
-                <button class="btn btn-default" id="btn-google-search" type="button">Google</button>
               </span>
           </div>
         </div>
@@ -220,6 +219,7 @@ $(document).ready(function() {
         var pattern = $('#input-search').val();
         e.preventDefault() // Keeps page from submitting and reloading
         $('#result-div').html('<span id="menu-loading" class="small text-muted"><img src="{{ url_for('static', filename="img/loader.gif") }}">&nbsp;Loading</span>');
+        $('#google-link').attr("href", "http://www.google.com/search?q=site:www.revitapidocs.com " + pattern)
         search(pattern)
     });
 
