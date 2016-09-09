@@ -171,21 +171,15 @@ $(document).ready(function() {
         $('#menu-loading').hide();
         $('#treeview').animate({opacity: 1}, 200);
 
-        // function addHoverListener(node){
-        //     console.log("Listener Added")
-        //     $(node).children('ul').children(".node-treeview").hover(
-        //         function() {
-        //             console.log('Hovered ON')
-        //             $( this ).children('span.glyphicon').toggleClass('hover');
-        //         }, function() {
-        //             console.log('Hovered OUT')
-        //             $( this ).children('span.glyphicon').toggleClass('hover');
-        //         }
-        //         );
-        // }
-        // addHoverListener('#treeview')
-        // $('#treeview').on('nodeExpanded', function(event, data) {
-        //     addHoverListener('#treeview')
+
+        // $('#treeview').on('nodeExpanded', function(event, node) {
+        //     $(event.target).addClass("node-expanded")
+        //     $(event.target).removeClass("node-collapsed")
+        // });
+        //
+        // $('#treeview').on('nodeCollapsed', function(event, node) {
+        //     $(event.target).addClass("node-collapsed")
+        //     $(event.target).removeClass("node-expanded")
         // });
 
     };  // End of Build Menue Call Back Function

@@ -218,41 +218,31 @@ a > img:hover {
     transition: all 0.1s ease-in-out;
 }
 
-/*#accordion .panel-heading:hover {
-    color: #333;
-    background-color: #cecece;
-}
-#accordion .panel-default:hover {
-    border-color: #adadad;
-}*/
 
 .bottom-shadow {
-    -moz-transition: box-shadow 150ms, transform 0.5s; /* Firefox 4 */
-    -o-transition: box-shadow 150ms, transform 0.5s; /* Opera     */
-    -webkit-transition: box-shadow 150ms, transform 0.5s; /* Chrome    */
-    transition: box-shadow 150ms, transform 0.5s;
+    -moz-transition: all 300ms;
+    -o-transition: all 300ms;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
     box-shadow:
      0px 1px 25px 0px rgba(0,0,0,0.4);
 
-     background-color: #e9e9e9 !important;
-     /*transform: scale(0.95);*/
-     /*border-bottom: 1px solid #bbb;*/
-}
-
--webkit-transition: width 2s, height 2s, -webkit-transform 0.5s; /* Safari */
-transition: width 2s, height 2s, transform 0.5s;
+     background-color: #e5e5e5 !important;
+     height: 120px;
+     border-bottom: 1px solid #bbb;
 }
 
 
 .no-bottom-shadow {
-    -moz-transition: box-shadow 150ms, transform 0.5s; /* Firefox 4 */
-    -o-transition: box-shadow 150ms, transform 0.5s; /* Opera     */
-    -webkit-transition: box-shadow 150ms, transform 0.5s; /* Chrome    */
-    transition: box-shadow 150ms, transform 0.5s;
+    -moz-transition: all 300ms;
+    -o-transition: all 300ms;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
     box-shadow:
      0px 0px 0px 0px rgba(0,0,0,0.0);
 
      background-color: #eee !important;
-    /*transform: scale(1);*/
+    border-bottom: 0px solid #eee;
+     /*height: auto;*/
 
 }
