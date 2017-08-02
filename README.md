@@ -1,4 +1,4 @@
-![Logo](https://github.com/gtalarico/revitapidocs/blob/master/app/static/img/logos/archive/title-logo-white.png)
+![Logo](https://revitapidocs.s3.amazonaws.com/static/img/logos/archive/title-logo-white.png)
 
 Online Revit API Documentation: 2015, 2016, 2017
 
